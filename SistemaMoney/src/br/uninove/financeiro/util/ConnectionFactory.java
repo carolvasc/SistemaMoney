@@ -2,8 +2,6 @@ package br.uninove.financeiro.util;
 
 import java.sql.*;
 
-import br.com.uninove.dao.String;
-
 public class ConnectionFactory {
     
     private String servidor = "localhost";
