@@ -29,6 +29,7 @@
     <body>        
         <div class="col-md-3"></div>
         <div class="col-md-6">
+        <form action="despcontroller" method="get">
             <div id="conteudo">
                 <h4>Nova Despesa</h4>
                 <div class="row">
@@ -125,10 +126,11 @@
                 </div><!-- /row -->
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-danger" name="salvar" id="btn-salvar">Salvar</button>
+                        <button type="submit" class="btn btn-danger" name="salvar" id="btn-salvar">Salvar</button>
                     </div>
                 </div>
             </div><!-- /conteudo --> 
+        </form>
         </div><!-- col-md-6 -->
         <div class="col-md-3"></div>
     </body>

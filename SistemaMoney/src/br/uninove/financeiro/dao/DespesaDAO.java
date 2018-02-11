@@ -19,9 +19,9 @@ public class DespesaDAO {
 	}
 
     // Cadastra uma nova despesa no banco
-    public void salvar(Despesa despesa) throws Exception {
+    public void salvar(Despesa despesa) {
     	sql = "INSERT INTO despesas (`nome_despesa`, `valor_despesa`, `data_despesa`, `obs_despesa`, "
-    			+ "`categoria_id_categoria, `pagamento_id_pagamento`, `repeticao_id_repeticao`) VALUES (?,?,?,?,?,?,?)";
+    			+ "`categoria_id_categoria`, `pagamento_id_pagamento`) VALUES (?,?,?,?,?,?)";
         try {
         	PreparedStatement cadastrar = conexao.prepareStatement(sql);
         	
@@ -33,7 +33,7 @@ public class DespesaDAO {
             cadastrar.setString(4, despesa.getObsDespesa());
             cadastrar.setInt(5, despesa.getCategoriaDespesa());
             cadastrar.setInt(6, despesa.getPagamentoDespesa());
-            cadastrar.setInt(7, despesa.getRepetirDespesa());
+            //cadastrar.setInt(7, despesa.getRepetirDespesa());
             
             // Executa a inserção
             cadastrar.execute();
@@ -61,7 +61,7 @@ public class DespesaDAO {
     		atualizar.setString(4, despesa.getObsDespesa());
     		atualizar.setInt(5, despesa.getCategoriaDespesa());
     		atualizar.setInt(6, despesa.getPagamentoDespesa());
-    		atualizar.setInt(7, despesa.getRepetirDespesa());
+    		//atualizar.setInt(7, despesa.getRepetirDespesa());
     		
     		// Executa a alteração
     		atualizar.executeUpdate();
@@ -93,7 +93,7 @@ public class DespesaDAO {
                 despesa.setObsDespesa(rs.getString("obs_despesa"));
                 despesa.setCategoriaDespesa(rs.getInt("categoria_id_categoria"));
                 despesa.setPagamentoDespesa(rs.getInt("pagamento_id_pagamento"));
-                despesa.setRepetirDespesa(rs.getInt("repeticao_id_repeticao"));
+                //despesa.setRepetirDespesa(rs.getInt("repeticao_id_repeticao"));
                 
                 // Adiciona despesa à lista
                 despesas.add(despesa);
