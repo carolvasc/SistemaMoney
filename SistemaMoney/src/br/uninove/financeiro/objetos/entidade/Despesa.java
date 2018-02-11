@@ -10,7 +10,7 @@ public class Despesa {
     private Date dataDespesa;
     private Integer categoriaDespesa;
     private Integer pagamentoDespesa;
-    private Integer repetirDespesa;
+    private String repetirDespesa;
     private String obsDespesa;
     
 
@@ -62,11 +62,11 @@ public class Despesa {
         this.pagamentoDespesa = pagamentoDespesa;
     }
 
-    public Integer getRepetirDespesa() {
+    public String getRepetirDespesa() {
         return repetirDespesa;
     }
 
-    public void setRepetirDespesa(Integer repetirDespesa) {
+    public void setRepetirDespesa(String repetirDespesa) {
         this.repetirDespesa = repetirDespesa;
     }
 
