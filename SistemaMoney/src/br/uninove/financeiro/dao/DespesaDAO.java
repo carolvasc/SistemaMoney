@@ -111,6 +111,7 @@ public class DespesaDAO {
         } catch (Exception ex) {
         	System.out.println(ex.toString());
         }
+		return null;
     }
 
     // Deleta a despesa selecionada

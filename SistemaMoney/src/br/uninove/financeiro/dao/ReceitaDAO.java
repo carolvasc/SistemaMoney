@@ -108,6 +108,7 @@ public class ReceitaDAO {
         } catch (Exception ex) {
         	System.out.println(ex.toString());
         }
+		return null;
     }
 
     // Deleta a receita selecionada
