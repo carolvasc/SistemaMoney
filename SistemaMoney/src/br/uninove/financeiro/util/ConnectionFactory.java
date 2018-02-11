@@ -2,18 +2,20 @@ package br.uninove.financeiro.util;
 
 import java.sql.*;
 
+import br.com.uninove.dao.String;
+
 public class ConnectionFactory {
     
-    private static final String SERVIDOR = "localhost";
-    private static final String BANCO = "sistemafinanceiro";
-    private static final String USUARIO = "root";
-    private static final String SENHA = "";
-    private static final String URL = "jdbc:mysql://" + SERVIDOR + "/" + BANCO;
+    private String servidor = "localhost";
+    private String banco = "sistemafinanceiro";
+    private String usuario = "root";
+    private String senha = "";
+    private String url = "jdbc:mysql://" + servidor + "/" + banco;
 
-    public Connection getConnection() throws SQLException{
+    public Connection getConexao() throws SQLException{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			return DriverManager.getConnection(URL, USUARIO, SENHA);
+			return DriverManager.getConnection(url, usuario, senha);
 		} catch(Exception  e){
 			throw new SQLException(e.getMessage());
 		}
