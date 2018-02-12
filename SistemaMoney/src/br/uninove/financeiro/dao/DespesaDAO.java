@@ -13,13 +13,13 @@ public class DespesaDAO {
 	private Connection conexao;
 	String sql;
 	
-	// Cria a conexão
-	public DespesaDAO() throws SQLException{
+	 // Cria a conexão
+	public DespesaDAO(){
 		this.conexao = new ConnectionFactory().getConexao();
 	}
 
     // Cadastra uma nova despesa no banco
-    public void salvar(Despesa despesa) {
+    public void salvar(Despesa despesa){
     	sql = "INSERT INTO despesas (`nome_despesa`, `valor_despesa`, `data_despesa`, `obs_despesa`, "
     			+ "`categoria_id_categoria`, `pagamento_id_pagamento`) VALUES (?,?,?,?,?,?)";
         try {
@@ -47,7 +47,7 @@ public class DespesaDAO {
     }
     
     // Altera detalhes da despesa
-    public void alterar(Despesa despesa) throws Exception{
+    public void alterar(Despesa despesa){
 		sql = "UPDATE despesas SET nome_despesa = ?, valor_despesa = ?, data_despesa = ?, obs_despesa = ?, "
 			+ "categoria_id_categoria = ?, pagamento_id_pagamento = ?, repeticao_id_repeticao = ? WHERE id_despesa = ?";
     	try {
@@ -75,7 +75,7 @@ public class DespesaDAO {
     }
 
     // Busca todas as despesas e coloca numa lista
-    public List<Despesa> buscar() throws Exception {
+    public List<Despesa> buscar(){
     	sql = "SELECT * FROM despesas";
         try {
             PreparedStatement selecionar = conexao.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class DespesaDAO {
     }
 
     // Deleta a despesa selecionada
-    public void deletar(Integer idDespesa) throws Exception{
+    public void excluir(Integer idDespesa){
         sql = "DELETE FROM despesas WHERE id=?";
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
