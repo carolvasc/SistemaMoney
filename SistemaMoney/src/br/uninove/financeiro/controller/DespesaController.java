@@ -2,6 +2,7 @@ package br.uninove.financeiro.controller;
 
 import br.uninove.financeiro.dao.DespesaDAO;
 import br.uninove.financeiro.objetos.entidade.Despesa;
+import br.uninove.financeiro.objetos.entidade.Categoria;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -59,6 +60,13 @@ public class DespesaController extends HttpServlet {
 				dispatcher = req.getRequestDispatcher("listardespesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
+			case "listar-categoria":
+				List<Categoria> listaCat = despDAO.getCategoria();
+	
+				req.setAttribute("listaCat", listaCat);
+				dispatcher = req.getRequestDispatcher("listarcategoria.jsp");
+				dispatcher.forward(req, resp);
+				break;
 			case "excluir":
 				id = req.getParameter("id");
 				if (id != null) {
@@ -66,6 +74,7 @@ public class DespesaController extends HttpServlet {
 				}
 				despDAO.excluir(Integer.parseInt(id));
 				resp.sendRedirect("despcontroller?acao=listar");
+				break;
 		}
 
 	}

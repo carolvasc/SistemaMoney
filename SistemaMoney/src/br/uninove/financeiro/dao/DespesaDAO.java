@@ -146,7 +146,7 @@ public class DespesaDAO {
 		return null;
 	}
 
-	public List<Categoria> listarCategoria() {
+	public List<Categoria> getCategoria() {
 		sql = "SELECT * FROM categorias";
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
