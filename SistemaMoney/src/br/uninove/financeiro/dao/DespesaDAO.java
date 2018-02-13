@@ -116,7 +116,7 @@ public class DespesaDAO {
 
     // Deleta a despesa selecionada
     public void excluir(Integer idDespesa){
-        sql = "DELETE FROM despesas WHERE id=?";
+        sql = "DELETE FROM despesas WHERE id_despesa = ?";
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
             
