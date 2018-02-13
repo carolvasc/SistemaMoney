@@ -23,14 +23,15 @@
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
-				<th>Ação</th>
+				<th colspan="2">Ação</th>
 			</tr>
 	
 			<%	for(Despesa d : lista){ %>
 			<tr>
 				<td><%=d.getIdDespesa()%></td>
 				<td><%=d.getNomeDespesa()%></td>
-				<td><a href="javascript:confirmaExclusao(<%=d.getIdDespesa()%>)">Exluir</a></td>
+				<td><a href="javascript:confirmaExclusao(<%=d.getIdDespesa()%>)">Excluir</a></td>
+				<td><a href="">Alterar</a></td>
 			</tr>
 			<%	}	%>
 	
