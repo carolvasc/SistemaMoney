@@ -85,6 +85,7 @@ public class DespesaDAO {
             while (rs.next()) {
             	// Um objeto novo é criado para armazenar uma nova despesa
                 Despesa despesa = new Despesa();
+                despesa.setIdDespesa(rs.getInt("id_despesa"));
                 despesa.setNomeDespesa(rs.getString("nome_despesa"));
                 despesa.setValorDespesa(rs.getFloat("valor_despesa"));
                 // Formatar data para jogar na tela
