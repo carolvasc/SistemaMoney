@@ -5,8 +5,8 @@ import br.uninove.financeiro.objetos.entidade.Despesa;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +28,7 @@ public class DespesaController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		resp.setContentType("text/html");
-		
+
 		String acao = req.getParameter("acao");
 		DespesaDAO despDAO = new DespesaDAO();
 
@@ -42,12 +42,18 @@ public class DespesaController extends HttpServlet {
 			}
 
 			despDAO.excluir(Integer.parseInt(id));
+			
+			resp.getWriter().print("Excluído com sucesso");
 
 		} else if (acao.equals("listar")) {
 			// Se a ação for igual listar
 			List<Despesa> lista = despDAO.buscar();
-			for(Despesa d: lista)
-				resp.getWriter().print(d.getNomeDespesa() + "<br>");
+
+			req.setAttribute("lista", lista);
+
+			RequestDispatcher dispatcher = req.getRequestDispatcher("listardespesa.jsp");
+			dispatcher.forward(req, resp);
+
 		}
 
 	}
