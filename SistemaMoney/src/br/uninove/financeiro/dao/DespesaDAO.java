@@ -41,7 +41,7 @@ public class DespesaDAO {
             // Fecha a conexão
             cadastrar.close();
             
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
         	System.out.println(ex.toString());
         }
     }
@@ -69,7 +69,7 @@ public class DespesaDAO {
     		// Fecha a conexão
     		atualizar.close();
     		
-    	} catch(Exception ex){
+    	} catch(SQLException ex){
     		System.out.println(ex.toString());
     	}
     }
@@ -109,7 +109,7 @@ public class DespesaDAO {
             // Retorna a lista com todas as despesas
             return despesas;
             
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
         	System.out.println(ex.toString());
         }
 		return null;
@@ -138,7 +138,7 @@ public class DespesaDAO {
                 
             }
     	
-    	} catch(Exception ex){
+    	} catch(SQLException ex){
     		System.out.println(ex.toString());	
     	}
     	
@@ -156,7 +156,7 @@ public class DespesaDAO {
             // Executa a exclusão
             ps.execute();
             
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
         	System.out.println(ex.toString());
         }
     }
