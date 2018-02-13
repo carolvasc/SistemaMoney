@@ -1,3 +1,4 @@
+<%@page import="br.uninove.financeiro.objetos.entidade.Despesa" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,7 +27,10 @@
 		<!-- Javascript -->
         <script type="text/javascript" src="resources/javascript/despesa.js"></script>
     </head>
-    <body>        
+    <body>
+    	<%
+    		Despesa d = (Despesa)request.getAttribute("desp");
+    	%>
         <div class="col-md-3"></div>
         <div class="col-md-6">
         <form action="despcontroller" method="post">
@@ -35,8 +39,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
+                        	<label>ID</label>
+                        	<input class="form-class" type="text" id="id" name="id" value="<%=d.getIdDespesa()%>"
+                        		readonly />
                             <label>Descrição</label>
-                            <input class="form-class" name="descricao" id="descricao" type="text" autofocus />
+                            <input class="form-class" name="descricao" id="descricao" type="text" autofocus
+                            	value="<%=d.getNomeDespesa()%>"/>
                         </div>
                     </div><!-- /col-md-12 -->
                 </div><!-- /row -->
@@ -44,7 +52,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Valor</label>
-                            <input class="form-class" name="valor" id="valor" type="text" />
+                            <input class="form-class" name="valor" id="valor" type="text" 
+                            	value="<%=d.getValorDespesa()%>" />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -120,7 +129,7 @@
                     <div class="col-md-12">
                         <div class="form-group obs-box">
                             <label>Observação</label>
-                            <textarea class="form-class" name="observacao" id="observacao" rows="4" /></textarea>
+                            <textarea class="form-class" name="observacao" id="observacao" rows="4" /><%=d.getObsDespesa()%></textarea>
                         </div>
                     </div>
                 </div><!-- /row -->

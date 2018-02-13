@@ -21,39 +21,51 @@ import java.util.List;
 public class DespesaController extends HttpServlet {
 
 	public DespesaController() {
-		System.out.println("Servlet");
+		System.out.println("Executando código...");
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		resp.setContentType("text/html");
-
 		String acao = req.getParameter("acao");
+		Despesa desp = new Despesa();
 		DespesaDAO despDAO = new DespesaDAO();
+		String id = "";
+		RequestDispatcher dispatcher;
 
-		// Se a ação for igual a excluir
-		if (acao.equals("excluir")) {
-			String id = req.getParameter("id");
-
-			Despesa desp = new Despesa();
-			if (id != null) {
-				desp.setIdDespesa(Integer.parseInt(id));
-			}
-
-			despDAO.excluir(Integer.parseInt(id));
-			
-			resp.sendRedirect("despcontroller?acao=listar");
-
-		} else if (acao.equals("listar")) {
-			// Se a ação for igual listar
-			List<Despesa> lista = despDAO.buscar();
-
-			req.setAttribute("lista", lista);
-
-			RequestDispatcher dispatcher = req.getRequestDispatcher("listardespesa.jsp");
-			dispatcher.forward(req, resp);
-
+		switch (acao) {
+			case "cadastrar":
+				desp.setIdDespesa(0);
+				desp.setNomeDespesa("");
+				desp.setValorDespesa(Float.parseFloat("0"));
+				desp.setObsDespesa("");
+	
+				req.setAttribute("desp", desp);
+				dispatcher = req.getRequestDispatcher("despesa.jsp");
+				dispatcher.forward(req, resp);
+				break;
+			case "alterar":
+				id = req.getParameter("id");
+				desp = despDAO.buscarPorId(Integer.parseInt(id));
+	
+				req.setAttribute("desp", desp);
+				dispatcher = req.getRequestDispatcher("despesa.jsp");
+				dispatcher.forward(req, resp);
+				break;
+			case "listar":
+				List<Despesa> lista = despDAO.buscar();
+	
+				req.setAttribute("lista", lista);
+				dispatcher = req.getRequestDispatcher("listardespesa.jsp");
+				dispatcher.forward(req, resp);
+				break;
+			case "excluir":
+				id = req.getParameter("id");
+				if (id != null) {
+					desp.setIdDespesa(Integer.parseInt(id));
+				}
+				despDAO.excluir(Integer.parseInt(id));
+				resp.sendRedirect("despcontroller?acao=listar");
 		}
 
 	}
@@ -61,6 +73,10 @@ public class DespesaController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		Despesa desp = new Despesa();
+		DespesaDAO despDAO = new DespesaDAO();
+
+		Integer idDespesa = Integer.parseInt(req.getParameter("id"));
 		String nomeDespesa = req.getParameter("descricao");
 		Float valorDespesa = Float.parseFloat(req.getParameter("valor"));
 		Date dataDespesa = null;
@@ -68,8 +84,7 @@ public class DespesaController extends HttpServlet {
 		Integer pagDespesa = 1;
 		String obsDespesa = req.getParameter("observacao");
 
-		Despesa desp = new Despesa();
-
+		desp.setIdDespesa(idDespesa);
 		desp.setNomeDespesa(nomeDespesa);
 		desp.setValorDespesa(valorDespesa);
 		desp.setDataDespesa(dataDespesa);
@@ -77,10 +92,13 @@ public class DespesaController extends HttpServlet {
 		desp.setPagamentoDespesa(pagDespesa);
 		desp.setObsDespesa(obsDespesa);
 
-		DespesaDAO despDAO = new DespesaDAO();
 		despDAO.salvar(desp);
-		resp.getWriter().print("Cadastrado com sucesso");
-		System.out.println("Despesa cadastrada com sucesso!");
+
+		if (desp.getIdDespesa() != null) {
+			resp.getWriter().print("Alteração feita com sucesso");
+		} else {
+			resp.getWriter().print("Cadastro realizado com sucesso");
+		}
 
 	}
 

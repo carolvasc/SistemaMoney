@@ -31,7 +31,7 @@
 				<td><%=d.getIdDespesa()%></td>
 				<td><%=d.getNomeDespesa()%></td>
 				<td><a href="javascript:confirmaExclusao(<%=d.getIdDespesa()%>)">Excluir</a></td>
-				<td><a href="">Alterar</a></td>
+				<td><a href="despcontroller?acao=alterar&id=<%=d.getIdDespesa()%>">Alterar</a></td>
 			</tr>
 			<%	}	%>
 	
