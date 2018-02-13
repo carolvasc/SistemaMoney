@@ -10,12 +10,14 @@ public class ConnectionFactory {
     private String senha = "";
     private String url = "jdbc:mysql://" + servidor + "/" + banco;
 
-    public Connection getConexao() throws SQLException{
+    public Connection getConexao(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			return DriverManager.getConnection(url, usuario, senha);
-		} catch(Exception  e){
-			throw new SQLException(e.getMessage());
+		} catch(SQLException  ex){
+			throw new RuntimeException(ex.getMessage());
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage());
 		}
 	}
    

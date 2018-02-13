@@ -29,7 +29,7 @@
     <body>        
         <div class="col-md-3"></div>
         <div class="col-md-6">
-        <form action="despcontroller" method="get">
+        <form action="despcontroller" method="post">
             <div id="conteudo">
                 <h4>Nova Despesa</h4>
                 <div class="row">
