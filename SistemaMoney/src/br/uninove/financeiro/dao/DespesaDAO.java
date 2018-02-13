@@ -17,9 +17,17 @@ public class DespesaDAO {
 	public DespesaDAO(){
 		this.conexao = new ConnectionFactory().getConexao();
 	}
+	
+	public void salvar(Despesa despesa){
+		if(despesa.getIdDespesa() != null && despesa.getIdDespesa() != 0){
+			alterar(despesa);
+		} else {
+			cadastrar(despesa);
+		}
+	}
 
     // Cadastra uma nova despesa no banco
-    public void salvar(Despesa despesa){
+    public void cadastrar(Despesa despesa){
     	sql = "INSERT INTO despesas (`nome_despesa`, `valor_despesa`, `data_despesa`, `obs_despesa`, "
     			+ "`categoria_id_categoria`, `pagamento_id_pagamento`) VALUES (?,?,?,?,?,?)";
         try {
@@ -38,8 +46,6 @@ public class DespesaDAO {
             // Executa a inserção
             cadastrar.execute();
             
-            // Fecha a conexão
-            cadastrar.close();
             
         } catch (SQLException ex) {
         	System.out.println(ex.toString());
@@ -49,9 +55,10 @@ public class DespesaDAO {
     // Altera detalhes da despesa
     public void alterar(Despesa despesa){
 		sql = "UPDATE despesas SET nome_despesa = ?, valor_despesa = ?, data_despesa = ?, obs_despesa = ?, "
-			+ "categoria_id_categoria = ?, pagamento_id_pagamento = ?, repeticao_id_repeticao = ? WHERE id_despesa = ?";
+			+ "categoria_id_categoria = ?, pagamento_id_pagamento = ? WHERE id_despesa = ?";
     	try {
     		PreparedStatement atualizar = conexao.prepareStatement(sql);
+    		atualizar.setInt(7, despesa.getIdDespesa());
     		
     		atualizar.setString(1, despesa.getNomeDespesa());
     		atualizar.setFloat(2, despesa.getValorDespesa());
@@ -66,8 +73,6 @@ public class DespesaDAO {
     		// Executa a alteração
     		atualizar.executeUpdate();
     		
-    		// Fecha a conexão
-    		atualizar.close();
     		
     	} catch(SQLException ex){
     		System.out.println(ex.toString());
@@ -103,8 +108,6 @@ public class DespesaDAO {
             // Fecha o resultset
             rs.close();
             
-            // Fecha a conexão
-            selecionar.close();
             
             // Retorna a lista com todas as despesas
             return despesas;
@@ -116,7 +119,7 @@ public class DespesaDAO {
     }
     
     public Despesa buscarPorId(Integer idDespesa){
-    	sql = "SELECT * FROM despesas WHERE id_despesas = ?";
+    	sql = "SELECT * FROM despesas WHERE id_despesa = ?";
     	
     	try {
             PreparedStatement selecionar = conexao.prepareStatement(sql);
@@ -149,12 +152,12 @@ public class DespesaDAO {
     public void excluir(Integer idDespesa){
         sql = "DELETE FROM despesas WHERE id_despesa = ?";
         try {
-            PreparedStatement ps = conexao.prepareStatement(sql);
+            PreparedStatement deletar = conexao.prepareStatement(sql);
             
-            ps.setInt(1, idDespesa);
+            deletar.setInt(1, idDespesa);
             
             // Executa a exclusão
-            ps.execute();
+            deletar.execute();
             
         } catch (SQLException ex) {
         	System.out.println(ex.toString());
