@@ -43,7 +43,7 @@ public class DespesaController extends HttpServlet {
 
 			despDAO.excluir(Integer.parseInt(id));
 			
-			resp.getWriter().print("Excluído com sucesso");
+			resp.sendRedirect("despcontroller?acao=listar");
 
 		} else if (acao.equals("listar")) {
 			// Se a ação for igual listar
