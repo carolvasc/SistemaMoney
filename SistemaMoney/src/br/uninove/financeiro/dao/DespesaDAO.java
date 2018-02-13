@@ -114,6 +114,36 @@ public class DespesaDAO {
         }
 		return null;
     }
+    
+    public Despesa buscarPorId(Integer idDespesa){
+    	sql = "SELECT * FROM despesas WHERE id_despesas = ?";
+    	
+    	try {
+            PreparedStatement selecionar = conexao.prepareStatement(sql);
+            selecionar.setInt(1, idDespesa);
+            
+            ResultSet rs = selecionar.executeQuery();
+            
+            if (rs.next()) {
+                Despesa despesa = new Despesa();
+                despesa.setIdDespesa(rs.getInt("id_despesa"));
+                despesa.setNomeDespesa(rs.getString("nome_despesa"));
+                despesa.setValorDespesa(rs.getFloat("valor_despesa"));
+                //despesa.setDataDespesa(rs.getDate("data_despesa"));
+                despesa.setObsDespesa(rs.getString("obs_despesa"));
+                //despesa.setCategoriaDespesa(rs.getInt("categoria_id_categoria"));
+                //despesa.setPagamentoDespesa(rs.getInt("pagamento_id_pagamento"));
+                
+                return despesa;
+                
+            }
+    	
+    	} catch(Exception ex){
+    		System.out.println(ex.toString());	
+    	}
+    	
+		return null;
+    }
 
     // Deleta a despesa selecionada
     public void excluir(Integer idDespesa){
