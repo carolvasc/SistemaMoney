@@ -5,8 +5,11 @@ import br.uninove.financeiro.objetos.entidade.Despesa;
 import br.uninove.financeiro.objetos.entidade.Categoria;
 
 import java.sql.*;
-
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DespesaDAO {
@@ -19,6 +22,7 @@ public class DespesaDAO {
 		this.conexao = new ConnectionFactory().getConexao();
 	}
 
+	// Método que verifica se será realizada uma alteração ou um cadastro
 	public void salvar(Despesa despesa) {
 		if (despesa.getIdDespesa() != null && despesa.getIdDespesa() != 0) {
 			alterar(despesa);
@@ -27,7 +31,7 @@ public class DespesaDAO {
 		}
 	}
 
-	// Cadastra uma nova despesa no banco
+	// Cadastra uma nova despesa
 	public void cadastrar(Despesa despesa) {
 		sql = "INSERT INTO despesas (`nome_despesa`, `valor_despesa`, `data_despesa`, `obs_despesa`, "
 				+ "`categoria_id_categoria`, `pagamento_id_pagamento`) VALUES (?,?,?,?,?,?)";
@@ -36,15 +40,18 @@ public class DespesaDAO {
 
 			cadastrar.setString(1, despesa.getNomeDespesa());
 			cadastrar.setFloat(2, despesa.getValorDespesa());
-			// Formatar o campo de data
-			cadastrar.setDate(3, despesa.getDataDespesa());
+			// Data formatada
+			String dataTela = despesa.getDataDespesa(); // 10/10/1990
+			DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			// Irá converter o tipo dd/MM/yyyy para yyyy-MM-dd
+			LocalDate dataBanco = LocalDate.parse(dataTela, formato);
+			Date date = java.sql.Date.valueOf(dataBanco);
+			cadastrar.setDate(3, (java.sql.Date) date);
 			//
 			cadastrar.setString(4, despesa.getObsDespesa());
 			cadastrar.setInt(5, despesa.getCategoriaDespesa());
 			cadastrar.setInt(6, despesa.getPagamentoDespesa());
-			// cadastrar.setInt(7, despesa.getRepetirDespesa());
 
-			// Executa a inserção
 			cadastrar.execute();
 
 		} catch (SQLException ex) {
@@ -62,15 +69,15 @@ public class DespesaDAO {
 
 			atualizar.setString(1, despesa.getNomeDespesa());
 			atualizar.setFloat(2, despesa.getValorDespesa());
-			// Formatar o campo de data
-			atualizar.setDate(3, despesa.getDataDespesa());
-			//
+			String dataTela = despesa.getDataDespesa();
+			DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			LocalDate dataBanco = LocalDate.parse(dataTela, formato);
+			Date date = java.sql.Date.valueOf(dataBanco);
+			atualizar.setDate(3, (java.sql.Date) date);
 			atualizar.setString(4, despesa.getObsDespesa());
 			atualizar.setInt(5, despesa.getCategoriaDespesa());
 			atualizar.setInt(6, despesa.getPagamentoDespesa());
-			// atualizar.setInt(7, despesa.getRepetirDespesa());
 
-			// Executa a alteração
 			atualizar.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -78,7 +85,7 @@ public class DespesaDAO {
 		}
 	}
 
-	// Busca todas as despesas e coloca numa lista
+	// Busca por todas as despesas e as coloca em uma lista
 	public List<Despesa> buscar() {
 		sql = "SELECT * FROM despesas";
 		try {
@@ -92,37 +99,37 @@ public class DespesaDAO {
 				despesa.setIdDespesa(rs.getInt("id_despesa"));
 				despesa.setNomeDespesa(rs.getString("nome_despesa"));
 				despesa.setValorDespesa(rs.getFloat("valor_despesa"));
-				// Formatar data para jogar na tela
-				despesa.setDataDespesa(rs.getDate("data_despesa"));
+				// Data formatada pra consulta (dd/MM/yyyy)
+				SimpleDateFormat formatoConsulta = new SimpleDateFormat("dd/MM/yyyy");
+				Date dataBanco = rs.getDate("data_despesa");
+				String dataFormatada = formatoConsulta.format(dataBanco);
+				despesa.setDataDespesa(dataFormatada);
 				//
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
 				despesa.setCategoriaDespesa(rs.getInt("categoria_id_categoria"));
 				despesa.setPagamentoDespesa(rs.getInt("pagamento_id_pagamento"));
-				// despesa.setRepetirDespesa(rs.getInt("repeticao_id_repeticao"));
 
-				// Adiciona despesa à lista
 				despesas.add(despesa);
 			}
 
-			// Fecha o resultset
 			rs.close();
 
-			// Retorna a lista com todas as despesas
 			return despesas;
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
+		
 		return null;
+		
 	}
 
+	// Busca por uma despesa específica. Será bastante utilizado para alterar a despesa.
 	public Despesa buscarPorId(Integer idDespesa) {
 		sql = "SELECT * FROM despesas WHERE id_despesa = ?";
-
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
 			selecionar.setInt(1, idDespesa);
-
 			ResultSet rs = selecionar.executeQuery();
 
 			if (rs.next()) {
@@ -130,7 +137,10 @@ public class DespesaDAO {
 				despesa.setIdDespesa(rs.getInt("id_despesa"));
 				despesa.setNomeDespesa(rs.getString("nome_despesa"));
 				despesa.setValorDespesa(rs.getFloat("valor_despesa"));
-				// despesa.setDataDespesa(rs.getDate("data_despesa"));
+				SimpleDateFormat formatoConsulta = new SimpleDateFormat("dd/MM/yyyy");
+				Date dataBanco = rs.getDate("data_despesa");
+				String dataFormatada = formatoConsulta.format(dataBanco);
+				despesa.setDataDespesa(dataFormatada);
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
 				// despesa.setCategoriaDespesa(rs.getInt("categoria_id_categoria"));
 				// despesa.setPagamentoDespesa(rs.getInt("pagamento_id_pagamento"));
@@ -146,6 +156,7 @@ public class DespesaDAO {
 		return null;
 	}
 
+	// Busca por todas as categorias e as coloca e uma lista, para ser carregada no combo
 	public List<Categoria> getCategoria() {
 		sql = "SELECT * FROM categorias";
 		try {
@@ -159,15 +170,20 @@ public class DespesaDAO {
 				categoria.setTipoCategoria(rs.getString("tipo_categoria"));
 				categorias.add(categoria);
 			}
+			
 			rs.close();
+			
 			return categorias;
+			
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
+		
 		return null;
+		
 	}
 
-	// Deleta a despesa selecionada
+	// Exclui a despesa selecionada
 	public void excluir(Integer idDespesa) {
 		sql = "DELETE FROM despesas WHERE id_despesa = ?";
 		try {
@@ -175,7 +191,6 @@ public class DespesaDAO {
 
 			deletar.setInt(1, idDespesa);
 
-			// Executa a exclusão
 			deletar.execute();
 
 		} catch (SQLException ex) {

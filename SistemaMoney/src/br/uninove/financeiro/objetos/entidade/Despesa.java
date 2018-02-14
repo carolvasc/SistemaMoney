@@ -7,7 +7,7 @@ public class Despesa {
     private Integer idDespesa;
     private String nomeDespesa;
     private Float valorDespesa;
-    private Date dataDespesa;
+    private String dataDespesa;
     private Integer categoriaDespesa;
     private Integer pagamentoDespesa;
     private String repetirDespesa;
@@ -38,11 +38,11 @@ public class Despesa {
         this.valorDespesa = valorDespesa;
     }
 
-    public Date getDataDespesa() {
+    public String getDataDespesa() {
         return dataDespesa;
     }
 
-    public void setDataDespesa(Date dataDespesa) {
+    public void setDataDespesa(String dataDespesa) {
         this.dataDespesa = dataDespesa;
     }
 
