@@ -88,16 +88,16 @@ public class DespesaController extends HttpServlet {
 		String nomeDespesa = req.getParameter("descricao");
 		Float valorDespesa = Float.parseFloat(req.getParameter("valor"));
 		String dataDespesa = req.getParameter("data");
-		Integer catDespesa = 1;
-		Integer pagDespesa = 1;
+		Integer catDespesa = Integer.parseInt(req.getParameter("categoria"));
+		Integer pagDespesa = Integer.parseInt(req.getParameter("pagamento"));
 		String obsDespesa = req.getParameter("observacao");
 
 		desp.setIdDespesa(idDespesa);
 		desp.setNomeDespesa(nomeDespesa);
 		desp.setValorDespesa(valorDespesa);
 		desp.setDataDespesa(dataDespesa);
-		desp.setCategoriaDespesa(catDespesa);
-		desp.setPagamentoDespesa(pagDespesa);
+		desp.setIdCategDespesa(catDespesa);
+		desp.setIdPagtoDespesa(pagDespesa);
 		desp.setObsDespesa(obsDespesa);
 
 		despDAO.salvar(desp);

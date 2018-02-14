@@ -8,8 +8,10 @@ public class Despesa {
     private String nomeDespesa;
     private Float valorDespesa;
     private String dataDespesa;
-    private Integer categoriaDespesa;
-    private Integer pagamentoDespesa;
+    private Integer idCategDespesa;
+    private String nomeCategDespesa;
+    private Integer idPagtoDespesa;
+    private String nomePagtoDespesa;
     private String repetirDespesa;
     private String obsDespesa;
     
@@ -46,20 +48,20 @@ public class Despesa {
         this.dataDespesa = dataDespesa;
     }
 
-    public Integer getCategoriaDespesa() {
-        return categoriaDespesa;
+    public Integer getIdCategDespesa() {
+        return idCategDespesa;
     }
 
-    public void setCategoriaDespesa(Integer categoriaDespesa) {
-        this.categoriaDespesa = categoriaDespesa;
+    public void setIdCategDespesa(Integer idCategDespesa) {
+        this.idCategDespesa = idCategDespesa;
     }
 
-    public Integer getPagamentoDespesa() {
-        return pagamentoDespesa;
+    public Integer getIdPagtoDespesa() {
+        return idPagtoDespesa;
     }
 
-    public void setPagamentoDespesa(Integer pagamentoDespesa) {
-        this.pagamentoDespesa = pagamentoDespesa;
+    public void setIdPagtoDespesa(Integer idPagtoDespesa) {
+        this.idPagtoDespesa = idPagtoDespesa;
     }
 
     public String getRepetirDespesa() {
@@ -77,5 +79,21 @@ public class Despesa {
     public void setObsDespesa(String obsDespesa) {
         this.obsDespesa = obsDespesa;
     }
+
+	public String getNomeCategDespesa() {
+		return nomeCategDespesa;
+	}
+
+	public void setNomeCategDespesa(String nomeCategDespesa) {
+		this.nomeCategDespesa = nomeCategDespesa;
+	}
+
+	public String getNomePagtoDespesa() {
+		return nomePagtoDespesa;
+	}
+
+	public void setNomePagtoDespesa(String nomePagtoDespesa) {
+		this.nomePagtoDespesa = nomePagtoDespesa;
+	}
     
 }
