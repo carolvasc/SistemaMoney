@@ -5,7 +5,6 @@ import br.uninove.financeiro.objetos.entidade.Despesa;
 import br.uninove.financeiro.objetos.entidade.Categoria;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -88,7 +87,7 @@ public class DespesaController extends HttpServlet {
 		Integer idDespesa = Integer.parseInt(req.getParameter("id"));
 		String nomeDespesa = req.getParameter("descricao");
 		Float valorDespesa = Float.parseFloat(req.getParameter("valor"));
-		Date dataDespesa = null;
+		String dataDespesa = req.getParameter("data");
 		Integer catDespesa = 1;
 		Integer pagDespesa = 1;
 		String obsDespesa = req.getParameter("observacao");
