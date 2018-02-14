@@ -83,10 +83,10 @@
 							<div class="form-group">
 							<jsp:useBean id="dao" class="br.uninove.financeiro.dao.DespesaDAO" />
 								<label>Categoria</label>
-								<select class="form-class">
+								<select class="form-class" id="categoria" name="categoria">
 									<option>[Selecione uma opção]</option>
-									<c:forEach var="categ" items="${dao.categoria}">
-										<option value="${categ.idCategoria}">${categ.tipoCategoria}</option>
+									<c:forEach var="categoria" items="${dao.categoria}">
+										<option value="${categoria.idCategoria}"> ${categoria.tipoCategoria}</option>
 									</c:forEach>
 								</select>
 							</div>

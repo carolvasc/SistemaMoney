@@ -49,7 +49,7 @@ public class DespesaDAO {
 			cadastrar.setDate(3, (java.sql.Date) date);
 			//
 			cadastrar.setString(4, despesa.getObsDespesa());
-			cadastrar.setInt(5, despesa.getCategoriaDespesa());
+			cadastrar.setInt(5, despesa.getIdCategDespesa());
 			cadastrar.setInt(6, despesa.getPagamentoDespesa());
 
 			cadastrar.execute();
@@ -75,7 +75,7 @@ public class DespesaDAO {
 			Date date = java.sql.Date.valueOf(dataBanco);
 			atualizar.setDate(3, (java.sql.Date) date);
 			atualizar.setString(4, despesa.getObsDespesa());
-			atualizar.setInt(5, despesa.getCategoriaDespesa());
+			atualizar.setInt(5, despesa.getIdCategDespesa());
 			atualizar.setInt(6, despesa.getPagamentoDespesa());
 
 			atualizar.executeUpdate();
@@ -106,7 +106,10 @@ public class DespesaDAO {
 				despesa.setDataDespesa(dataFormatada);
 				//
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
-				despesa.setCategoriaDespesa(rs.getInt("categoria_id_categoria"));
+				
+				despesa.setIdCategDespesa(rs.getInt("categoria_id_categoria"));
+				despesa.setNomeCategDespesa(buscarNomeCategoria(despesa.getIdCategDespesa()));
+				
 				despesa.setPagamentoDespesa(rs.getInt("pagamento_id_pagamento"));
 
 				despesas.add(despesa);
@@ -116,6 +119,30 @@ public class DespesaDAO {
 
 			return despesas;
 
+		} catch (SQLException ex) {
+			System.out.println(ex.toString());
+		}
+		
+		return null;
+		
+	}
+	
+	public String buscarNomeCategoria(Integer idCategoria) {
+		sql = "SELECT * FROM categorias WHERE id_categoria = ?";
+		try {
+			PreparedStatement selecionar = conexao.prepareStatement(sql);
+			selecionar.setInt(1, idCategoria);
+			ResultSet rs = selecionar.executeQuery();
+
+			while (rs.next()) {
+				Categoria categoria = new Categoria();
+				String nomeCategoria = rs.getString("tipo_categoria");
+				categoria.setTipoCategoria(rs.getString("tipo_categoria"));
+				return nomeCategoria;
+			}
+			
+			rs.close();
+			
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
@@ -142,7 +169,7 @@ public class DespesaDAO {
 				String dataFormatada = formatoConsulta.format(dataBanco);
 				despesa.setDataDespesa(dataFormatada);
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
-				// despesa.setCategoriaDespesa(rs.getInt("categoria_id_categoria"));
+				// despesa.setIdCategoria(rs.getInt("categoria_id_categoria"));
 				// despesa.setPagamentoDespesa(rs.getInt("pagamento_id_pagamento"));
 
 				return despesa;
