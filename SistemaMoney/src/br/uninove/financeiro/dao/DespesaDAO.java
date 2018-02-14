@@ -2,6 +2,7 @@ package br.uninove.financeiro.dao;
 
 import br.uninove.financeiro.util.ConnectionFactory;
 import br.uninove.financeiro.objetos.entidade.Despesa;
+import br.uninove.financeiro.objetos.entidade.Pagamento;
 import br.uninove.financeiro.objetos.entidade.Categoria;
 
 import java.sql.*;
@@ -50,7 +51,7 @@ public class DespesaDAO {
 			//
 			cadastrar.setString(4, despesa.getObsDespesa());
 			cadastrar.setInt(5, despesa.getIdCategDespesa());
-			cadastrar.setInt(6, despesa.getPagamentoDespesa());
+			cadastrar.setInt(6, despesa.getIdPagtoDespesa());
 
 			cadastrar.execute();
 
@@ -76,7 +77,7 @@ public class DespesaDAO {
 			atualizar.setDate(3, (java.sql.Date) date);
 			atualizar.setString(4, despesa.getObsDespesa());
 			atualizar.setInt(5, despesa.getIdCategDespesa());
-			atualizar.setInt(6, despesa.getPagamentoDespesa());
+			atualizar.setInt(6, despesa.getIdPagtoDespesa());
 
 			atualizar.executeUpdate();
 
@@ -99,18 +100,21 @@ public class DespesaDAO {
 				despesa.setIdDespesa(rs.getInt("id_despesa"));
 				despesa.setNomeDespesa(rs.getString("nome_despesa"));
 				despesa.setValorDespesa(rs.getFloat("valor_despesa"));
+				
 				// Data formatada pra consulta (dd/MM/yyyy)
 				SimpleDateFormat formatoConsulta = new SimpleDateFormat("dd/MM/yyyy");
 				Date dataBanco = rs.getDate("data_despesa");
 				String dataFormatada = formatoConsulta.format(dataBanco);
 				despesa.setDataDespesa(dataFormatada);
 				//
+				
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
 				
 				despesa.setIdCategDespesa(rs.getInt("categoria_id_categoria"));
-				despesa.setNomeCategDespesa(buscarNomeCategoria(despesa.getIdCategDespesa()));
+				despesa.setNomeCategDespesa(buscarTipoCategoria(despesa.getIdCategDespesa()));
 				
-				despesa.setPagamentoDespesa(rs.getInt("pagamento_id_pagamento"));
+				despesa.setIdPagtoDespesa(rs.getInt("pagamento_id_pagamento"));
+				despesa.setNomePagtoDespesa(buscarTipoPagamento(despesa.getIdPagtoDespesa()));
 
 				despesas.add(despesa);
 			}
@@ -127,7 +131,7 @@ public class DespesaDAO {
 		
 	}
 	
-	public String buscarNomeCategoria(Integer idCategoria) {
+	public String buscarTipoCategoria(Integer idCategoria) {
 		sql = "SELECT * FROM categorias WHERE id_categoria = ?";
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
@@ -139,6 +143,30 @@ public class DespesaDAO {
 				String nomeCategoria = rs.getString("tipo_categoria");
 				categoria.setTipoCategoria(rs.getString("tipo_categoria"));
 				return nomeCategoria;
+			}
+			
+			rs.close();
+			
+		} catch (SQLException ex) {
+			System.out.println(ex.toString());
+		}
+		
+		return null;
+		
+	}
+	
+	public String buscarTipoPagamento(Integer idPagamento) {
+		sql = "SELECT * FROM pagamento WHERE id_pagamento = ?";
+		try {
+			PreparedStatement selecionar = conexao.prepareStatement(sql);
+			selecionar.setInt(1, idPagamento);
+			ResultSet rs = selecionar.executeQuery();
+
+			while (rs.next()) {
+				Pagamento pagamento = new Pagamento();
+				String nomePagamento = rs.getString("forma_pagamento");
+				pagamento.setTipoPagamento(rs.getString("forma_pagamento"));
+				return nomePagamento;
 			}
 			
 			rs.close();
@@ -170,7 +198,7 @@ public class DespesaDAO {
 				despesa.setDataDespesa(dataFormatada);
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
 				// despesa.setIdCategoria(rs.getInt("categoria_id_categoria"));
-				// despesa.setPagamentoDespesa(rs.getInt("pagamento_id_pagamento"));
+				// despesa.setIdPagtoDespesa(rs.getInt("pagamento_id_pagamento"));
 
 				return despesa;
 
@@ -201,6 +229,32 @@ public class DespesaDAO {
 			rs.close();
 			
 			return categorias;
+			
+		} catch (SQLException ex) {
+			System.out.println(ex.toString());
+		}
+		
+		return null;
+		
+	}
+	
+	public List<Pagamento> getPagamento() {
+		sql = "SELECT * FROM pagamento";
+		try {
+			PreparedStatement selecionar = conexao.prepareStatement(sql);
+			ResultSet rs = selecionar.executeQuery();
+			List<Pagamento> pagamentos = new ArrayList<>();
+
+			while (rs.next()) {
+				Pagamento pagamento = new Pagamento();
+				pagamento.setIdPagamento(rs.getInt("id_pagamento"));
+				pagamento.setTipoPagamento(rs.getString("forma_pagamento"));
+				pagamentos.add(pagamento);
+			}
+			
+			rs.close();
+			
+			return pagamentos;
 			
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());

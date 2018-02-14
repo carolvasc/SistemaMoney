@@ -49,6 +49,7 @@
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<form action="despcontroller" method="post">
+			<jsp:useBean id="dao" class="br.uninove.financeiro.dao.DespesaDAO" />
 				<div id="conteudo">
 					<h4>Nova Despesa</h4>
 					<div class="row">
@@ -81,22 +82,23 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-							<jsp:useBean id="dao" class="br.uninove.financeiro.dao.DespesaDAO" />
 								<label>Categoria</label>
 								<select class="form-class" id="categoria" name="categoria">
 									<option>[Selecione uma opção]</option>
 									<c:forEach var="categoria" items="${dao.categoria}">
-										<option value="${categoria.idCategoria}"> ${categoria.tipoCategoria}</option>
+										<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option>
 									</c:forEach>
 								</select>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Pagamento</label> <select class="form-class">
+								<label>Pagamento</label>
+								<select class="form-class" id="pagamento" name="pagamento">
 									<option>[Selecione uma opção]</option>
-									<option>Dinheiro</option>
-									<option>Cartão</option>
+									<c:forEach var="pagamento" items="${dao.pagamento}">
+										<option value="${pagamento.idPagamento}">${pagamento.tipoPagamento}</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>
