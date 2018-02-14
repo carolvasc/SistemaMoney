@@ -73,7 +73,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Data</label> <input class="form-class" name="data"
-									id="data" type="text" />
+									id="data" type="text" value="<%=d.getDataDespesa()%>"/>
 							</div>
 						</div>
 					</div>
