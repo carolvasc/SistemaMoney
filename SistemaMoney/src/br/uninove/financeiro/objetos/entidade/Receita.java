@@ -1,15 +1,14 @@
 package br.uninove.financeiro.objetos.entidade;
 
-import java.sql.Date;
-
 public class Receita {
     
     private Integer idReceita;
     private String nomeReceita;
     private Float valorReceita;
-    private Date dataReceita;
-    private Integer categoriaReceita;
-    private Integer repetirReceita;
+    private String dataReceita;
+    private Integer idCategReceita;
+    private String nomeCategReceita;
+    private String repetirReceita;
     private String obsReceita;
     
 
@@ -37,27 +36,27 @@ public class Receita {
         this.valorReceita = valorReceita;
     }
 
-    public Date getDataReceita() {
+    public String getDataReceita() {
         return dataReceita;
     }
 
-    public void setDataReceita(Date dataReceita) {
+    public void setDataReceita(String dataReceita) {
         this.dataReceita = dataReceita;
     }
 
-    public Integer getCategoriaReceita() {
-        return categoriaReceita;
+    public Integer getIdCategReceita() {
+        return idCategReceita;
     }
 
-    public void setCategoriaReceita(Integer categoriaReceita) {
-        this.categoriaReceita = categoriaReceita;
+    public void setIdCategReceita(Integer idCategReceita) {
+        this.idCategReceita = idCategReceita;
     }
 
-    public Integer getRepetirReceita() {
+    public String getRepetirReceita() {
         return repetirReceita;
     }
 
-    public void setRepetirReceita(Integer repetirReceita) {
+    public void setRepetirReceita(String repetirReceita) {
         this.repetirReceita = repetirReceita;
     }
 
@@ -68,5 +67,13 @@ public class Receita {
     public void setObsReceita(String obsReceita) {
         this.obsReceita = obsReceita;
     }
+
+	public String getNomeCategReceita() {
+		return nomeCategReceita;
+	}
+
+	public void setNomeCategReceita(String nomeCategReceita) {
+		this.nomeCategReceita = nomeCategReceita;
+	}
     
 }
