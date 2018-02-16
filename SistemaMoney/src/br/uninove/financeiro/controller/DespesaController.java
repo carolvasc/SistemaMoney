@@ -28,39 +28,40 @@ public class DespesaController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String acao = req.getParameter("acao");
-		Despesa desp = new Despesa();
-		DespesaDAO despDAO = new DespesaDAO();
+		Despesa despesa = new Despesa();
+		DespesaDAO despesaDAO = new DespesaDAO();
 		String id = "";
 		RequestDispatcher dispatcher;
 
 		switch (acao) {
 			case "cadastrar":
-				desp.setIdDespesa(0);
-				desp.setNomeDespesa("");
-				desp.setValorDespesa(Float.parseFloat("0"));
-				desp.setObsDespesa("");
+				despesa.setIdDespesa(0);
+				despesa.setNomeDespesa("");
+				despesa.setValorDespesa(Float.parseFloat("0"));
+				despesa.setDataDespesa("");
+				despesa.setObsDespesa("");
 	
-				req.setAttribute("desp", desp);
+				req.setAttribute("despesa", despesa);
 				dispatcher = req.getRequestDispatcher("despesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
 			case "alterar":
 				id = req.getParameter("id");
-				desp = despDAO.buscarPorId(Integer.parseInt(id));
+				despesa = despesaDAO.buscarPorId(Integer.parseInt(id));
 	
-				req.setAttribute("desp", desp);
+				req.setAttribute("despesa", despesa);
 				dispatcher = req.getRequestDispatcher("despesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
 			case "listar":
-				List<Despesa> lista = despDAO.buscar();
+				List<Despesa> lista = despesaDAO.buscar();
 	
 				req.setAttribute("lista", lista);
 				dispatcher = req.getRequestDispatcher("listardespesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
 			case "listar-categoria":
-				List<Categoria> listaCat = despDAO.getCategoria();
+				List<Categoria> listaCat = despesaDAO.getCategoria();
 	
 				req.setAttribute("listaCat", listaCat);
 				dispatcher = req.getRequestDispatcher("listarcategoria.jsp");
@@ -69,9 +70,9 @@ public class DespesaController extends HttpServlet {
 			case "excluir":
 				id = req.getParameter("id");
 				if (id != null) {
-					desp.setIdDespesa(Integer.parseInt(id));
+					despesa.setIdDespesa(Integer.parseInt(id));
 				}
-				despDAO.excluir(Integer.parseInt(id));
+				despesaDAO.excluir(Integer.parseInt(id));
 				resp.sendRedirect("despcontroller?acao=listar");
 				break;
 		}
@@ -81,8 +82,8 @@ public class DespesaController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		Despesa desp = new Despesa();
-		DespesaDAO despDAO = new DespesaDAO();
+		Despesa despesa = new Despesa();
+		DespesaDAO despesaDAO = new DespesaDAO();
 
 		Integer idDespesa = Integer.parseInt(req.getParameter("id"));
 		String nomeDespesa = req.getParameter("descricao");
@@ -92,17 +93,17 @@ public class DespesaController extends HttpServlet {
 		Integer pagDespesa = Integer.parseInt(req.getParameter("pagamento"));
 		String obsDespesa = req.getParameter("observacao");
 
-		desp.setIdDespesa(idDespesa);
-		desp.setNomeDespesa(nomeDespesa);
-		desp.setValorDespesa(valorDespesa);
-		desp.setDataDespesa(dataDespesa);
-		desp.setIdCategDespesa(catDespesa);
-		desp.setIdPagtoDespesa(pagDespesa);
-		desp.setObsDespesa(obsDespesa);
+		despesa.setIdDespesa(idDespesa);
+		despesa.setNomeDespesa(nomeDespesa);
+		despesa.setValorDespesa(valorDespesa);
+		despesa.setDataDespesa(dataDespesa);
+		despesa.setIdCategDespesa(catDespesa);
+		despesa.setIdPagtoDespesa(pagDespesa);
+		despesa.setObsDespesa(obsDespesa);
 
-		despDAO.salvar(desp);
+		despesaDAO.salvar(despesa);
 
-		if (desp.getIdDespesa() != null) {
+		if (despesa.getIdDespesa() != null) {
 			resp.getWriter().print("Alteração feita com sucesso");
 		} else {
 			resp.getWriter().print("Cadastro realizado com sucesso");

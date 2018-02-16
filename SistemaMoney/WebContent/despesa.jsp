@@ -7,58 +7,66 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
 	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>Money - Despesas</title>
-	
-	<!-- Bootstrap -->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-		crossorigin="anonymous">
-	<!-- Optional theme -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-		crossorigin="anonymous">
-	<!-- Latest compiled and minified JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
-	
-	<!--  Estilo CSS -->
-	<link href="resources/css/despesa.css" rel="stylesheet">
-	
-	<!--  jQuery -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous"></script>
-	
-	<!-- Javascript -->
-	<script type="text/javascript" src="resources/javascript/despesa.js"></script>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Money - Despesas</title>
+		
+		<!-- Bootstrap -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+			crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+			integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+			crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+			crossorigin="anonymous"></script>
+		
+		<!--  Estilo CSS -->
+		<link href="resources/css/despesa.css" rel="stylesheet">
+		
+		<!--  jQuery -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+		
+		<!-- Javascript -->
+		<script type="text/javascript" src="resources/javascript/despesa.js"></script>
 	</head>
+	<style>
+		#id {
+			border: none;
+			width: 60px;
+			margin-bottom: 20px;
+		}
+	</style>
 	<body>
 		<%
-			Despesa d = (Despesa) request.getAttribute("desp");
+			Despesa d = (Despesa) request.getAttribute("despesa");
 			Categoria c = (Categoria) request.getAttribute("categoria");
 		%>
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<form action="despcontroller" method="post">
-			<jsp:useBean id="dao" class="br.uninove.financeiro.dao.DespesaDAO" />
+				<jsp:useBean id="dao" class="br.uninove.financeiro.dao.DespesaDAO" />
 				<div id="conteudo">
 					<h4>Nova Despesa</h4>
 					<div class="row">
 						<div class="col-md-12">
+							ID: <input type="text" id="id" name="id"
+								value="<%=d.getIdDespesa()%>" readonly />
 							<div class="form-group">
-								<label>ID</label> <input class="form-class" type="text" id="id"
-									name="id" value="<%=d.getIdDespesa()%>" readonly /> <label>Descrição</label>
-								<input class="form-class" name="descricao" id="descricao"
-									type="text" autofocus value="<%=d.getNomeDespesa()%>" />
+								<label>Descrição</label> <input class="form-class"
+									name="descricao" id="descricao" type="text" autofocus
+									value="<%=d.getNomeDespesa()%>" />
 							</div>
 						</div>
 						<!-- /col-md-12 -->
@@ -74,7 +82,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Data</label> <input class="form-class" name="data"
-									id="data" type="text" value="<%=d.getDataDespesa()%>"/>
+									id="data" type="text" value="<%=d.getDataDespesa()%>" />
 							</div>
 						</div>
 					</div>
@@ -82,8 +90,8 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Categoria</label>
-								<select class="form-class" id="categoria" name="categoria">
+								<label>Categoria</label> <select class="form-class"
+									id="categoria" name="categoria">
 									<option>[Selecione uma opção]</option>
 									<c:forEach var="categoria" items="${dao.categoria}">
 										<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option>
@@ -93,8 +101,8 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Pagamento</label>
-								<select class="form-class" id="pagamento" name="pagamento">
+								<label>Pagamento</label> <select class="form-class"
+									id="pagamento" name="pagamento">
 									<option>[Selecione uma opção]</option>
 									<c:forEach var="pagamento" items="${dao.pagamento}">
 										<option value="${pagamento.idPagamento}">${pagamento.tipoPagamento}</option>

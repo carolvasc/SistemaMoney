@@ -17,8 +17,8 @@
 	</head>
 	<body>
 		<%
-				List<Despesa> lista = (List<Despesa>)request.getAttribute("lista");
-			%>
+			List<Despesa> lista = (List<Despesa>)request.getAttribute("lista");
+		%>
 		<table border=1>
 			<tr>
 				<th>ID</th>
