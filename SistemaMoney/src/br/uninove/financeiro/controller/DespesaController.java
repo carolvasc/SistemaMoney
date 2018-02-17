@@ -22,6 +22,7 @@ public class DespesaController extends HttpServlet {
 
 	public DespesaController() {
 		System.out.println("Executando código...");
+		System.out.println("Executando código...");
 	}
 
 	@Override
