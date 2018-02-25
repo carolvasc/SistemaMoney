@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100%;
+    background-color: #EBEBEB;
+    font-family: "Trebuchet MS";
+    margin-top: 4%;
+}
+
+#box-tabela {
+	background-color: #FFFFFF;
+    min-height: 100%;
+    width: 100%;
+    margin: 5% auto;
+    padding: 25px 45px;
+    border: 1px solid #ccc;
+}
+
+#box-tabela h3 {
+	display: inline;
+}
+
+#mes-atual {
+	text-align: center;
+}
+
+table {
+	width: 100%;
+	font-size: 17px;
+}
+
+table tr {
+	padding-top: 15px;
+}
+
+table tr:hover {
+	background-color: lightblue;
+}
