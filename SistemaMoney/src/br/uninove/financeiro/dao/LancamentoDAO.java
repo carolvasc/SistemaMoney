@@ -6,22 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import br.uninove.financeiro.objetos.entidade.Categoria;
 import br.uninove.financeiro.objetos.entidade.Despesa;
 import br.uninove.financeiro.objetos.entidade.Pagamento;
-import br.uninove.financeiro.dao.DespesaDAO;
 import br.uninove.financeiro.util.ConnectionFactory;
 
 public class LancamentoDAO {
-	
-	public Date dataDia = new Date();
-	public Calendar cal = Calendar.getInstance();
-	int dia, mes, ano;
 
 	private Connection conexao;
 	String sql;
@@ -30,36 +23,15 @@ public class LancamentoDAO {
 	public LancamentoDAO() {
 		this.conexao = new ConnectionFactory().getConexao();
 	}
-
-	// Pega a data atual do sistema
-	public void getDataDoDia() {
-		cal.setTime(dataDia);
-		dia = cal.get(Calendar.DAY_OF_MONTH);
-		mes = cal.get(Calendar.MONTH) + 1;
-		ano = cal.get(Calendar.YEAR);
-	}
-
-	// Pega o mês atual do sistema
-	public int getMesDataAtual() {
-		cal.setTime(dataDia);
-		mes = cal.get(Calendar.MONTH) + 1;
-		return mes;
-	}
-
-	// Pega o mês atual do sistema
-	public int getAnoDataAtual() {
-		cal.setTime(dataDia);
-		ano = cal.get(Calendar.YEAR);
-		return mes;
-	}
-
-	public List<Despesa> buscarLancamento() {
-		sql = "SELECT * FROM despesas WHERE MONTH(data_despesa) = ? AND YEAR(data_despesa) = ? ";
+	
+	// Busca todas os lancamentos referentes ao mes e ano atual
+	public List<Despesa> buscarLancamentos(Integer mes, Integer ano) {
+		sql = "SELECT * FROM despesas WHERE MONTH(data_despesa) = ? AND YEAR(data_despesa) = ?";
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
 			
-			selecionar.setInt(getMesDataAtual(), 1); // Irá mandar como parâmetro o mês atual
-			selecionar.setInt(getAnoDataAtual(), 2); // Irá mandar como parâmetro o ano atual
+			selecionar.setInt(1, mes); // Irá mandar como parâmetro o mês atual
+			selecionar.setInt(2, ano); // Irá mandar como parâmetro o ano atual
 			
 			ResultSet rs = selecionar.executeQuery();
 			List<Despesa> despesas = new ArrayList<>();
