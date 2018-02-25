@@ -37,5 +37,6 @@ table tr {
 }
 
 table tr:hover {
-	background-color: lightblue;
+	background-color: rgba(4, 180, 174, 0.3);
+	transition: 0.3s;
 }

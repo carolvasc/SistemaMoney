@@ -6,6 +6,8 @@ import br.uninove.financeiro.objetos.entidade.Despesa;
 import br.uninove.financeiro.objetos.entidade.Categoria;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 //localhost:8080/SistemaMoney/despcontroller
 
@@ -33,6 +36,13 @@ public class LancamentoController extends HttpServlet {
 		dia = cal.get(Calendar.DAY_OF_MONTH);
 		mes = cal.get(Calendar.MONTH) + 1;
 		ano = cal.get(Calendar.YEAR);
+	}
+
+	// Mês atual por extenso
+	public String getMesExtenso() {
+		Locale local = new Locale("pt", "BR");
+		DateFormat dateFormat = new SimpleDateFormat("MMMM 'de' yyyy", local);
+		return dateFormat.format(dataDia);
 	}
 
 	// Pega o mês atual do sistema
@@ -53,20 +63,19 @@ public class LancamentoController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String acao = req.getParameter("acao");
-		Despesa despesa = new Despesa();
 		LancamentoDAO lancamentoDAO = new LancamentoDAO();
 		String id = "";
 		RequestDispatcher dispatcher;
-		
+
 		int paramMes = getMesDataAtual();
 		int paramAno = getAnoDataAtual();
 
 		switch (acao) {
 		case "lancamentos":
-			List<Despesa> lista = lancamentoDAO.buscarLancamentos(paramMes, paramAno);
+			List<Despesa> listaLanc = lancamentoDAO.buscarLancamentos(paramMes, paramAno);
 
 			req.setAttribute("listaLanc", listaLanc);
-			dispatcher = req.getRequestDispatcher("lancamento.jsp");
+			dispatcher = req.getRequestDispatcher("lancamentos.jsp");
 			dispatcher.forward(req, resp);
 			break;
 		}
