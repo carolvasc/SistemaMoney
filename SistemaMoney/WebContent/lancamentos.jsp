@@ -1,4 +1,5 @@
 <%@page import="br.uninove.financeiro.objetos.entidade.Despesa"%>
+<%@page import="br.uninove.financeiro.controller.LancamentoController"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
@@ -34,9 +35,14 @@
 		<div id="box-tabela">
 			<%
 				List<Despesa> lista = (List<Despesa>) request.getAttribute("listaLanc");
+				LancamentoController c = new LancamentoController();
 			%>
 			<h3>Lançamentos</h3>
-			<h3 id="mes-atual"> < Mês atual > </h3>
+			<h3 id="mes-atual">
+				<button style="background-color: white; border: none;"> < </button>
+				<%= c.getMesExtenso() %>
+				<button style="background-color: white; border: none;"> > </button>
+			</h3>
 			<hr/>
 			<h4>Filtros</h4>
 			<hr/>

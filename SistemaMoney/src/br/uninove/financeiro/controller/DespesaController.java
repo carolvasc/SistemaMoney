@@ -68,13 +68,13 @@ public class DespesaController extends HttpServlet {
 				dispatcher = req.getRequestDispatcher("listarcategoria.jsp");
 				dispatcher.forward(req, resp);
 				break;
-			case "lancamentos":
+			/*case "lancamentos":
 				List<Despesa> listaLanc = despesaDAO.buscar();
 				
 				req.setAttribute("listaLanc", listaLanc);
 				dispatcher = req.getRequestDispatcher("lancamentos.jsp");
 				dispatcher.forward(req, resp);
-				break;
+				break;*/
 			case "excluir":
 				id = req.getParameter("id");
 				if (id != null) {
