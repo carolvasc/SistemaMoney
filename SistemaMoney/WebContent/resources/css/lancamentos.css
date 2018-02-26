@@ -33,7 +33,7 @@ table {
 }
 
 table tr {
-	padding-top: 15px;
+	height: 40px;
 }
 
 table tr:hover {

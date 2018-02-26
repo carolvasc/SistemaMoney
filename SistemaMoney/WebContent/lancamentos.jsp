@@ -39,21 +39,14 @@
 			%>
 			<h3>Lançamentos</h3>
 			<h3 id="mes-atual">
-				<button style="background-color: white; border: none;"> < </button>
-				<%= c.getMesExtenso() %>
-				<button style="background-color: white; border: none;"> > </button>
+				<button style="background-color: white; border: none;"><</button>
+				<%=c.getMesExtenso()%>
+				<button style="background-color: white; border: none;">></button>
 			</h3>
-			<hr/>
+			<hr />
 			<h4>Filtros</h4>
-			<hr/>
+			<hr />
 			<table>
-				<tr>
-					<th>Data</th>
-					<th>Nome</th>
-					<th>Categoria</th>
-					<th>Valor</th>
-				</tr>
-
 				<%
 					for (Despesa d : lista) {
 				%>
