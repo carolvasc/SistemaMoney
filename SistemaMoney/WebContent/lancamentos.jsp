@@ -39,9 +39,9 @@
 			%>
 			<h3>Lançamentos</h3>
 			<h3 id="mes-atual">
-				<button style="background-color: white; border: none;"><</button>
-				<%=c.getMesExtenso()%>
-				<button style="background-color: white; border: none;">></button>
+			<input type="submit" value="Voltar" onClick="javascript:window.location='lanccontroller?acao=anterior'" />
+			<%=c.getMesExtenso()%>
+			<input type="submit" value="Seguir" onClick="javascript:window.location='lanccontroller?acao=proximo'" />
 			</h3>
 			<hr />
 			<h4>Filtros</h4>
