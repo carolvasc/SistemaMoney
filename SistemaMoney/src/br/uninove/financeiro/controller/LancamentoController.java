@@ -1,9 +1,7 @@
 package br.uninove.financeiro.controller;
 
-import br.uninove.financeiro.dao.DespesaDAO;
 import br.uninove.financeiro.dao.LancamentoDAO;
 import br.uninove.financeiro.objetos.entidade.Despesa;
-import br.uninove.financeiro.objetos.entidade.Categoria;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -21,7 +19,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-//localhost:8080/SistemaMoney/despcontroller
 
 @WebServlet("/lanccontroller")
 public class LancamentoController extends HttpServlet {
@@ -45,6 +42,13 @@ public class LancamentoController extends HttpServlet {
 		return dateFormat.format(dataDia);
 	}
 
+	// Pega o mês anterior do sistema
+	public int getMesAnterior() {
+		cal.setTime(dataDia);
+		mes = getMesDataAtual() - 1;
+		return mes;
+	}
+
 	// Pega o mês atual do sistema
 	public int getMesDataAtual() {
 		cal.setTime(dataDia);
@@ -52,7 +56,14 @@ public class LancamentoController extends HttpServlet {
 		return mes;
 	}
 
-	// Pega o mês atual do sistema
+	// Pega o mês posterior do sistema
+	public int getMesPosterior() {
+		cal.setTime(dataDia);
+		mes = getMesAnterior() + 1;
+		return mes;
+	}
+
+	// Pega o ano atual do sistema
 	public int getAnoDataAtual() {
 		cal.setTime(dataDia);
 		ano = cal.get(Calendar.YEAR);
@@ -64,15 +75,25 @@ public class LancamentoController extends HttpServlet {
 
 		String acao = req.getParameter("acao");
 		LancamentoDAO lancamentoDAO = new LancamentoDAO();
-		String id = "";
 		RequestDispatcher dispatcher;
-
-		int paramMes = getMesDataAtual();
-		int paramAno = getAnoDataAtual();
 
 		switch (acao) {
 		case "lancamentos":
-			List<Despesa> listaLanc = lancamentoDAO.buscarLancamentos(paramMes, paramAno);
+			List<Despesa> listaLanc = lancamentoDAO.buscarLancamentos(getMesDataAtual(), getAnoDataAtual());
+
+			req.setAttribute("listaLanc", listaLanc);
+			dispatcher = req.getRequestDispatcher("lancamentos.jsp");
+			dispatcher.forward(req, resp);
+			break;
+		case "anterior":
+			listaLanc = lancamentoDAO.buscarLancamentos(getMesAnterior(), getAnoDataAtual());
+			
+			req.setAttribute("listaLanc", listaLanc);
+			dispatcher = req.getRequestDispatcher("lancamentos.jsp");
+			dispatcher.forward(req, resp);
+			break;
+		case "proximo":
+			listaLanc = lancamentoDAO.buscarLancamentos(getMesPosterior(), getAnoDataAtual());
 
 			req.setAttribute("listaLanc", listaLanc);
 			dispatcher = req.getRequestDispatcher("lancamentos.jsp");

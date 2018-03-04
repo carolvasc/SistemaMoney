@@ -26,11 +26,12 @@ public class LancamentoDAO {
 	
 	// Busca todas os lancamentos referentes ao mes e ano atual
 	public List<Despesa> buscarLancamentos(Integer mes, Integer ano) {
-		sql = "SELECT * FROM despesas WHERE MONTH(data_despesa) = ? AND YEAR(data_despesa) = ?";
+		sql = "SELECT * FROM despesas WHERE MONTH(data_despesa) = ? AND YEAR(data_despesa) = ?"
+				+ " ORDER BY data_despesa";
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
 			
-			selecionar.setInt(1, mes); // Irá mandar como parâmetro o mês atual
+			selecionar.setInt(1, mes); // Irá mandar como parâmetro o mês atual/anterior/posterior
 			selecionar.setInt(2, ano); // Irá mandar como parâmetro o ano atual
 			
 			ResultSet rs = selecionar.executeQuery();
