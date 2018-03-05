@@ -41,13 +41,6 @@
 		<!-- Javascript -->
 		<script type="text/javascript" src="resources/javascript/despesa.js"></script>
 	</head>
-	<style>
-		#id {
-			border: none;
-			width: 60px;
-			margin-bottom: 20px;
-		}
-	</style>
 	<body>
 		<%
 			Despesa d = (Despesa) request.getAttribute("despesa");
@@ -61,8 +54,7 @@
 					<h4>Nova Despesa</h4>
 					<div class="row">
 						<div class="col-md-12">
-							ID: <input type="text" id="id" name="id"
-								value="<%=d.getIdDespesa()%>" readonly />
+							<input type="hidden" id="id" name="id" value="<%=d.getIdDespesa()%>" readonly />
 							<div class="form-group">
 								<label>Descrição</label> <input class="form-class"
 									name="descricao" id="descricao" type="text" autofocus
