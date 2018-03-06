@@ -31,7 +31,7 @@ public class DespesaController extends HttpServlet {
 
 		switch (acao) {
 			case "cadastrar":
-				despesa.setIdDespesa(null);
+				despesa.setIdDespesa(0);
 				despesa.setNomeDespesa("");
 				despesa.setValorDespesa(Float.parseFloat("0"));
 				despesa.setDataDespesa("");

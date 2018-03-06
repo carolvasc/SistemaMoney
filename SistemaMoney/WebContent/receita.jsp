@@ -1,6 +1,6 @@
 <%@page import="br.uninove.financeiro.objetos.entidade.Receita"%>
 <%@page import="br.uninove.financeiro.objetos.entidade.Categoria"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -9,7 +9,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1" charset="urf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<title>Receitas</title>
 	

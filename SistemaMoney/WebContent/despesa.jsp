@@ -1,6 +1,6 @@
 <%@page import="br.uninove.financeiro.objetos.entidade.Despesa"%>
 <%@page import="br.uninove.financeiro.objetos.entidade.Categoria"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -95,7 +95,7 @@
 								<select class="form-class" id="categoria" name="categoria">
 									<c:set var="id" value="${d.getIdDespesa()}" />
 									<c:if test="${id != 0 || id != null}">
-										<option value="${d.getIdCategDespesa()}">${c.getTipoCategoria()}</option>
+										<!-- <option value="${d.getIdCategDespesa()}">${c.getTipoCategoria()}</option> -->
 									</c:if>
 									<c:if test="${id == null}">
 										<option value="">[Selecione uma opção]</option>
