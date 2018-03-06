@@ -20,11 +20,6 @@ import java.util.List;
 @WebServlet("/despcontroller")
 public class DespesaController extends HttpServlet {
 
-	public DespesaController() {
-		System.out.println("Executando código...");
-		System.out.println("Executando código...");
-	}
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
