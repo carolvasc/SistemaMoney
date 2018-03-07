@@ -36,13 +36,23 @@
 			<%
 				List<Despesa> lista = (List<Despesa>) request.getAttribute("listaLanc");
 				LancamentoController c = new LancamentoController();
+				
+				int mesVisualizado = 0;
+				if (request.getAttribute("mesVisualizado") != null){
+					String mesTipoString = String.valueOf(request.getAttribute("mesVisualizado"));
+				    mesVisualizado = Integer.parseInt(mesTipoString);
+				} else {
+				    mesVisualizado = c.getMesDataAtual();
+				}
 			%>
 			<h3>Lançamentos</h3>
-			<h3 id="mes-atual">
-			<input type="submit" value="Voltar" onClick="javascript:window.location='lanccontroller?acao=anterior'" />
-			<%=c.getMesExtenso()%>
-			<input type="submit" value="Seguir" onClick="javascript:window.location='lanccontroller?acao=proximo'" />
-			</h3>
+			<div id="mes-atual">
+				<input type="submit" value="Voltar"
+				onClick="javascript:window.location='lanccontroller?acao=anterior&mesTela=<%=mesVisualizado-1%>'" />
+				<h3><%=c.getMesExtenso(mesVisualizado)%></h3>
+				<input type="submit" value="Seguir"
+				onClick="javascript:window.location='lanccontroller?acao=proximo&mesTela=<%=mesVisualizado+1%>'" />
+			</div>
 			<hr />
 			<h4>Filtros</h4>
 			<hr />
