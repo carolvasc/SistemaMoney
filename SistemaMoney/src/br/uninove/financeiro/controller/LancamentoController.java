@@ -26,40 +26,43 @@ public class LancamentoController extends HttpServlet {
 	public Date dataDia = new Date();
 	public Calendar cal = Calendar.getInstance();
 	int dia, mes, ano;
-
-	// Pega a data atual do sistema
-	public void getDataDoDia() {
-		cal.setTime(dataDia);
-		dia = cal.get(Calendar.DAY_OF_MONTH);
-		mes = cal.get(Calendar.MONTH) + 1;
-		ano = cal.get(Calendar.YEAR);
-	}
-
+	
 	// Mês atual por extenso
-	public String getMesExtenso() {
-		Locale local = new Locale("pt", "BR");
-		DateFormat dateFormat = new SimpleDateFormat("MMMM 'de' yyyy", local);
-		return dateFormat.format(dataDia);
-	}
+	public String getMesExtenso(int mesVisualizado) {
+		switch(mesVisualizado){
+		   case 1:
+			   	return "Janeiro";
+		   case 2:
+			   	return "Fevereiro";
+		   case 3:
+			   	return "Março";
+		   case 4:
+			   	return "Abril";
+		   case 5:
+			   	return "Maio";
+		   case 6: 
+			   	return "Junho";
+		   case 7: 
+			   	return "Julho";
+		   case 8: 
+			   	return "Agosto";
+		   case 9: 
+			   	return "Setembro";
+		   case 10: 
+			   	return "Outubro";
+		   case 11: 
+			   	return "Novembro";
+		   case 12: 
+			   	return "Dezembro";
 
-	// Pega o mês anterior do sistema
-	public int getMesAnterior() {
-		cal.setTime(dataDia);
-		mes = getMesDataAtual() - 1;
-		return mes;
+		}
+		return null;
 	}
 
 	// Pega o mês atual do sistema
 	public int getMesDataAtual() {
 		cal.setTime(dataDia);
 		mes = cal.get(Calendar.MONTH) + 1;
-		return mes;
-	}
-
-	// Pega o mês posterior do sistema
-	public int getMesPosterior() {
-		cal.setTime(dataDia);
-		mes = getMesAnterior() + 1;
 		return mes;
 	}
 
@@ -74,6 +77,7 @@ public class LancamentoController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String acao = req.getParameter("acao");
+		int mesTela = Integer.parseInt(req.getParameter("mesTela"));
 		LancamentoDAO lancamentoDAO = new LancamentoDAO();
 		RequestDispatcher dispatcher;
 
@@ -86,15 +90,21 @@ public class LancamentoController extends HttpServlet {
 			dispatcher.forward(req, resp);
 			break;
 		case "anterior":
-			listaLanc = lancamentoDAO.buscarLancamentos(getMesAnterior(), getAnoDataAtual());
+			//listaLanc = lancamentoDAO.buscarLancamentos(getMesAnterior(), getAnoDataAtual());
+			
+			listaLanc = lancamentoDAO.buscarLancamentos(mesTela, getAnoDataAtual());
+			req.setAttribute("mesVisualizado", mesTela);
 			
 			req.setAttribute("listaLanc", listaLanc);
 			dispatcher = req.getRequestDispatcher("lancamentos.jsp");
 			dispatcher.forward(req, resp);
 			break;
 		case "proximo":
-			listaLanc = lancamentoDAO.buscarLancamentos(getMesPosterior(), getAnoDataAtual());
+			//listaLanc = lancamentoDAO.buscarLancamentos(getMesPosterior(), getAnoDataAtual());
 
+			listaLanc = lancamentoDAO.buscarLancamentos(mesTela, getAnoDataAtual());
+			req.setAttribute("mesVisualizado", mesTela);
+			
 			req.setAttribute("listaLanc", listaLanc);
 			dispatcher = req.getRequestDispatcher("lancamentos.jsp");
 			dispatcher.forward(req, resp);
