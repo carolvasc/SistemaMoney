@@ -49,6 +49,9 @@
 		</script>
 	</head>
 	<body>
+	
+	<%@ include file = "menu.jsp" %>
+		
 		<%
 			//onload="funcao(${d.getIdCategDespesa()})" realizar a chamada dessa função no lugar correto
 			Despesa d = (Despesa) request.getAttribute("despesa");
