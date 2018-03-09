@@ -49,6 +49,8 @@
 </style>
 </head>
 <body>
+
+  <%@ include file = "menu.jsp" %>
 	<%
 		Receita rec = (Receita) request.getAttribute("receita");
 		Categoria c = (Categoria) request.getAttribute("categoria");

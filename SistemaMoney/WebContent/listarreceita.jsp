@@ -16,6 +16,9 @@
 		</script>
 	</head>
 	<body>
+		
+		<%@ include file = "menu.jsp" %>
+		
 		<%
 				List<Receita> lista = (List<Receita>)request.getAttribute("lista");
 			%>
