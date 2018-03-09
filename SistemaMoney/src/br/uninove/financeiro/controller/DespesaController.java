@@ -20,11 +20,6 @@ import java.util.List;
 @WebServlet("/despcontroller")
 public class DespesaController extends HttpServlet {
 
-	public DespesaController() {
-		System.out.println("Executando código...");
-		System.out.println("Executando código...");
-	}
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -68,6 +63,13 @@ public class DespesaController extends HttpServlet {
 				dispatcher = req.getRequestDispatcher("listarcategoria.jsp");
 				dispatcher.forward(req, resp);
 				break;
+			/*case "lancamentos":
+				List<Despesa> listaLanc = despesaDAO.buscar();
+				
+				req.setAttribute("listaLanc", listaLanc);
+				dispatcher = req.getRequestDispatcher("lancamentos.jsp");
+				dispatcher.forward(req, resp);
+				break;*/
 			case "excluir":
 				id = req.getParameter("id");
 				if (id != null) {

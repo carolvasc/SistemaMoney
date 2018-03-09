@@ -31,6 +31,14 @@ public class DespesaDAO {
 			cadastrar(despesa);
 		}
 	}
+	
+	public Integer getId(Despesa despesa){
+		if(despesa.getIdDespesa() != null && despesa.getIdDespesa() != 0){
+			return despesa.getIdDespesa();
+		} else {
+			return 0;
+		}
+	}
 
 	// Cadastra uma nova despesa
 	public void cadastrar(Despesa despesa) {
@@ -197,8 +205,8 @@ public class DespesaDAO {
 				String dataFormatada = formatoConsulta.format(dataBanco);
 				despesa.setDataDespesa(dataFormatada);
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
-				// despesa.setIdCategoria(rs.getInt("categoria_id_categoria"));
-				// despesa.setIdPagtoDespesa(rs.getInt("pagamento_id_pagamento"));
+				despesa.setIdCategDespesa(rs.getInt("categoria_id_categoria"));
+				despesa.setIdPagtoDespesa(rs.getInt("pagamento_id_pagamento"));
 
 				return despesa;
 
