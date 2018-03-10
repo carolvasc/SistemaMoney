@@ -7,7 +7,6 @@ body {
     min-height: 100%;
     background-color: #EBEBEB;
     font-family: "Trebuchet MS";
-    margin-top: 4%
 }
 
 #conteudo{
@@ -73,9 +72,4 @@ textarea.form-class {
 #btn-salvar {
     width: 150px;
     margin: 15px 131px 0px;
-}
-
-#id {
-	width: 100px;
-	border: none;
 }

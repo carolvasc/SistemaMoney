@@ -50,7 +50,7 @@
 	</head>
 	<body>
 	
-	<%@ include file = "menu.jsp" %>
+		<%@ include file = "menu.jsp" %>
 		
 		<%
 			//onload="funcao(${d.getIdCategDespesa()})" realizar a chamada dessa função no lugar correto
@@ -65,7 +65,7 @@
 					<h4>Nova Despesa</h4>
 					<div class="row">
 						<div class="col-md-12">
-							<input type="text" id="id" name="id"
+							<input type="hidden" id="id" name="id"
 								value="<%=d.getIdDespesa()%>" readonly />
 							<div class="form-group">
 								<label>Descrição</label> <input class="form-class"
