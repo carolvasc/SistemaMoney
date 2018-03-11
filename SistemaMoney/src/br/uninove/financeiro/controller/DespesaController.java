@@ -1,6 +1,7 @@
 package br.uninove.financeiro.controller;
 
 import br.uninove.financeiro.dao.DespesaDAO;
+import br.uninove.financeiro.dao.LancamentoDAO;
 import br.uninove.financeiro.objetos.entidade.Despesa;
 import br.uninove.financeiro.objetos.entidade.Categoria;
 
@@ -24,8 +25,12 @@ public class DespesaController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String acao = req.getParameter("acao");
+		
 		Despesa despesa = new Despesa();
 		DespesaDAO despesaDAO = new DespesaDAO();
+		LancamentoDAO lancamentoDAO = new LancamentoDAO();
+		LancamentoController l = new LancamentoController();
+		
 		String id = "";
 		RequestDispatcher dispatcher;
 
@@ -50,33 +55,23 @@ public class DespesaController extends HttpServlet {
 				dispatcher.forward(req, resp);
 				break;
 			case "listar":
-				List<Despesa> lista = despesaDAO.buscar();
-	
+				int mesTela = Integer.parseInt(req.getParameter("mesTela"));
+				List<Despesa> lista = lancamentoDAO.buscarLancamentos(mesTela, l.getAnoDataAtual());
+				
+				req.setAttribute("mesVisualizado", mesTela);
 				req.setAttribute("lista", lista);
+				
 				dispatcher = req.getRequestDispatcher("listardespesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
-			case "listar-categoria":
-				List<Categoria> listaCat = despesaDAO.getCategoria();
-	
-				req.setAttribute("listaCat", listaCat);
-				dispatcher = req.getRequestDispatcher("listarcategoria.jsp");
-				dispatcher.forward(req, resp);
-				break;
-			/*case "lancamentos":
-				List<Despesa> listaLanc = despesaDAO.buscar();
-				
-				req.setAttribute("listaLanc", listaLanc);
-				dispatcher = req.getRequestDispatcher("lancamentos.jsp");
-				dispatcher.forward(req, resp);
-				break;*/
 			case "excluir":
+				mesTela = Integer.parseInt(req.getParameter("mesTela"));
 				id = req.getParameter("id");
 				if (id != null) {
 					despesa.setIdDespesa(Integer.parseInt(id));
 				}
 				despesaDAO.excluir(Integer.parseInt(id));
-				resp.sendRedirect("despcontroller?acao=listar");
+				resp.sendRedirect("despcontroller?acao=listar&mesTela" + mesTela);
 				break;
 		}
 
