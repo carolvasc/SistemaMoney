@@ -1,5 +1,6 @@
 <%@page import="br.uninove.financeiro.objetos.entidade.Despesa"%>
 <%@page import="br.uninove.financeiro.controller.LancamentoController"%>
+<%@page import="br.uninove.financeiro.controller.DespesaController"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
@@ -30,7 +31,7 @@
 <link href="resources/css/lancamentos.css" rel="stylesheet">
 </head>
 <body>
-	<div class="col-md-3"></div>
+	<div class="col-md-1"></div>
 	<div class="col-md-6">
 		<div id="box-tabela">
 			<%
@@ -45,16 +46,15 @@
 				    mesVisualizado = c.getMesDataAtual();
 				}
 			%>
-			<h3>Lançamentos</h3>
-			<div id="mes-atual">
-				<input type="submit" value="Voltar"
-				onClick="javascript:window.location='lanccontroller?acao=anterior&mesTela=<%=mesVisualizado-1%>'" />
-				<h3><%=c.getMesExtenso(mesVisualizado)%></h3>
-				<input type="submit" value="Seguir"
-				onClick="javascript:window.location='lanccontroller?acao=proximo&mesTela=<%=mesVisualizado+1%>'" />
-			</div>
+			<h3 class="titulo">Despesas</h3>
 			<hr />
-			<h4>Filtros</h4>
+			<div id="mes-atual">
+				<input type="submit" value="" id="btn-anterior"
+				onClick="javascript:window.location='lanccontroller?acao=lancamentos&mesTela=<%=mesVisualizado-1%>'" />
+				<h3><%=c.getMesExtenso(mesVisualizado)%></h3>
+				<input type="submit" value="" id="btn-proximo"
+				onClick="javascript:window.location='lanccontroller?acao=lancamentos&mesTela=<%=mesVisualizado+1%>'" />
+			</div>
 			<hr />
 			<table>
 				<%
@@ -63,8 +63,13 @@
 				<tr>
 					<td><%=d.getDataDespesa()%></td>
 					<td><%=d.getNomeDespesa()%></td>
-					<td><%=d.getNomeCategDespesa()%></td>
-					<td>-<%=d.getValorDespesa()%></td>
+					<td style="text-align: center;">
+						<input type="submit" value="" id="btn-editar"
+						onClick="javascript:window.location='despcontroller?acao=alterar&id=<%=d.getIdDespesa()%>'" />
+						<input type="submit" value="" id="btn-consultar"
+						onClick="javascript:window.location='despcontroller?acao=consultar&id=<%=d.getIdDespesa()%>'" />
+					</td>
+					<td id="valor-despesa">-  <%=d.getValorDespesa()%></td>
 				</tr>
 				<%
 					}
@@ -72,6 +77,11 @@
 			</table>
 		</div>
 	</div>
-	<div class="col-md-3"></div>
+	<div class="col-md-1"></div>
+	<div class="col-md-3 box-grafico" >
+		<h3>Gráfico</h3>
+		<hr />
+		<img src="resources/imagens/grafico2.png" height="346" width="376" />
+	</div>
 </body>
 </html>
