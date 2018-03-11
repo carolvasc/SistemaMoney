@@ -11,8 +11,8 @@
 
 	<!-- icone de dinheiro no title -->
 	<link rel="icon" 
-	type="imagem/dimdim.png" 
-	href="resources/imagem/dimdim.png" />
+	type="imagens/dimdim.png" 
+	href="resources/imagens/dimdim.png" />
 	
 	<!-- Estilo css -->
 	<link href="resources/css/menu.css" rel="stylesheet">
@@ -42,10 +42,10 @@
 		</div>
 
 		<div class="collapse navbar-collapse" id="barra-navegacao">
-			   <!-- imagem do porquinho -->
+			   <!-- imagens do porquinho -->
            
 			<label class="navbar-brand" id="titulo">SEU DIMDIM</label>
-			<img src="resources/imagem/cash.png" class="centro" >
+			<img src="resources/imagens/cash.png" class="centro" >
 			<ul  class="nav navbar-nav" >
 			
 				<!-- HOME  -->
@@ -78,7 +78,7 @@
 				<!-- Icone foto -->
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<img src="resources/imagem/usuario.png" alt="sua-foto" id="iconeFoto" class="img-circle" class="centro"></span></a>
+				<img src="resources/imagens/usuario.png" alt="sua-foto" id="iconeFoto" class="img-circle" class="centro"></span></a>
 					<ul class="dropdown-menu">
 						<li> <a href="#">Minha Conta</a> </li>
 						<li> <a href="login.jsp">Logout</a> </li>
