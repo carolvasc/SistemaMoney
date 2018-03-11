@@ -83,29 +83,11 @@ public class LancamentoController extends HttpServlet {
 
 		switch (acao) {
 		case "lancamentos":
-			List<Despesa> listaLanc = lancamentoDAO.buscarLancamentos(getMesDataAtual(), getAnoDataAtual());
-
-			req.setAttribute("listaLanc", listaLanc);
-			dispatcher = req.getRequestDispatcher("lancamentos.jsp");
-			dispatcher.forward(req, resp);
-			break;
-		case "anterior":
-			//listaLanc = lancamentoDAO.buscarLancamentos(getMesAnterior(), getAnoDataAtual());
+			List<Despesa> listaLanc = lancamentoDAO.buscarLancamentos(mesTela, getAnoDataAtual());
 			
-			listaLanc = lancamentoDAO.buscarLancamentos(mesTela, getAnoDataAtual());
 			req.setAttribute("mesVisualizado", mesTela);
-			
 			req.setAttribute("listaLanc", listaLanc);
-			dispatcher = req.getRequestDispatcher("lancamentos.jsp");
-			dispatcher.forward(req, resp);
-			break;
-		case "proximo":
-			//listaLanc = lancamentoDAO.buscarLancamentos(getMesPosterior(), getAnoDataAtual());
-
-			listaLanc = lancamentoDAO.buscarLancamentos(mesTela, getAnoDataAtual());
-			req.setAttribute("mesVisualizado", mesTela);
 			
-			req.setAttribute("listaLanc", listaLanc);
 			dispatcher = req.getRequestDispatcher("lancamentos.jsp");
 			dispatcher.forward(req, resp);
 			break;
