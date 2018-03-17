@@ -28,7 +28,7 @@
 		<form class="modal fade" id="janela">
 	
 			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
+				<div class="modal-content" style="margin-top: 161px;">
 	
 					<!-- cabecalho -->
 					<div class="modal-header">
@@ -71,7 +71,7 @@
 		</form>
 	
 	
-		<div class="cadastro">
+		<div class="cadastro" style="margin-top: 90px;">
 			Cadastre-se
 			<form id="cadastro">
 	

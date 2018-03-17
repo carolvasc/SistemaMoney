@@ -11,15 +11,15 @@
 
 	<!-- icone de dinheiro no title -->
 	<link rel="icon" 
-	type="imagens/dimdim.png" 
-	href="resources/imagens/dimdim.png" />
+	type="imagem/dimdim.png" 
+	href="resources/imagem/dimdim.png" />
 	
 	<!-- Estilo css -->
 	<link href="resources/css/menu.css" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+		<link href="resources/bootstrap/dist/css/bootstrap.min.css"	rel="stylesheet">
+		
 </head>
 <body>
 
@@ -42,7 +42,7 @@
 		</div>
 
 		<div class="collapse navbar-collapse" id="barra-navegacao">
-			   <!-- imagens do porquinho -->
+			   <!-- imagem  -->
            
 			<label class="navbar-brand" id="titulo">SEU DIMDIM</label>
 			<img src="resources/imagens/cash.png" class="centro" >
@@ -51,17 +51,26 @@
 				<!-- HOME  -->
 				<li class="active"><a href="home.jsp" id="home">HOME</a></li>
 				
-				<!-- Receitas com o dropdown  -->
+				<!-- Receitas   -->
 				
 				<li><a href="reccontroller?acao=cadastrar" >RECEITA</a></li>
 
 				<!-- Despesas  -->
 
-				<li><a href="#" >DESPESA</a></li>
+				<li><a href="despcontroller?acao=cadastrar" >DESPESA</a></li>
 				
-				<!-- Despesas  -->
+				<!-- Lançamentos  -->
 
-				<li><a href="#" >LANÇAMENTOS</a></li>
+				<li class="dropdown"> 
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						LANÇAMENTOS <span class="caret"></span>
+					</a> 
+					<ul class="dropdown-menu">
+						<li> <a href="reccontroller?acao=listar" >Receitas</a> </li>
+						<li> <a href="despcontroller?acao=listar">Despesas</a> </li>
+					</ul>
+
+				</li>
 
 				<!-- Relatório -->
 				<li><a href="#" >RELATÓRIO</a></li>

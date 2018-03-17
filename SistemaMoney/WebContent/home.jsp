@@ -43,13 +43,13 @@
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-5 ">
-					<div class="tabelaAcesso">
+					<div class="tabelaAcesso" style="display: block">
 						<h5 class="tituloaAcesso">Acesso Rápido</h5>
 	
 						<div>
 							<a href="reccontroller?acao=cadastrar"> <img class="imagem"
 								id="imagemReceita" src="resources/imagens/entradaa.png">
-							</a> <a href="#"> <img class="imagem"
+							</a> <a href="despcontroller?acao=cadastrar""> <img class="imagem"
 								src="resources/imagens/saidaa.png"></a>
 						</div>
 						<div>

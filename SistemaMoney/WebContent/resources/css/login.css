@@ -19,13 +19,12 @@ ul {
 /* Classe */
 
 .cadastrar {
-    background-image: url("../imagens/mo.png"); /* Eu particularmente prefiro sem a imagem, mas é assim que se pega
-    												corretamente */
+    background-color: #f1f1f1;
 }
 
 .cadastro{
-	margin-left: 390px;
-    margin-top: 120px;
+	
+    margin: auto;
 	height: 390px;
     width: 600px;
 	background-color: white;
@@ -39,8 +38,9 @@ ul {
 .modal-content{
 
 	width: 600px;
-    margin: 190px 0px 0px 157px;
+    margin: auto;
 	border: 2px solid #d9534f;
+	
 }
 
 .modal-body{
@@ -111,8 +111,9 @@ padding: 65px;
 	height:40px;
 	font-size: 16px;
 	float: top;
-	margin-left: 1200px;
-	margin-top: 30px;
+	margin: auto;
+    margin-top: 30px;
+    display: block;
 }
 
 #esqueci{
