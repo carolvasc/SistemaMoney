@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Lançamentos</title>
 		
 		<!-- Bootstrap -->
@@ -25,7 +25,7 @@
 		<div class="col-md-6">
 			<div id="box-tabela">
 				<%
-					List<Despesa> lista = (List<Despesa>) request.getAttribute("lista");
+					List<Despesa> lista = (List<Despesa>) request.getAttribute("listaLanc");
 					LancamentoController c = new LancamentoController();
 	
 					int mesVisualizado = 0;
@@ -36,14 +36,14 @@
 						mesVisualizado = c.getMesDataAtual();
 					}
 				%>
-				<h3 class="titulo">Despesas</h3>
+				<h3 class="titulo">Lançamentos</h3>
 				<hr />
 				<div id="mes-atual">
 					<input type="submit" value="" id="btn-anterior"
-						onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado - 1%>'" />
+						onClick="javascript:window.location='lanccontroller?acao=lancamentos&mesTela=<%=mesVisualizado - 1%>'" />
 					<h3><%=c.getMesExtenso(mesVisualizado)%></h3>
 					<input type="submit" value="" id="btn-proximo"
-						onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado + 1%>'" />
+						onClick="javascript:window.location='lanccontroller?acao=lancamentos&mesTela=<%=mesVisualizado + 1%>'" />
 				</div>
 				<hr />
 				<table>
@@ -59,7 +59,7 @@
 							<input type="submit" value="" id="btn-consultar"
 							onClick="javascript:window.location='despcontroller?acao=consultar&id=<%=d.getIdDespesa()%>'" />
 						</td>
-						<td id="valor-despesa">- <%=d.getValorFormatado()%></td>
+						<td id="valor-despesa">- <%=d.getValorDespesa()%></td>
 					</tr>
 					<%
 						}

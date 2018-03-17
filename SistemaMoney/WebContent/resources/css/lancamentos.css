@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100%;
+    background-color: #EBEBEB;
+    font-family: "Trebuchet MS";
+    margin-top: 12%;
+}
+
+#box-tabela {
+	background-color: #FFFFFF;
+    min-height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px 45px;
+    box-shadow: 3px 3px 20px;
+}
+
+#box-tabela h3 {
+	display: inline;
+}
+
+#mes-atual {
+	text-align: center;
+}
+
+#mes-atual input {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+#valor-despesa {
+	text-align: center;
+}
+
+#btn-anterior {
+	background-color: white;
+	background-image: url("../imagens/left-arrow.png");
+	width: 24px;
+	height: 24px;
+	border: 0;
+}
+
+#btn-proximo {
+	background-color: white;
+	background-image: url("../imagens/right-arrow.png");
+	width: 24px;
+	height: 24px;
+	border: 0;
+}
+
+#btn-editar {
+	background-color: transparent;
+	background-image: url("../imagens/edit.png");
+	width: 24px;
+	height: 24px;
+	border: 0;
+	margin-right: 30px;
+}
+
+#btn-consultar {
+	background-color: transparent;
+	background-image: url("../imagens/search.png");
+	width: 24px;
+	height: 24px;
+	border: 0;
+}
+
+#btn-anterior:focus, #btn-proximo:focus, #btn-editar:focus, #btn-consultar:focus {
+	outline: 0;
+}
+
+table {
+	width: 100%;
+	font-size: 17px;
+}
+
+table tr {
+	height: 50px;
+	border-bottom: 1px solid #EEE;
+}
+
+table tr:hover {
+	background-color: #EAEAEA;
+	transition: 0.3s;
+}
+
+.titulo {
+	text-transform: uppercase;
+	color: #FA4A4A;
+	letter-spacing: 0.5px;
+}
+
+.box-grafico {
+	background-color: #FFF;
+	width: 400px;
+	min-height: 100%;
+	/* box-shadow: 3px 3px 20px;*/ 
+	border: 2px solid #CCC;
+}

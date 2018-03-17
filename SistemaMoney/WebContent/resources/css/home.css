@@ -1,7 +1,6 @@
 /* Seletores */
-
 body {
-	background-color: #eaeaea;
+	background-color: #EBEBEB;
 }
 
 nav {
@@ -13,15 +12,14 @@ ul {
 }
 
 /* Classe */
-
-.centro{
+.centro {
 	margin: 5px 0px 0px 0px;
 	height: 40px;
 	width: 40px;
 	position: absolute;
 }
 
-.tabelaSaldo{
+.tabelaSaldo {
 	font-size: 20px;
 	font-weight: bold;
 	margin-top: 30px;
@@ -37,7 +35,7 @@ ul {
 	display: block;
 }
 
-.tabelaAcesso{
+.tabelaAcesso {
 	height: 250px;
 	margin-top: 30px;
 	color: black;
@@ -45,7 +43,7 @@ ul {
 	box-shadow: 0px 0px 16px #333;
 }
 
-.tabelaGrafico{
+.tabelaGrafico {
 	height: 250px;
 	margin-top: 30px;
 	color: black;
@@ -53,69 +51,67 @@ ul {
 	box-shadow: 0px 0px 16px #333;
 }
 
-.tituloaAcesso{
+.tituloaAcesso {
 	font-size: 16px;
 	font-weight: bold;
 	padding-top: 25px;
 	padding-left: 170px;
 }
 
-.tituloGrafico{
+.tituloGrafico {
 	font-size: 16px;
 	font-weight: bold;
 	padding-top: 25px;
 	padding-left: 195px;
 }
 
-.rodape{
+.rodape {
 	text-align: right;
-	font-weight: bold; 
+	font-weight: bold;
 }
 
-.imagem{
+.imagem {
 	height: 70px;
 	width: 70px;
 	margin-top: 48px;
 }
 
 .navbar-brand, .navbar-nav>li>a {
-	color:white;
+	color: white;
 }
 
 /* ID */
-
-#home{
+#home {
 	margin: 0px 0px 0px 340px;
 }
 
-
-#margem{
+#margem {
 	margin-left: 150px;
 }
 
-#iconePorquinho{
+#iconePorquinho {
 	margin-top: 50px;
 }
 
-#imagemReceita{
-	margin: 50px 80px 0px 110px;	
-	}
-
-#receita{
-	margin-left: 118px;
-    margin-top: 20px;
-    margin-right: 97px;
+#imagemReceita {
+	margin: 50px 80px 0px 110px;
 }
 
-#titulo{
+#receita {
+	margin-left: 118px;
+	margin-top: 20px;
+	margin-right: 97px;
+}
+
+#titulo {
 	color: white
 }
 
-#iconeConfig{
- height: 55px;
+#iconeConfig {
+	height: 55px;
 }
 
-#iconeFoto{
-width:25px;
-height:25px;
+#iconeFoto {
+	width: 25px;
+	height: 25px;
 }

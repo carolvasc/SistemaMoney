@@ -19,7 +19,8 @@ ul {
 /* Classe */
 
 .cadastrar {
-    background-image: url("resources/imagem/mo.png"); 
+    background-image: url("../imagens/mo.png"); /* Eu particularmente prefiro sem a imagem, mas é assim que se pega
+    												corretamente */
 }
 
 .cadastro{
