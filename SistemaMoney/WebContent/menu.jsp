@@ -53,7 +53,7 @@
 				
 				<!-- Receitas com o dropdown  -->
 				
-				<li><a href="#" >RECEITA</a></li>
+				<li><a href="reccontroller?acao=cadastrar" >RECEITA</a></li>
 
 				<!-- Despesas  -->
 
