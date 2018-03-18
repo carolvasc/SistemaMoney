@@ -4,8 +4,6 @@ import br.uninove.financeiro.dao.LancamentoDAO;
 import br.uninove.financeiro.objetos.entidade.Despesa;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 
 @WebServlet("/lanccontroller")
@@ -83,7 +80,7 @@ public class LancamentoController extends HttpServlet {
 
 		switch (acao) {
 		case "lancamentos":
-			List<Despesa> listaLanc = lancamentoDAO.buscarLancamentos(mesTela, getAnoDataAtual());
+			List<Despesa> listaLanc = lancamentoDAO.listarDespesas(mesTela, getAnoDataAtual());
 			
 			req.setAttribute("mesVisualizado", mesTela);
 			req.setAttribute("listaLanc", listaLanc);

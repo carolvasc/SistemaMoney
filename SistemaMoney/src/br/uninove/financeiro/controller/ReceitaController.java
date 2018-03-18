@@ -1,8 +1,8 @@
 package br.uninove.financeiro.controller;
 
+import br.uninove.financeiro.dao.LancamentoDAO;
 import br.uninove.financeiro.dao.ReceitaDAO;
 import br.uninove.financeiro.objetos.entidade.Receita;
-import br.uninove.financeiro.objetos.entidade.Categoria;
 
 import java.io.IOException;
 
@@ -15,66 +15,62 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.List;
 
-//localhost:8080/SistemaMoney/reccontroller
+//localhost:8080/SistemaMoney/reccontroller?acao=nomeDaAcao&mesTela=numeroDeUmADoze
 
 @WebServlet("/reccontroller")
 public class ReceitaController extends HttpServlet {
-
-	public ReceitaController() {
-		System.out.println("Executando código...");
-	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String acao = req.getParameter("acao");
+
 		Receita receita = new Receita();
 		ReceitaDAO receitaDAO = new ReceitaDAO();
+		LancamentoDAO lancamentoDAO = new LancamentoDAO();
+		LancamentoController l = new LancamentoController();
+		
 		String id = "";
 		RequestDispatcher dispatcher;
 
 		switch (acao) {
-			case "cadastrar":
-				receita.setIdReceita(0);
-				receita.setNomeReceita("");
-				receita.setValorReceita(Float.parseFloat("0"));
-				receita.setDataReceita("");
-				receita.setObsReceita("");
-	
-				req.setAttribute("receita", receita);
-				dispatcher = req.getRequestDispatcher("receita.jsp");
-				dispatcher.forward(req, resp);
-				break;
-			case "alterar":
-				id = req.getParameter("id");
-				receita = receitaDAO.buscarPorId(Integer.parseInt(id));
-	
-				req.setAttribute("receita", receita);
-				dispatcher = req.getRequestDispatcher("receita.jsp");
-				dispatcher.forward(req, resp);
-				break;
-			case "listar":
-				List<Receita> lista = receitaDAO.buscar();
-	
-				req.setAttribute("lista", lista);
-				dispatcher = req.getRequestDispatcher("listarreceita.jsp");
-				dispatcher.forward(req, resp);
-				break;
-			case "listar-categoria":
-				List<Categoria> listaCat = receitaDAO.getCategoria();
-	
-				req.setAttribute("listaCat", listaCat);
-				dispatcher = req.getRequestDispatcher("listarcategoria.jsp");
-				dispatcher.forward(req, resp);
-				break;
-			case "excluir":
-				id = req.getParameter("id");
-				if (id != null) {
-					receita.setIdReceita(Integer.parseInt(id));
-				}
-				receitaDAO.excluir(Integer.parseInt(id));
-				resp.sendRedirect("reccontroller?acao=listar");
-				break;
+		case "cadastrar":
+			receita.setIdReceita(0);
+			receita.setNomeReceita("");
+			receita.setValorReceita(Float.parseFloat("0"));
+			receita.setDataReceita("");
+			receita.setObsReceita("");
+
+			req.setAttribute("receita", receita);
+			dispatcher = req.getRequestDispatcher("receita.jsp");
+			dispatcher.forward(req, resp);
+			break;
+		case "alterar":
+			id = req.getParameter("id");
+			receita = receitaDAO.buscarPorId(Integer.parseInt(id));
+
+			req.setAttribute("receita", receita);
+			dispatcher = req.getRequestDispatcher("receita.jsp");
+			dispatcher.forward(req, resp);
+			break;
+		case "listar":
+			int mesTela = Integer.parseInt(req.getParameter("mesTela"));
+			List<Receita> lista = lancamentoDAO.listarReceitas(mesTela, l.getAnoDataAtual());
+
+			req.setAttribute("mesVisualizado", mesTela);
+			req.setAttribute("lista", lista);
+
+			dispatcher = req.getRequestDispatcher("listarreceita.jsp");
+			dispatcher.forward(req, resp);
+			break;
+		case "excluir":
+			id = req.getParameter("id");
+			if (id != null) {
+				receita.setIdReceita(Integer.parseInt(id));
+			}
+			receitaDAO.excluir(Integer.parseInt(id));
+			resp.sendRedirect("reccontroller?acao=listar");
+			break;
 		}
 
 	}
@@ -101,11 +97,7 @@ public class ReceitaController extends HttpServlet {
 
 		receitaDAO.salvar(receita);
 
-		if (receita.getIdReceita() != null) {
-			resp.getWriter().print("Alteração feita com sucesso");
-		} else {
-			resp.getWriter().print("Cadastro realizado com sucesso");
-		}
+		resp.sendRedirect("reccontroller?acao=cadastrar");
 
 	}
 

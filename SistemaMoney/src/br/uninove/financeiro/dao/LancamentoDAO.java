@@ -12,6 +12,7 @@ import java.util.List;
 import br.uninove.financeiro.objetos.entidade.Categoria;
 import br.uninove.financeiro.objetos.entidade.Despesa;
 import br.uninove.financeiro.objetos.entidade.Pagamento;
+import br.uninove.financeiro.objetos.entidade.Receita;
 import br.uninove.financeiro.util.ConnectionFactory;
 
 public class LancamentoDAO {
@@ -25,7 +26,7 @@ public class LancamentoDAO {
 	}
 
 	// Busca todas os lancamentos referentes ao mes e ano atual
-	public List<Despesa> buscarLancamentos(Integer mes, Integer ano) {
+	public List<Despesa> listarDespesas(Integer mes, Integer ano) {
 		sql = "SELECT * FROM despesas WHERE MONTH(data_despesa) = ? AND YEAR(data_despesa) = ?"
 				+ " ORDER BY data_despesa";
 		try {
@@ -67,6 +68,53 @@ public class LancamentoDAO {
 			rs.close();
 
 			return despesas;
+
+		} catch (SQLException ex) {
+			System.out.println(ex.toString());
+		}
+
+		return null;
+
+	}
+
+	// Busca todas os lancamentos referentes ao mes e ano atual
+	public List<Receita> listarReceitas(Integer mes, Integer ano) {
+		sql = "SELECT * FROM receitas WHERE MONTH(data_receita) = ? AND YEAR(data_receita) = ?"
+				+ " ORDER BY data_receita";
+		try {
+			PreparedStatement selecionar = conexao.prepareStatement(sql);
+
+			selecionar.setInt(1, mes);
+			selecionar.setInt(2, ano);
+
+			ResultSet rs = selecionar.executeQuery();
+			List<Receita> receitas = new ArrayList<>();
+
+			while (rs.next()) {
+				Receita receita = new Receita();
+
+				receita.setIdReceita(rs.getInt("id_receita"));
+				receita.setNomeReceita(rs.getString("nome_receita"));
+				receita.setValorReceita(rs.getFloat("valor_receita"));
+
+				// Data formatada pra consulta (dd/MM/yyyy)
+				SimpleDateFormat formatoConsulta = new SimpleDateFormat("dd/MM/yyyy");
+				Date dataBanco = rs.getDate("data_receita");
+				String dataFormatada = formatoConsulta.format(dataBanco);
+				receita.setDataReceita(dataFormatada);
+				//
+
+				receita.setObsReceita(rs.getString("obs_receita"));
+
+				receita.setIdCategReceita(rs.getInt("categoria_id_categoria"));
+				receita.setNomeCategReceita(buscarTipoCategoria(receita.getIdCategReceita()));
+
+				receitas.add(receita);
+			}
+
+			rs.close();
+
+			return receitas;
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());

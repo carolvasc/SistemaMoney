@@ -3,7 +3,6 @@ package br.uninove.financeiro.controller;
 import br.uninove.financeiro.dao.DespesaDAO;
 import br.uninove.financeiro.dao.LancamentoDAO;
 import br.uninove.financeiro.objetos.entidade.Despesa;
-import br.uninove.financeiro.objetos.entidade.Categoria;
 
 import java.io.IOException;
 
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.List;
 
-//localhost:8080/SistemaMoney/despcontroller
+//localhost:8080/SistemaMoney/despcontroller?acao=nomeDaAcao&mesTela=numeroDeUmADoze
 
 @WebServlet("/despcontroller")
 public class DespesaController extends HttpServlet {
@@ -56,7 +55,7 @@ public class DespesaController extends HttpServlet {
 				break;
 			case "listar":
 				int mesTela = Integer.parseInt(req.getParameter("mesTela"));
-				List<Despesa> lista = lancamentoDAO.buscarLancamentos(mesTela, l.getAnoDataAtual());
+				List<Despesa> lista = lancamentoDAO.listarDespesas(mesTela, l.getAnoDataAtual());
 				
 				req.setAttribute("mesVisualizado", mesTela);
 				req.setAttribute("lista", lista);
@@ -101,11 +100,7 @@ public class DespesaController extends HttpServlet {
 
 		despesaDAO.salvar(despesa);
 
-		if (despesa.getIdDespesa() != null) {
-			resp.getWriter().print("Alteração feita com sucesso");
-		} else {
-			resp.getWriter().print("Cadastro realizado com sucesso");
-		}
+		resp.sendRedirect("despcontroller?acao=cadastrar");
 
 	}
 
