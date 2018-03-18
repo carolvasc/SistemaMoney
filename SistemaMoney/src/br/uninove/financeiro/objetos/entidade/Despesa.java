@@ -1,6 +1,5 @@
 package br.uninove.financeiro.objetos.entidade;
 
-import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
@@ -39,9 +38,9 @@ public class Despesa {
     }
     
     public String getValorFormatado(){
-    	float aux = getValorDespesa();
+    	float aux = this.valorDespesa;
     	
-    	NumberFormat formatarFloat = new DecimalFormat("#.00"); 
+    	NumberFormat formatarFloat = new DecimalFormat("#,###,##0.00"); 
         String valorFormatado = formatarFloat.format(aux); 
         
         return valorFormatado;

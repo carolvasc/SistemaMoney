@@ -36,7 +36,7 @@
 						mesVisualizado = c.getMesDataAtual();
 					}
 				%>
-				<h3 class="titulo">Despesas</h3>
+				<h3 id="titulo-despesa">Despesas</h3>
 				<hr />
 				<div id="mes-atual">
 					<input type="submit" value="" id="btn-anterior"
@@ -53,13 +53,12 @@
 					<tr>
 						<td><%=d.getDataDespesa()%></td>
 						<td><%=d.getNomeDespesa()%></td>
-						<td style="text-align: center;"><input type="submit" value=""
-							id="btn-editar"
+						<td><input type="submit" value="" id="btn-editar"
 							onClick="javascript:window.location='despcontroller?acao=alterar&id=<%=d.getIdDespesa()%>'" />
 							<input type="submit" value="" id="btn-consultar"
 							onClick="javascript:window.location='despcontroller?acao=consultar&id=<%=d.getIdDespesa()%>'" />
 						</td>
-						<td id="valor-despesa">- <%=d.getValorFormatado()%></td>
+						<td>- <%=d.getValorFormatado()%></td>
 					</tr>
 					<%
 						}
