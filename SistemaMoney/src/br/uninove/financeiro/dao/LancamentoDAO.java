@@ -23,24 +23,25 @@ public class LancamentoDAO {
 	public LancamentoDAO() {
 		this.conexao = new ConnectionFactory().getConexao();
 	}
-	
+
 	// Busca todas os lancamentos referentes ao mes e ano atual
 	public List<Despesa> buscarLancamentos(Integer mes, Integer ano) {
 		sql = "SELECT * FROM despesas WHERE MONTH(data_despesa) = ? AND YEAR(data_despesa) = ?"
 				+ " ORDER BY data_despesa";
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
-			
-			selecionar.setInt(1, mes); // Irá mandar como parâmetro o mês atual/anterior/posterior
+
+			selecionar.setInt(1, mes); // Irá mandar como parâmetro o mês
+										// atual/anterior/posterior
 			selecionar.setInt(2, ano); // Irá mandar como parâmetro o ano atual
-			
+
 			ResultSet rs = selecionar.executeQuery();
 			List<Despesa> despesas = new ArrayList<>();
 
 			while (rs.next()) {
 				// Um objeto novo é criado para armazenar uma nova despesa
 				Despesa despesa = new Despesa();
-				
+
 				despesa.setIdDespesa(rs.getInt("id_despesa"));
 				despesa.setNomeDespesa(rs.getString("nome_despesa"));
 				despesa.setValorDespesa(rs.getFloat("valor_despesa"));
@@ -74,7 +75,7 @@ public class LancamentoDAO {
 		return null;
 
 	}
-	
+
 	public String buscarTipoCategoria(Integer idCategoria) {
 		sql = "SELECT * FROM categorias WHERE id_categoria = ?";
 		try {
@@ -88,17 +89,17 @@ public class LancamentoDAO {
 				categoria.setTipoCategoria(rs.getString("tipo_categoria"));
 				return nomeCategoria;
 			}
-			
+
 			rs.close();
-			
+
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
-		
+
 		return null;
-		
+
 	}
-	
+
 	public String buscarTipoPagamento(Integer idPagamento) {
 		sql = "SELECT * FROM pagamento WHERE id_pagamento = ?";
 		try {
@@ -112,15 +113,15 @@ public class LancamentoDAO {
 				pagamento.setTipoPagamento(rs.getString("forma_pagamento"));
 				return nomePagamento;
 			}
-			
+
 			rs.close();
-			
+
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
-		
+
 		return null;
-		
+
 	}
 
 }

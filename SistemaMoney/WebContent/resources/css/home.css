@@ -1,0 +1,117 @@
+/* Seletores */
+body {
+	background-color: #EBEBEB;
+}
+
+nav {
+	background-color: #009299;
+}
+
+ul {
+	color: #000000;
+}
+
+/* Classe */
+.centro {
+	margin: 5px 0px 0px 0px;
+	height: 40px;
+	width: 40px;
+	position: absolute;
+}
+
+.tabelaSaldo {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 30px;
+	padding-top: 120px;
+	text-align: center;
+	height: 300px;
+	background-color: #00c2cc;
+	color: black;
+	box-shadow: 0px 0px 16px #333;
+}
+
+.tabelaSaldo span {
+	display: block;
+}
+
+.tabelaAcesso {
+	height: 250px;
+	margin-top: 30px;
+	color: black;
+	background-color: white;
+	box-shadow: 0px 0px 16px #333;
+}
+
+.tabelaGrafico {
+	height: 250px;
+	margin-top: 30px;
+	color: black;
+	background-color: white;
+	box-shadow: 0px 0px 16px #333;
+}
+
+.tituloaAcesso {
+	font-size: 16px;
+	font-weight: bold;
+	padding-top: 25px;
+	padding-left: 170px;
+}
+
+.tituloGrafico {
+	font-size: 16px;
+	font-weight: bold;
+	padding-top: 25px;
+	padding-left: 195px;
+}
+
+.rodape {
+	text-align: right;
+	font-weight: bold;
+}
+
+.imagem {
+	height: 70px;
+	width: 70px;
+	margin-top: 48px;
+}
+
+.navbar-brand, .navbar-nav>li>a {
+	color: white;
+}
+
+/* ID */
+#home {
+	margin: 0px 0px 0px 340px;
+}
+
+#margem {
+	margin-left: 150px;
+}
+
+#iconePorquinho {
+	margin-top: 50px;
+}
+
+#imagemReceita {
+	margin: 50px 80px 0px 110px;
+}
+
+#receita {
+	margin-left: 118px;
+	margin-top: 20px;
+	margin-right: 97px;
+}
+
+#titulo {
+	color: white
+}
+
+#iconeConfig {
+	height: 55px;
+}
+
+#iconeFoto {
+	width: 25px;
+	height: 25px;
+}

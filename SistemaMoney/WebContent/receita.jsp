@@ -7,41 +7,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
 	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>Receitas</title>
-	
-	<!-- Bootstrap -->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-		crossorigin="anonymous">
-	<!-- Optional theme -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-		crossorigin="anonymous">
-	<!-- Latest compiled and minified JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
-	
-	<!--  Estilo CSS -->
-	<link href="resources/css/receita.css" rel="stylesheet">
-	
-	<!--  jQuery -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous"></script>
-	
-	<!-- Javascript -->
-	<script type="text/javascript" src="resources/javascript/receita.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Receitas</title>
+		
+		<!-- Bootstrap -->
+		<link href="resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		
+		<!--  jQuery -->
+		<script src="resources/jquery/jquery-3.3.1.min.js"></script>  
+		
+		<!--  Estilo CSS -->
+		<link href="resources/css/receita.css" rel="stylesheet">
+		
+		<!-- Javascript -->
+		<script type="text/javascript" src="resources/javascript/receita.js"></script>
 	</head>
 	<body>
+	
+		<%@ include file="menu.jsp"%>
+		
 		<%
 			Receita rec = (Receita) request.getAttribute("receita");
 			Categoria c = (Categoria) request.getAttribute("categoria");
@@ -54,10 +38,11 @@
 					<h4>Nova Receita</h4>
 					<div class="row">
 						<div class="col-md-12">
-							<input type="hidden" id="id" name="id" value="<%=rec.getIdReceita()%>" readonly/>
+							<input type="hidden" id="id" name="id"
+								value="<%=rec.getIdReceita()%>" readonly />
 							<div class="form-group">
-								<label>Descrição</label>
-								<input class="form-class" name="descricao" id="descricao" type="text" autofocus
+								<label>Descrição</label> <input class="form-class"
+									name="descricao" id="descricao" type="text" autofocus
 									value="<%=rec.getNomeReceita()%>" />
 							</div>
 						</div>
@@ -82,12 +67,12 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Categoria</label>
-									<select class="form-class" id="categoria" name="categoria">
-										<option>[Selecione uma opção]</option>
-										<c:forEach var="categoria" items="${dao.categoria}">
-											<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option>
-										</c:forEach>
+								<label>Categoria</label> <select class="form-class"
+									id="categoria" name="categoria">
+									<option>[Selecione uma opção]</option>
+									<c:forEach var="categoria" items="${dao.categoria}">
+										<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>
@@ -160,5 +145,9 @@
 		</div>
 		<!-- /col-md-6 -->
 		<div class="col-md-3"></div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
 	</body>
 </html>

@@ -1,0 +1,55 @@
+/* Seletores */
+
+body {
+	background-color: #eaeaea;
+}
+
+nav {
+	background-color: #009299;
+}
+
+a {
+	color: white;
+}
+
+ul {
+	color: #000000;
+}
+
+/* Classe */
+
+.centro{
+	margin: 5px 0px 0px 0px;
+	height: 40px;
+	width: 40px;
+	position: absolute;
+}
+
+.navbar-brand, .navbar-nav>li>a {
+	color:white;
+}
+
+/* ID */
+
+#home{
+	margin: 0px 0px 0px 280px;
+}
+
+#margem{
+
+	margin-left: 150px;
+}
+
+#iconePorquinho{
+	margin-top: 50px;
+}
+
+#iconeConfig{
+ height: 55px;
+}
+
+#iconeFoto{
+
+width:25px;
+height:25px;
+}
