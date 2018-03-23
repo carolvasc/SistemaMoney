@@ -67,7 +67,7 @@
 					</a> 
 					<ul class="dropdown-menu">
 						<li> <a href="reccontroller?acao=listar" >Receitas</a> </li>
-						<li> <a href="despcontroller?acao=listar">Despesas</a> </li>
+						<li> <a href="despcontroller?acao=listar&mesTela=3">Despesas</a> </li>
 					</ul>
 
 				</li>
