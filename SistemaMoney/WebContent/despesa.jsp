@@ -14,7 +14,10 @@
 		<link href="resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		
 		<!--  jQuery -->
-		<script src="resources/jquery/jquery-3.3.1.min.js"></script>  
+		<script src="resources/jquery/jquery-3.3.1.min.js"></script> 
+		
+		<!--  Importação do Menu antes da chamada do css da página -->
+		<%@ include file = "menu.jsp" %> 
 		
 		<!--  Estilo CSS da página-->
 		<link href="resources/css/despesa.css" rel="stylesheet">
@@ -31,8 +34,6 @@
 			</script>
 	</head>
 	<body>
-	
-		<%@ include file = "menu.jsp" %>
 		
 		<%
 			//onload="funcao(${d.getIdCategDespesa()})" realizar a chamada dessa função no lugar correto

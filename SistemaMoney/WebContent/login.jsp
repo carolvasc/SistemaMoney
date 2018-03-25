@@ -19,6 +19,7 @@
 		
 		<!-- Estilo css -->
 		<link href="resources/css/login.css" rel="stylesheet">
+		
 	</head>
 	<body class="cadastrar">
 	
@@ -44,7 +45,7 @@
 	
 						<div class="form-group">
 							<input type="email" name="lemail" class="form-control" id="lemail"
-								placeholder="Digite seu e-mail">
+								 placeholder="Digite seu e-mail">
 						</div>
 	
 						<div class="form-group">
