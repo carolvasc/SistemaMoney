@@ -54,7 +54,14 @@ public class DespesaController extends HttpServlet {
 				dispatcher.forward(req, resp);
 				break;
 			case "listar":
-				int mesTela = Integer.parseInt(req.getParameter("mesTela"));
+				int mesTela;
+				
+				if(req.getParameter("mesTela") == ""){
+					mesTela = l.getMesDataAtual();
+				} else {
+					mesTela = Integer.parseInt(req.getParameter("mesTela"));
+				}
+				
 				List<Despesa> lista = lancamentoDAO.listarDespesas(mesTela, l.getAnoDataAtual());
 				
 				req.setAttribute("mesVisualizado", mesTela);

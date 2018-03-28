@@ -1,3 +1,4 @@
+<%@page import="br.uninove.financeiro.controller.LancamentoController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -22,9 +23,18 @@
 
 </head>
 <body>
-
-
-
+	
+	<%
+		
+		int mes = 0;
+	
+		if (request.getAttribute("mesVisualizado") != null) {
+			String mesTipoString = String.valueOf(request.getAttribute("mesVisualizado"));
+			mes = Integer.parseInt(mesTipoString);
+		}
+	
+	%>
+	
 	<!-- Barra navegação -->
 
 	<nav class="navbar navbar-light" class="navbar navbar-inverse">
@@ -64,9 +74,9 @@
 						data-toggle="dropdown"> LANÇAMENTOS <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="reccontroller?acao=listar&mesTela=3">Receitas</a>
+						<li><a href="reccontroller?acao=listar&mesTela="<%= mes %>>Receitas</a>
 						</li>
-						<li><a href="despcontroller?acao=listar&mesTela=3">Despesas</a>
+						<li><a href="despcontroller?acao=listar&mesTela="<%= mes %>>Despesas</a>
 						</li>
 					</ul>
 				</li>

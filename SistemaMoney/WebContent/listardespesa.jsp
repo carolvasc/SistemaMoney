@@ -30,14 +30,14 @@
 			<div id="box-tabela">
 				<%
 					List<Despesa> lista = (List<Despesa>) request.getAttribute("lista");
-					LancamentoController c = new LancamentoController();
+					LancamentoController l = new LancamentoController();
 	
 					int mesVisualizado = 0;
 					if (request.getAttribute("mesVisualizado") != null) {
 						String mesTipoString = String.valueOf(request.getAttribute("mesVisualizado"));
 						mesVisualizado = Integer.parseInt(mesTipoString);
 					} else {
-						mesVisualizado = c.getMesDataAtual();
+						mesVisualizado = l.getMesDataAtual();
 					}
 				%>
 				<h3 id="titulo-despesa">Despesas</h3>
@@ -45,7 +45,7 @@
 				<div id="mes-atual">
 					<input type="submit" value="" id="btn-anterior"
 						onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado - 1%>'" />
-					<h3><%=c.getMesExtenso(mesVisualizado)%></h3>
+					<h3><%=l.getMesExtenso(mesVisualizado)%></h3>
 					<input type="submit" value="" id="btn-proximo"
 						onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado + 1%>'" />
 				</div>
