@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Lançamentos</title>
+		<title>LanÃ§amentos</title>
 		
 		<!-- Bootstrap -->
 		<link href="resources/bootstrap/dist/css/bootstrap.min.css"
@@ -17,14 +17,13 @@
 		<!--  jQuery -->
 		<script src="resources/jquery/jquery-3.3.1.min.js"></script>
 		
-		<!--  Importação do Menu antes da chamada do css da página -->
+		<!--  ImportaÃ§Ã£o do Menu antes da chamada do css da pÃ¡gina -->
 		<%@ include file = "menu.jsp" %>
 		
 		<!--  Estilo CSS -->
 		<link href="resources/css/lancamentos.css" rel="stylesheet">
 	</head>
-	<body>
-		
+	<body>		
 		<div class="row" style="margin: 0px; position: relative; min-height: 100%">
 			<div class="col-md-1"></div>
 			<div class="col-md-6">
@@ -44,10 +43,10 @@
 					<h3 id="titulo-despesa">Despesas</h3>
 					<hr />
 					<div id="mes-atual">
-						<input type="submit" value="" id="btn-anterior" title="mês anterior"
+						<input type="submit" value="" id="btn-anterior" title="mÃªs anterior"
 							onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado - 1%>'" />
 						<h3><%=c.getMesExtenso(mesVisualizado)%></h3>
-						<input type="submit" value="" id="btn-proximo" title="próximo mês"
+						<input type="submit" value="" id="btn-proximo" title="prÃ³ximo mÃªs"
 							onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado + 1%>'" />
 					</div>
 					<hr />
@@ -73,7 +72,7 @@
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-3 box-grafico">
-				<h3>Gráfico</h3>
+				<h3>GrÃ¡fico</h3>
 				<hr />
 				<img src="resources/imagens/grafico2.png" height="346" width="376" />
 			</div>
@@ -106,7 +105,7 @@
 						<p>02/03/2018</p>
 						
 						<h4>Categoria</h4>
-						<p>Alimentação</p>
+						<p>AlimentaÃ§Ã£o</p>
 						
 					</div>
 					
@@ -115,7 +114,7 @@
 						<h4>Forma de Pagamento</h4>
 						<p>Dinheiro</p>
 						
-						<h4>Observação</h4>
+						<h4>ObservaÃ§Ã£o</h4>
 						<p>-----</p>
 						
 					</div>
