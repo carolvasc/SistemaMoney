@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>LanÃ§amentos</title>
+		<title>Lançamentos</title>
 		
 		<!-- Bootstrap -->
 		<link href="resources/bootstrap/dist/css/bootstrap.min.css"
@@ -22,6 +22,9 @@
 		
 		<!--  Estilo CSS -->
 		<link href="resources/css/lancamentos.css" rel="stylesheet">
+		
+		<!-- Javascript -->
+		<script type="text/javascript" src="resources/javascript/tela-consulta.js"></script>
 	</head>
 	<body>		
 		<div class="row" style="margin: 0px; position: relative; min-height: 100%">
@@ -43,10 +46,10 @@
 					<h3 id="titulo-despesa">Despesas</h3>
 					<hr />
 					<div id="mes-atual">
-						<input type="submit" value="" id="btn-anterior" title="mÃªs anterior"
+						<input type="submit" value="" id="btn-anterior" title="mês anterior"
 							onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado - 1%>'" />
 						<h3><%=c.getMesExtenso(mesVisualizado)%></h3>
-						<input type="submit" value="" id="btn-proximo" title="prÃ³ximo mÃªs"
+						<input type="submit" value="" id="btn-proximo" title="próximo mês"
 							onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado + 1%>'" />
 					</div>
 					<hr />
@@ -59,8 +62,7 @@
 							<td><%=d.getNomeDespesa()%></td>
 							<td>
 								<input type="submit" value="" id="btn-editar" title="editar" onClick="javascript:window.location='despcontroller?acao=alterar&id=<%=d.getIdDespesa()%>'" />
-								<button type="button" class="btn btn-primary" style="background-color: transparent" data-toggle="modal" data-target=".box-consulta">
-								</button>
+								<input type="submit" value="" id="btn-consultar" title="consultar" data-toggle="modal" data-target=".box-consulta" onClick="setId(<%=d.getIdDespesa()%>)"/>				
 							</td>
 							<td>- <%=d.getValorFormatado()%></td>
 						</tr>
@@ -72,7 +74,7 @@
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-3 box-grafico">
-				<h3>GrÃ¡fico</h3>
+				<h3>Gráfico</h3>
 				<hr />
 				<img src="resources/imagens/grafico2.png" height="346" width="376" />
 			</div>
@@ -94,27 +96,27 @@
 					
 					<div class="col-md-3">
 					
-						<h2>Compras</h2>
-						<h4>R$ 700,00</h4>
+						<h2 id="consulta-nome"></h2>
+						<h4 id="consulta-valor"></h4>
 						
 					</div>
 					
 					<div class="col-md-3">
 					
 						<h4>Data</h4>
-						<p>02/03/2018</p>
+						<p id="consulta-data"></p>
 						
 						<h4>Categoria</h4>
-						<p>AlimentaÃ§Ã£o</p>
+						<p id="consulta-categoria"></p>
 						
 					</div>
 					
 					<div class="col-md-3">
 					
 						<h4>Forma de Pagamento</h4>
-						<p>Dinheiro</p>
+						<p id="consulta-pagamento"></p>
 						
-						<h4>ObservaÃ§Ã£o</h4>
+						<h4>Observação</h4>
 						<p>-----</p>
 						
 					</div>
