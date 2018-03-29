@@ -1,4 +1,5 @@
 <%@page import="br.uninove.financeiro.objetos.entidade.Despesa"%>
+<%@page import="br.uninove.financeiro.objetos.bean.DespesaBean"%>
 <%@page import="br.uninove.financeiro.controller.LancamentoController"%>
 <%@page import="br.uninove.financeiro.controller.DespesaController"%>
 <%@page import="java.util.List"%>
@@ -31,6 +32,7 @@
 				<%
 					List<Despesa> lista = (List<Despesa>) request.getAttribute("lista");
 					LancamentoController c = new LancamentoController();
+					DespesaBean db = new DespesaBean();
 	
 					int mesVisualizado = 0;
 					if (request.getAttribute("mesVisualizado") != null) {
@@ -41,6 +43,7 @@
 					}
 				%>
 				<h3 id="titulo-despesa">Despesas</h3>
+				<button class="btn btn-info" id="btn-imprimir" onClick="imprimir()">Imprimir</button>
 				<hr />
 				<div id="mes-atual">
 					<input type="submit" value="" id="btn-anterior"
