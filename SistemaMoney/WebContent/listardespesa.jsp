@@ -1,4 +1,5 @@
 <%@page import="br.uninove.financeiro.objetos.entidade.Despesa"%>
+<%@page import="br.uninove.financeiro.objetos.bean.DespesaBean"%>
 <%@page import="br.uninove.financeiro.controller.LancamentoController"%>
 <%@page import="br.uninove.financeiro.controller.DespesaController"%>
 <%@page import="java.util.List"%>
@@ -17,7 +18,7 @@
 		<!--  jQuery -->
 		<script src="resources/jquery/jquery-3.3.1.min.js"></script>
 		
-		<!--  ImportaÃ§Ã£o do Menu antes da chamada do css da pÃ¡gina -->
+		<!--  Importação do Menu antes da chamada do css da página -->
 		<%@ include file = "menu.jsp" %>
 		
 		<!--  Estilo CSS -->
@@ -26,33 +27,35 @@
 		<!-- Javascript -->
 		<script type="text/javascript" src="resources/javascript/tela-consulta.js"></script>
 	</head>
-	<body>		
-		<div class="row" style="margin: 0px; position: relative; min-height: 100%">
-			<div class="col-md-1"></div>
-			<div class="col-md-6">
-				<div id="box-tabela">
-					<%
-						List<Despesa> lista = (List<Despesa>) request.getAttribute("lista");
-						LancamentoController c = new LancamentoController();
-		
-						int mesVisualizado = 0;
-						if (request.getAttribute("mesVisualizado") != null) {
-							String mesTipoString = String.valueOf(request.getAttribute("mesVisualizado"));
-							mesVisualizado = Integer.parseInt(mesTipoString);
-						} else {
-							mesVisualizado = c.getMesDataAtual();
-						}
-					%>
-					<h3 id="titulo-despesa">Despesas</h3>
-					<hr />
-					<div id="mes-atual">
-						<input type="submit" value="" id="btn-anterior" title="mês anterior"
-							onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado - 1%>'" />
-						<h3><%=c.getMesExtenso(mesVisualizado)%></h3>
-						<input type="submit" value="" id="btn-proximo" title="próximo mês"
-							onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado + 1%>'" />
-					</div>
-					<hr />
+	<body>
+	
+		<div class="col-md-1"></div>
+		<div class="col-md-6">
+			<div id="box-tabela">
+				<%
+					List<Despesa> lista = (List<Despesa>) request.getAttribute("lista");
+					LancamentoController c = new LancamentoController();
+					DespesaBean db = new DespesaBean();
+	
+					int mesVisualizado = 0;
+					if (request.getAttribute("mesVisualizado") != null) {
+						String mesTipoString = String.valueOf(request.getAttribute("mesVisualizado"));
+						mesVisualizado = Integer.parseInt(mesTipoString);
+					} else {
+						mesVisualizado = c.getMesDataAtual();
+					}
+				%>
+				<h3 id="titulo-despesa">Despesas</h3>
+				<button class="btn btn-info" id="btn-imprimir" onClick="imprimir()">Imprimir</button>
+				<hr />
+				<div id="mes-atual">
+					<input type="submit" value="" id="btn-anterior" title="mês anterior"
+						onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado - 1%>'" />
+					<h3><%=c.getMesExtenso(mesVisualizado)%></h3>
+					<input type="submit" value="" id="btn-proximo" title="próximo mês"
+						onClick="javascript:window.location='despcontroller?acao=listar&mesTela=<%=mesVisualizado + 1%>'" />
+				</div>
+				<hr />
 					<table>
 						<%
 							for (Despesa d : lista) {
