@@ -16,6 +16,9 @@
 		<!--  jQuery -->
 		<script src="resources/jquery/jquery-3.3.1.min.js"></script>  
 		
+		<!--  Importação do Menu antes da chamada do css da página -->
+		<%@ include file = "menu.jsp" %>
+		
 		<!--  Estilo CSS -->
 		<link href="resources/css/receita.css" rel="stylesheet">
 		
@@ -23,8 +26,6 @@
 		<script type="text/javascript" src="resources/javascript/receita.js"></script>
 	</head>
 	<body>
-	
-		<%@ include file="menu.jsp"%>
 		
 		<%
 			Receita rec = (Receita) request.getAttribute("receita");

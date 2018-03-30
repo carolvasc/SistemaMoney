@@ -122,3 +122,29 @@ table tbody td:nth-child(3), table tbody td:last-child {
 	margin-top: 3%;
 	
 }
+
+/***********************************************************************************************/
+/********************************************* Formatação do box de consulta *******************/
+
+.box-consulta {
+	background-color: white;
+	margin: 385px 0px 0px 0px;
+	width: 100%;
+	height: 400px;
+	font-size: 15px;
+}
+
+.box-consulta .row {
+	margin: 40px 0px;
+}
+
+.box-acoes button {
+	width: 130px;
+	margin-left: 10px;
+}
+
+.rodape {
+	position: absolute;
+	bottom: 0;
+	
+}

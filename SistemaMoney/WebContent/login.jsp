@@ -27,6 +27,7 @@
     <div class="form-group">
 							<label for="email" class="titulinhos">E-mail:</label>
 							<input type="email" name="lemail" class="form-control" id="lemail"
+
 								   placeholder="Digite seu e-mail">
 							
 						</div>
@@ -49,7 +50,7 @@
  </form>
  </div>
 
-		<!-- Inclusão das validações com o Plugin jQuery Validation-->
+		<!-- InclusÃ£o das validaÃ§Ãµes com o Plugin jQuery Validation-->
 		<script src="resources/javascript/login.js"></script>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
