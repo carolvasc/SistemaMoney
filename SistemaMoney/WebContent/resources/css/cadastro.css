@@ -18,11 +18,11 @@ body {
 	font-size:30px;
 	font-family:Trebuchet MS;
 	color: #286090;
-	padding: 30px 0px 40px 250px;
+	padding: 30px 0px 0px 195px;
 }
 	
 .form-group {
-    margin-bottom: 43px;
+    margin-bottom: 35px;
 }
 
 .titulinhos {
@@ -34,25 +34,24 @@ body {
 
 /* ID */
 
-#lemail{
-	display: inline;
-	width: 500px;
-}
-
-#lsenha{
-	display: inline;
-	width: 500px;
-}
-
-#esqueci{
-	font-size: 13px;
-    color: #0067b8;
-    padding-left: 236px;
-    font-family:Trebuchet MS;
-}
-
-#botaologar{
+#botaocadastrar{
 	width: 127px;
-	margin: 40px 0px 0px 236px;
+	margin: 10px 0px 0px 236px;
 	font-family:Trebuchet MS;
 }
+
+#nome{
+	display: inline;
+	width: 500px;
+}
+
+#email{
+	display: inline;
+	width: 500px;
+}
+
+#senha{
+	display: inline;
+	width: 500px;
+}
+
