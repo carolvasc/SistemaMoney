@@ -62,7 +62,7 @@
 							<td><%=d.getNomeDespesa()%></td>
 							<td>
 								<input type="submit" value="" id="btn-editar" title="editar" onClick="javascript:window.location='despcontroller?acao=alterar&id=<%=d.getIdDespesa()%>'" />
-								<input type="submit" value="" id="btn-consultar" title="consultar" data-toggle="modal" data-target=".box-consulta" onClick="setId(<%=d.getIdDespesa()%>)"/>				
+								<input type="submit" value="" id="btn-consultar" title="consultar" data-toggle="modal" data-target=".box-consulta" />				
 							</td>
 							<td>- <%=d.getValorFormatado()%></td>
 						</tr>
