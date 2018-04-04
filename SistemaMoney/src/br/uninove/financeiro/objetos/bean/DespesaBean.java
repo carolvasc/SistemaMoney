@@ -23,6 +23,16 @@ public class DespesaBean {
 		
 		try {
 			
+			//
+			
+//			String jrxmlFile = session.getServletContext().getRealPath("/teste.jrxml");
+//			
+//			InputStream input = new FileInputStream(new File(jrxmFile));
+//			
+//			JasperReport jasperReport = JasperCompileManager.compileReport(input);
+			
+			//
+			
 			JasperPrint relatorio = JasperFillManager.fillReport(caminho, null, conexao);
 			
 			JasperPrintManager.printReport(relatorio, true);

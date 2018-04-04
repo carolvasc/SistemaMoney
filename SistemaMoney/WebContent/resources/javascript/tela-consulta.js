@@ -2,11 +2,11 @@ $(document).ready(function () {
 	
 	$("#btn-consultar").click(function() {
 		
-		$("#consulta-nome").html("Teste");
-		$("#consulta-valor").html("Teste");
-		$("#consulta-data").html("Teste");
-		$("#consulta-categoria").html("Teste");
-		$("#consulta-pagamento").html("Teste");
+		$("#consulta-nome").html("Compras");
+		$("#consulta-valor").html("R$ 700,00");
+		$("#consulta-data").html("10/10/2018");
+		$("#consulta-categoria").html("Alimentação");
+		$("#consulta-pagamento").html("Dinheiro");
 		
 	});
 	
@@ -27,7 +27,7 @@ function chamarServlet(methodType) {
 }
 
 
-// É AJAX
+// AJAX
 
 // Dentro do JSP da página deverá ter a seguinte função: 
 function callServletAjax(methodType){

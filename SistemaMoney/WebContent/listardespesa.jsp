@@ -65,7 +65,7 @@
 							<td><%=d.getNomeDespesa()%></td>
 							<td>
 								<input type="submit" value="" id="btn-editar" title="editar" onClick="javascript:window.location='despcontroller?acao=alterar&id=<%=d.getIdDespesa()%>'" />
-								<input type="submit" value="" id="btn-consultar" title="consultar" data-toggle="modal" data-target=".box-consulta" onClick="setId(<%=d.getIdDespesa()%>)"/>				
+								<input type="submit" value="" id="btn-consultar" title="consultar" data-toggle="modal" data-target=".box-consulta"/>				
 							</td>
 							<td>- <%=d.getValorFormatado()%></td>
 						</tr>
@@ -156,5 +156,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+		
+		<!-- Javascript -->
+		<script type="text/javascript" src="resources/javascript/tela-consulta.js"></script>
 	</body>
 </html>
