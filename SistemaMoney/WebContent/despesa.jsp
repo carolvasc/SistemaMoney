@@ -78,18 +78,32 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Categoria</label>
+<!-- 								<select class="form-class" id="categoria" name="categoria"> -->
+<%-- 									<c:set var="id" value="${d.getIdDespesa()}" /> --%>
+<%-- 									<c:if test="${id != 0 || id != null}"> --%>
+<!-- 										<option value="${d.getIdCategDespesa()}">${c.getTipoCategoria()}</option> -->
+<%-- 									</c:if> --%>
+<%-- 									<c:if test="${id == null}"> --%>
+<!-- 										<option value="">[Selecione uma opção]</option> -->
+<%-- 										<c:forEach var="categoria" items="${dao.categoria}"> --%>
+<%-- 											<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option> --%>
+<%-- 										</c:forEach> --%>
+<%-- 									</c:if> --%>
+<!-- 								</select> -->
+								
+								
 								<select class="form-class" id="categoria" name="categoria">
-									<c:set var="id" value="${d.getIdDespesa()}" />
-									<c:if test="${id != 0 || id != null}">
-										<!-- <option value="${d.getIdCategDespesa()}">${c.getTipoCategoria()}</option> -->
-									</c:if>
-									<c:if test="${id == null}">
-										<option value="">[Selecione uma opção]</option>
-										<c:forEach var="categoria" items="${dao.categoria}">
-											<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option>
-										</c:forEach>
-									</c:if>
-								</select>
+									<option selected="selected">[Selecione uma opção]</option>
+	                                    <c:forEach var="categoria" items="${dao.categoria}">
+		                                    <c:if test="${categoria.idCategoria.equals(d.getIdDespesa.getIdCategDespesa())}">
+		                                    	<option value="${categoria.idCategoria}" selected="selected">${categoria.tipoCategoria}</option>
+		                                    </c:if>
+		                                    <c:if test="${!categoria.idCategoria.equals(d.getIdDespesa.getIdCategDespesa())}">
+		                                    	<option value="${pais.sigla}">${pais.sigla}</option>
+		                                    </c:if>
+	                                    </c:forEach>
+                            	</select>
+								
 							</div>
 						</div>
 						<div class="col-md-6">
