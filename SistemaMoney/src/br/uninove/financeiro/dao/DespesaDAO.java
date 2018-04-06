@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.PieDataset;
+
 public class DespesaDAO {
 
 	private Connection conexao;
@@ -286,4 +289,5 @@ public class DespesaDAO {
 			System.out.println(ex.toString());
 		}
 	}
-}
+
+}		

@@ -12,6 +12,8 @@
 	<classpathentry kind="lib" path="C:/Users/JARs/standard-1.1.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/JARs/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/jfreechart-1.0.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/jcommon-1.0.23.jar"/>
 	<classpathentry kind="lib" path="C:/Users/JARs/jasperreports-6.5.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
