@@ -28,14 +28,7 @@
 		
 	</head>
 	<body>
-		
-		<%
-			Despesa d = (Despesa) request.getAttribute("despesa");
-			List<Despesa> listar = (List<Despesa>) request.getAttribute("listar");
-			Categoria c = (Categoria) request.getAttribute("categoria");
-			
-		%>
-		
+				
 		<div class="col-md-3"></div>
 		
 		<div class="col-md-6">
@@ -48,12 +41,12 @@
 					<div class="row">
 					
 						<div class="col-md-12">
-							<input type="hidden" id="id" name="id" value="<%=d.getIdDespesa()%>" readonly />
+							<input type="hidden" id="id" name="id" value="${despesa.idDespesa}" readonly />
 								
 							<div class="form-group">
 								<label>Descrição</label> 
 								<input class="form-class" name="descricao" id="descricao" type="text" autofocus
-									value="<%=d.getNomeDespesa()%>" />
+									value="${despesa.nomeDespesa}" />
 							</div>
 							
 						</div>
@@ -67,7 +60,7 @@
 							<div class="form-group">
 								<label>Valor</label>
 								<input class="form-class" name="valor" id="valor" type="text"
-									value="<%=d.getValorDespesa()%>" />
+									value="${despesa.valorDespesa}" />
 							</div>
 						</div>
 						
@@ -75,7 +68,7 @@
 							<div class="form-group">
 								<label>Data</label>
 								<input class="form-class" name="data" id="data" type="text"
-									value="<%=d.getDataDespesa()%>" />
+									value="${despesa.dataDespesa}" />
 							</div>
 						</div>
 						
@@ -85,41 +78,15 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Categoria</label>
-<!-- 								<select class="form-class" id="categoria" name="categoria"> -->
-<%-- 									<c:set var="id" value="${d.getIdDespesa()}" /> --%>
-<%-- 									<c:if test="${id != 0 || id != null}"> --%>
-<!-- 										<option value="${d.getIdCategDespesa()}">${c.getTipoCategoria()}</option> -->
-<%-- 									</c:if> --%>
-<%-- 									<c:if test="${id == null}"> --%>
-<!-- 										<option value="">[Selecione uma opção]</option> -->
-<%-- 										<c:forEach var="categoria" items="${dao.categoria}"> --%>
-<%-- 											<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option> --%>
-<%-- 										</c:forEach> --%>
-<%-- 									</c:if> --%>
-<!-- 								</select> -->
-
-
-							<%		
-								Integer idDespesa = d.getIdDespesa();
-								Integer categ = 8;
-								
-								for(Despesa despesa : listar)
-								{
-								    if (despesa.getIdDespesa() == idDespesa){
-								    	categ = despesa.getIdCategDespesa();
-								    }
-								}
-							%>
-								
+								<label>Categoria</label>								
 								
 								<select class="form-class" id="categoria" name="categoria">
 									<option selected="selected">[Selecione uma opção]</option>
 	                                    <c:forEach var="categoria" items="${dao.categoria}">
-		                                    <c:if test="${categoria.idCategoria == categ}">
+		                                    <c:if test="${categoria.idCategoria == despesa.idCategDespesa}">
 		                                    	<option value="${categoria.idCategoria}" selected="selected">${categoria.tipoCategoria}</option>
 		                                    </c:if>
-		                                    <c:if test="${categoria.idCategoria != categ}">
+		                                    <c:if test="${categoria.idCategoria != despesa.idCategDespesa}">
 		                                    	<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option>
 		                                    </c:if>
 	                                    </c:forEach>
@@ -131,16 +98,24 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Pagamento</label>
+								
 								<select class="form-class" id="pagamento" name="pagamento">
-									<option>[Selecione uma opção]</option>
-									<c:forEach var="pagamento" items="${dao.pagamento}">
-										<option value="${pagamento.idPagamento}">${pagamento.tipoPagamento}</option>
-									</c:forEach>
-								</select>
+									<option selected="selected">[Selecione uma opção]</option>
+	                                    <c:forEach var="pagamento" items="${dao.pagamento}">
+		                                    <c:if test="${pagamento.idPagamento == despesa.idPagtoDespesa}">
+		                                    	<option value="${pagamento.idPagamento}" selected="selected">${pagamento.tipoPagamento}</option>
+		                                    </c:if>
+		                                    <c:if test="${pagamento.idPagamento != despesa.idPagtoDespesa}">
+		                                    	<option value="${pagamento.idPagamento}">${pagamento.tipoPagamento}</option>
+		                                    </c:if>
+	                                    </c:forEach>
+                            	</select>
+                            	
 							</div>
 						</div>
 					</div>
 					<!-- /row -->
+					
 					<div class="row">
 						<div class="col-md-12">
 							<button type="button" class="btn btn-danger" name="repetir"
@@ -148,7 +123,9 @@
 						</div>
 					</div>
 					<!-- /row -->
+					
 					<div class="row" id="box-repetir" hidden>
+					
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Repetir</label>
@@ -170,6 +147,7 @@
 								</select>
 							</div>
 						</div>
+						
 						<div class="col-md-6" id="box-desp-parc" hidden>
 							<div class="col-md-4">
 								<div class="form-group">
@@ -189,31 +167,38 @@
 						</div>
 					</div>
 					<!-- /row -->
+					
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group obs-box">
 								<label>Observação</label>
-								<textarea class="form-class" name="observacao" id="observacao"
-									rows="4" /><%=d.getObsDespesa()%></textarea>
+								<textarea class="form-class" name="observacao" id="observacao"	rows="4">${despesa.obsDespesa}
+								</textarea>
 							</div>
 						</div>
 					</div>
 					<!-- /row -->
+					
 					<div class="row">
 						<div class="col-md-12">
 							<button type="submit" class="btn btn-danger" name="salvar"
 								id="btn-salvar">Salvar</button>
 						</div>
 					</div>
+					
 				</div>
 				<!-- /conteudo -->
 			</form>
 		</div>
 		<!-- col-md-6 -->
+		
 		<div class="col-md-3"></div>
+		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+		
 	</body>
 </html>
