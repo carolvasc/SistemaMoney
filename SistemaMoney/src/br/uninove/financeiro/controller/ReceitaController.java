@@ -54,7 +54,14 @@ public class ReceitaController extends HttpServlet {
 			dispatcher.forward(req, resp);
 			break;
 		case "listar":
-			int mesTela = Integer.parseInt(req.getParameter("mesTela"));
+			int mesTela;
+			
+			if(req.getParameter("mesTela") == ""){
+				mesTela = l.getMesDataAtual();
+			} else {
+				mesTela = Integer.parseInt(req.getParameter("mesTela"));
+			}
+			
 			List<Receita> lista = lancamentoDAO.listarReceitas(mesTela, l.getAnoDataAtual());
 
 			req.setAttribute("mesVisualizado", mesTela);
