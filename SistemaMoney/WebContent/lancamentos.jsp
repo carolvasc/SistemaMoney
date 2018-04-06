@@ -71,7 +71,7 @@
 		<div class="col-md-3 box-grafico">
 			<h3>Gráfico</h3>
 			<hr />
-			<img src="resources/imagens/grafico2.png" height="346" width="376" />
+			<img	src="GeracaoGraficoServlet" alt="Progress chart" />
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
