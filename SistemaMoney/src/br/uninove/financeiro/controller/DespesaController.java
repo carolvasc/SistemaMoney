@@ -40,10 +40,6 @@ public class DespesaController extends HttpServlet {
 				despesa.setValorDespesa(Float.parseFloat("0.00"));
 				despesa.setDataDespesa("");
 				despesa.setObsDespesa("");
-				
-				// Retorna uma lista com todas as despesas para fazer a busca do id da Categoria
-				List<Despesa> listar = despesaDAO.buscar();
-				req.setAttribute("listar", listar);
 	
 				req.setAttribute("despesa", despesa);
 				dispatcher = req.getRequestDispatcher("despesa.jsp");
@@ -55,10 +51,6 @@ public class DespesaController extends HttpServlet {
 				// Retorna a despesa que será alterada
 				despesa = despesaDAO.buscarPorId(Integer.parseInt(id));
 				req.setAttribute("despesa", despesa);
-				
-				// Retorna uma lista com todas as despesas para fazer a busca do id da Categoria
-				listar = despesaDAO.buscar();
-				req.setAttribute("listar", listar);
 	
 				dispatcher = req.getRequestDispatcher("despesa.jsp");
 				dispatcher.forward(req, resp);
