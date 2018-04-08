@@ -5,11 +5,12 @@
 		<![CDATA[c2lzdGVtYWZpbmFuY2Vpcm8uY2F0ZWdvcmlhcyAsMjQyLDE2Niw0M2IzYjEzMy00OWFjLTRjODkt
 OTdkMS1iNjQxOGNiOTA2NzY7c2lzdGVtYWZpbmFuY2Vpcm8ucGFnYW1lbnRvICwyNDIsNTAsODQ0
 MzEzOTUtZjUzOC00MmQ4LTk2NWMtMTQ0ODBkNTJmNGIzO3Npc3RlbWFmaW5hbmNlaXJvLmRlc3Bl
-c2FzICwxNSwxNSwzYTBhMmU4OC1mM2YwLTRjZjQtYmM2ZS04NzViNzFlNDZmNmI7]]>
+c2FzICwxNSwxNSwzYTBhMmU4OC1mM2YwLTRjZjQtYmM2ZS04NzViNzFlNDZmNmI7
+]]>
 	</property>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="192"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="797"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SistemaFinanceiroDATABASE"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Financeiro Data Adapter "/>
 	<queryString language="SQL">
 		<![CDATA[SELECT sistemafinanceiro.despesas.nome_despesa,
 	sistemafinanceiro.despesas.valor_despesa,
