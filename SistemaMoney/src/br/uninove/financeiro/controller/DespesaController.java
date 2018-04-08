@@ -78,17 +78,17 @@ public class DespesaController extends HttpServlet {
 				despesa = despesaDAO.buscarPorId(Integer.parseInt(id));
 				
 				req.setAttribute("despesa", despesa);
-				dispatcher = req.getRequestDispatcher("despesa.jsp");
+				dispatcher = req.getRequestDispatcher("consultar-despesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
 			case "excluir":
-				mesTela = Integer.parseInt(req.getParameter("mesTela"));
+				//mesTela = Integer.parseInt(req.getParameter("mesTela"));
 				id = req.getParameter("id");
 				if (id != null) {
 					despesa.setIdDespesa(Integer.parseInt(id));
 				}
 				despesaDAO.excluir(Integer.parseInt(id));
-				resp.sendRedirect("despcontroller?acao=listar&mesTela" + mesTela);
+				resp.sendRedirect("despcontroller?acao=listar&mesTela=" + 4);
 				break;
 		}
 
