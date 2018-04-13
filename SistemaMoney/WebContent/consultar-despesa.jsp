@@ -30,9 +30,9 @@
 			
 			<div class="row">
 			
-				<div class="container" style="padding: 50px; font-size: 17px;">
+				<div class="col-md-12 container" style="padding: 50px; font-size: 17px;">
 			
-					<div class="col-md-2"></div>
+					<div class="col-md-1"></div>
 					
 					<div class="col-md-3">
 					
@@ -75,7 +75,7 @@
 			
 			<div class="row">
 			
-				<div class="container" style="padding: 20px;">
+				<div class="col-md-12 container" style="padding: 20px;">
 						
 					<div class="col-md-3" style="float: right; padding: 0px">
 						<button class="btn btn-success" onClick="javascript:window.location='despcontroller?acao=alterar&id=${despesa.idDespesa}'">
