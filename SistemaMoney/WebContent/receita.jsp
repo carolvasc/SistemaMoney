@@ -32,7 +32,7 @@
 		<div class="col-md-3"></div>
 		
 		<div class="col-md-6">
-			<form action="despcontroller" method="post">
+			<form action="reccontroller" method="post">
 			
 				<jsp:useBean id="dao" class="br.uninove.financeiro.dao.ReceitaDAO" />
 				
