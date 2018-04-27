@@ -30,9 +30,9 @@
 			
 			<div class="row">
 			
-				<div class="container" style="padding: 50px; font-size: 17px;">
+				<div class="container col-md-12" style="padding: 50px; font-size: 17px;">
 			
-					<div class="col-md-2"></div>
+					<div class="col-md-1"></div>
 					
 					<div class="col-md-3">
 					
@@ -40,6 +40,8 @@
 						<h4>R$ ${despesa.valorFormatado}</h4>
 						
 					</div>
+					
+					<div class="col-md-1"></div>
 					
 					<div class="col-md-3">
 					
@@ -75,17 +77,19 @@
 			
 			<div class="row">
 			
-				<div class="container" style="padding: 20px;">
+				<div class="container col-md-12" style="padding: 20px;">
 						
-					<div class="col-md-3" style="float: right; padding: 0px">
+					<div class="col-md-4" style="float: right; padding: 0px">
+						<button class="btn btn-primary" onClick="javascript:window.location='despcontroller?acao=listar&mesTela='">
+								<i class="glyphicon glyphicon-arrow-left" style="padding-right: 5px"></i>
+								Voltar
+						</button>
+						
 						<button class="btn btn-success" onClick="javascript:window.location='despcontroller?acao=alterar&id=${despesa.idDespesa}'">
 							<i class="glyphicon glyphicon-pencil" style="padding-right: 5px"></i>
 							Editar
 						</button>
-						<button class="btn btn-warning">
-							<i class="glyphicon glyphicon-file" style="padding-right: 5px"></i>
-							Copiar
-						</button>
+						
 						<button class="btn btn-danger" onClick="javascript:window.location='despcontroller?acao=excluir&id=${despesa.idDespesa}'">
 							<i class="glyphicon glyphicon-remove" style="padding-right: 5px"></i>
 							Excluir
