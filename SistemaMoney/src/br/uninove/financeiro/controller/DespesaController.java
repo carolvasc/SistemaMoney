@@ -72,7 +72,6 @@ public class DespesaController extends HttpServlet {
 				dispatcher = req.getRequestDispatcher("listardespesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
-				
 			case "consultar":
 				id = req.getParameter("id");
 				despesa = despesaDAO.buscarPorId(Integer.parseInt(id));
@@ -82,13 +81,12 @@ public class DespesaController extends HttpServlet {
 				dispatcher.forward(req, resp);
 				break;
 			case "excluir":
-				//mesTela = Integer.parseInt(req.getParameter("mesTela"));
 				id = req.getParameter("id");
 				if (id != null) {
 					despesa.setIdDespesa(Integer.parseInt(id));
 				}
 				despesaDAO.excluir(Integer.parseInt(id));
-				resp.sendRedirect("despcontroller?acao=listar&mesTela=" + 4);
+				resp.sendRedirect("despcontroller?acao=listar&mesTela=");
 				break;
 		}
 
