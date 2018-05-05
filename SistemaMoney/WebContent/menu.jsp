@@ -82,7 +82,7 @@
 				</li>
 
 				<!-- Relatório -->
-				<li><a href="#">RELATÓRIO</a></li>
+				<li><a href="relatorios.jsp">RELATÓRIO</a></li>
 			</ul>
 			<!--Icone config-->
 			<ul class="nav navbar-nav navbar-right">

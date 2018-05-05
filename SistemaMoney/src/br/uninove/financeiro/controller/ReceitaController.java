@@ -70,13 +70,21 @@ public class ReceitaController extends HttpServlet {
 			dispatcher = req.getRequestDispatcher("listarreceita.jsp");
 			dispatcher.forward(req, resp);
 			break;
+		case "consultar":
+			id = req.getParameter("id");
+			receita = receitaDAO.buscarPorId(Integer.parseInt(id));
+			
+			req.setAttribute("receita", receita);
+			dispatcher = req.getRequestDispatcher("consultar-receita.jsp");
+			dispatcher.forward(req, resp);
+			break;
 		case "excluir":
 			id = req.getParameter("id");
 			if (id != null) {
 				receita.setIdReceita(Integer.parseInt(id));
 			}
 			receitaDAO.excluir(Integer.parseInt(id));
-			resp.sendRedirect("reccontroller?acao=listar");
+			resp.sendRedirect("reccontroller?acao=listar&mesTela=");
 			break;
 		}
 
