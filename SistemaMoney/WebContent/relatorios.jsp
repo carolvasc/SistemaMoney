@@ -49,7 +49,7 @@
 			</div>
 			<hr />
 			<div class="action-button">
-				<button class="btn btn-info" id="btn-imprimir" onClick="">Imprimir</button>
+				<a href="relatorios">Imprimir</a>
 			</div>
 		</div>
 	</div>
