@@ -10,17 +10,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Despesas</title>
 		
-		<!-- Bootstrap -->
-		<link href="resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-		
-		<!--  jQuery -->
-		<script src="resources/jquery/jquery-3.3.1.min.js"></script> 
 		
 		<!--  Importação do Menu antes da chamada do css da página -->
 		<%@ include file = "menu.jsp" %> 
 		
 		<!--  Estilo CSS da página-->
 		<link href="resources/css/despesa.css" rel="stylesheet">
+		
 				
 		<!-- Javascript -->
 		<script type="text/javascript" src="resources/javascript/despesa.js"></script>
@@ -42,7 +38,7 @@
 		%>
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<form action="despcontroller" method="post">
+			<form action="despcontroller" method="post" id="despesa">
 				<jsp:useBean id="dao" class="br.uninove.financeiro.dao.DespesaDAO" />
 				<div id="conteudo">
 					<h4>Nova Despesa</h4>
@@ -176,6 +172,6 @@
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>

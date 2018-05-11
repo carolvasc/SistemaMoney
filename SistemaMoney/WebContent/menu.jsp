@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,6 +19,12 @@
 <!-- Bootstrap -->
 <link href="resources/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+
+<!--  jQuery -->
+<script src="resources/jquery/jquery-3.3.1.min.js"></script>
+
+<!-- Inclusão do Plugin jQuery Validation-->
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
 
 </head>
 <body>
@@ -52,10 +57,10 @@
 		<div class="collapse navbar-collapse" id="barra-navegacao">
 			<!-- imagem  -->
 
-			<label class="navbar-brand" id="titulo">SEU DIMDIM</label> <img
-				src="resources/imagens/cash.png" class="centro">
+			 <img 
+				src="resources/imagens/Logo.png" class="centro">
 			<ul class="nav navbar-nav">
-
+					
 				<!-- HOME  -->
 				<li class="active"><a href="home.jsp" id="home">HOME</a></li>
 
@@ -84,28 +89,16 @@
 				<!-- Relatório -->
 				<li><a href="#">RELATÓRIO</a></li>
 			</ul>
-			<!--Icone config-->
+			<!-- Icone foto -->
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="iconeConfig">
-						<span class="glyphicon glyphicon-cog" class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Preferências</a></li>
-						<li><a href="#">Alertas</a></li>
-					</ul>
-				</li>
-
-				<!-- Icone foto -->
-
-				<li class="dropdown">
+				<li class="dropdown" id="iconeConfig">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img src="resources/imagens/usuario.png" alt="sua-foto" id="iconeFoto"
 							class="img-circle" class="centro">
 							</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Minha Conta</a></li>
+						<li><a href="alterarSenha.jsp">Alterar Senha</a></li>
 						<li><a href="login.jsp">Logout</a></li></li>
 					</ul>
 		
@@ -114,20 +107,9 @@
 		</div>
 	</nav>
 
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
-
+	
 </body>
 </html>

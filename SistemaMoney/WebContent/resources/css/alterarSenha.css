@@ -1,0 +1,65 @@
+@charset "ISO-8859-1";
+
+body{
+	font-family: Trebuchet MS;
+}
+
+div.container{
+	background-color: white;
+    width: 600px;
+    min-height: 100%;
+    border: 2px #31b0d5 solid;
+    box-shadow: 0px 0px 16px #333;
+    margin-top:110px;
+}
+
+.titulotab{
+	font-size:30px;
+	font-family:Trebuchet MS;
+	color: #286090;
+	padding: 30px 0px 40px 195px;
+}
+.titulinhos {
+	font-size: 17px;
+	padding-right: 5px;
+	padding-left: 5px;
+	color: #286090;
+	font-family:Trebuchet MS;
+}
+#senhaantiga{
+	display: inline;
+	width: 400px;
+}
+#senhanova{
+	display: inline;
+	width: 400px;
+	margin-left: 5px;
+}
+#repetir{
+	display: inline;
+	width: 400px;
+	margin-left: 10px;
+}
+
+#botaoalterarsenha{
+	width: 127px;
+	margin: 25px 0px 0px 236px;
+	font-family:Trebuchet MS;
+}
+
+.error {
+	color: red;
+}
+
+
+label#senhaantiga-error.error{
+	margin-left: 123px;
+}
+
+label#senhanova-error.error{
+	margin-left: 123px;
+}
+
+label#repetir-error.error{
+	margin-left: 123px;
+}

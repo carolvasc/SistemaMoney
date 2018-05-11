@@ -7,15 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Receitas</title>
-		
-		<!-- Bootstrap -->
-		<link href="resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-		
-		<!--  jQuery -->
-		<script src="resources/jquery/jquery-3.3.1.min.js"></script>  
-		
+		 
 		<!--  Importação do Menu antes da chamada do css da página -->
 		<%@ include file = "menu.jsp" %>
 		
@@ -34,7 +26,7 @@
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<div id="conteudo">
-				<form action="reccontroller" method="post">
+				<form action="reccontroller" method="post" id="receita">
 					<jsp:useBean id="dao" class="br.uninove.financeiro.dao.ReceitaDAO" />
 					<h4>Nova Receita</h4>
 					<div class="row">
@@ -70,7 +62,7 @@
 							<div class="form-group">
 								<label>Categoria</label> <select class="form-class"
 									id="categoria" name="categoria">
-									<option>[Selecione uma opção]</option>
+									<option value="">[Selecione uma opção]</option>
 									<c:forEach var="categoria" items="${dao.categoria}">
 										<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option>
 									</c:forEach>
@@ -146,9 +138,6 @@
 		</div>
 		<!-- /col-md-6 -->
 		<div class="col-md-3"></div>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+		
 	</body>
 </html>
