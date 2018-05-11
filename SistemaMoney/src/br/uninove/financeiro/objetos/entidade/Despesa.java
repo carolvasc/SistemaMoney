@@ -15,6 +15,8 @@ public class Despesa {
     private String nomePagtoDespesa;
     private String repetirDespesa;
     private String obsDespesa;
+    private String valorFormatado;
+
     
 
     public Integer getIdDespesa() {
@@ -41,7 +43,7 @@ public class Despesa {
     	float aux = this.valorDespesa;
     	
     	NumberFormat formatarFloat = new DecimalFormat("#,###,##0.00"); 
-        String valorFormatado = formatarFloat.format(aux); 
+        valorFormatado = formatarFloat.format(aux); 
         
         return valorFormatado;
     }

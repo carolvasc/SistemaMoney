@@ -37,7 +37,7 @@ public class DespesaController extends HttpServlet {
 			case "cadastrar":
 				despesa.setIdDespesa(0);
 				despesa.setNomeDespesa("");
-				despesa.setValorDespesa(Float.parseFloat("0"));
+				despesa.setValorDespesa(Float.parseFloat("0.00"));
 				despesa.setDataDespesa("");
 				despesa.setObsDespesa("");
 	
@@ -47,9 +47,11 @@ public class DespesaController extends HttpServlet {
 				break;
 			case "alterar":
 				id = req.getParameter("id");
+				
+				// Retorna a despesa que será alterada
 				despesa = despesaDAO.buscarPorId(Integer.parseInt(id));
-	
 				req.setAttribute("despesa", despesa);
+	
 				dispatcher = req.getRequestDispatcher("despesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
@@ -70,23 +72,21 @@ public class DespesaController extends HttpServlet {
 				dispatcher = req.getRequestDispatcher("listardespesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
-				
 			case "consultar":
 				id = req.getParameter("id");
 				despesa = despesaDAO.buscarPorId(Integer.parseInt(id));
 				
 				req.setAttribute("despesa", despesa);
-				dispatcher = req.getRequestDispatcher("despesa.jsp");
+				dispatcher = req.getRequestDispatcher("consultar-despesa.jsp");
 				dispatcher.forward(req, resp);
 				break;
 			case "excluir":
-				mesTela = Integer.parseInt(req.getParameter("mesTela"));
 				id = req.getParameter("id");
 				if (id != null) {
 					despesa.setIdDespesa(Integer.parseInt(id));
 				}
 				despesaDAO.excluir(Integer.parseInt(id));
-				resp.sendRedirect("despcontroller?acao=listar&mesTela" + mesTela);
+				resp.sendRedirect("despcontroller?acao=listar&mesTela=");
 				break;
 		}
 

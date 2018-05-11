@@ -87,7 +87,7 @@
 				</li>
 
 				<!-- Relatório -->
-				<li><a href="#">RELATÓRIO</a></li>
+				<li><a href="relatorios.jsp">RELATÓRIO</a></li>
 			</ul>
 			<!-- Icone foto -->
 			<ul class="nav navbar-nav navbar-right">
