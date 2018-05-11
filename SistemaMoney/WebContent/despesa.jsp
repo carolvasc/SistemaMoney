@@ -7,27 +7,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Despesas</title>
-		
 		
 		<!--  Importação do Menu antes da chamada do css da página -->
 		<%@ include file = "menu.jsp" %> 
 		
 		<!--  Estilo CSS da página-->
 		<link href="resources/css/despesa.css" rel="stylesheet">
-		
 				
 		<!-- Javascript -->
 		<script type="text/javascript" src="resources/javascript/despesa.js"></script>
 		
-			<script type="text/javascript">// Script para testar a função que setará uma opção default no combo		
-				function funcao(id){
-					window.onload = function(){
-						document.getElementById("categoria").options[c.getIdCategoria].selected = true;
-					}
-				}
-			</script>
 	</head>
 	<body>
 		
@@ -169,9 +158,6 @@
 		</div>
 		<!-- col-md-6 -->
 		<div class="col-md-3"></div>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="bootstrap/js/bootstrap.min.js"></script>
+		
 	</body>
 </html>
