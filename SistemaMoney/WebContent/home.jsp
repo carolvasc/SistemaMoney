@@ -9,7 +9,6 @@
 		<!-- Estilo css -->
 		<link href="resources/css/home.css" rel="stylesheet">
 		
-		
 		<!-- Javascript -->
 		<script type="text/javascript" src="resources/javascript/receita.js"></script>
 	</head>
