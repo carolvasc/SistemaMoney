@@ -19,13 +19,17 @@
 		
 		<!-- Estilo css -->
 		<link href="resources/css/cadastro.css" rel="stylesheet">
+		
+		<!-- JavaScript-->
+		<script src="resources/javascript/cadastro.js"></script>
+		
 	</head>
 <body>
 
 <body>
 		<div class="container">
   <div class="titulotab"><label>CADASTRE-SE</label></div>
-  <form id="cadastro">
+  <form id="cadastro" method="POST">
     <div class="form-group">
 					<input type="hidden" name="id" class="form-control" id="idcadastro">
 				</div>
@@ -33,6 +37,7 @@
 					<label for="nome" class="titulinhos">Nome: </label> <input type="text"
 						name="nome" placeholder="Digite seu nome" class="form-control"
 						id="nome">
+		
 				</div>
 	
 				<div class="form-group">
@@ -50,20 +55,12 @@
 	
     <div class="form-group">        
       
-       <button type="submit" onclick="return #cadastro" class="btn btn-primary" id="botaocadastrar">Cadastrar</button>
-      </div>
+       <button type="submit" class="btn btn-primary" id="botaocadastrar">Cadastrar</button>
+      
+     </div>
+     </form>
     </div>
-  </form>
-</div>
-				
-	
-	
-		<script src="http:ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
-		<script src="http:ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
-		<!-- Inclusão das validações com o Plugin jQuery Validation-->
-		<script src="resources/javascript/cadastro.js"></script>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
 	</body>

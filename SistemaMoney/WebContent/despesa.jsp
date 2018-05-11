@@ -11,17 +11,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Despesas</title>
 		
-		<!-- Bootstrap -->
-		<link href="resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		
-		<!--  jQuery -->
-		<script src="resources/jquery/jquery-3.3.1.min.js"></script> 
-		
-		<!--  Importação do Menu antes da chamada do css da página -->
+		<!--  ImportaÃ§Ã£o do Menu antes da chamada do css da pÃ¡gina -->
 		<%@ include file = "menu.jsp" %> 
 		
-		<!--  Estilo CSS da página-->
+		<!--  Estilo CSS da pÃ¡gina-->
 		<link href="resources/css/despesa.css" rel="stylesheet">
+		
 				
 		<!-- Javascript -->
 		<script type="text/javascript" src="resources/javascript/despesa.js"></script>
@@ -32,8 +28,7 @@
 		<div class="col-md-3"></div>
 		
 		<div class="col-md-6">
-			<form action="despcontroller" method="post">
-			
+			<form action="despcontroller" method="post" id="despesa">
 				<jsp:useBean id="dao" class="br.uninove.financeiro.dao.DespesaDAO" />
 				
 				<div id="conteudo">
@@ -44,7 +39,7 @@
 							<input type="hidden" id="id" name="id" value="${despesa.idDespesa}" readonly />
 								
 							<div class="form-group">
-								<label>Descrição</label> 
+								<label>DescriÃ§Ã£o</label> 
 								<input class="form-class" name="descricao" id="descricao" type="text" autofocus
 									value="${despesa.nomeDespesa}" />
 							</div>
@@ -81,7 +76,7 @@
 								<label>Categoria</label>								
 								
 								<select class="form-class" id="categoria" name="categoria">
-									<option selected="selected">[Selecione uma opção]</option>
+									<option selected="selected">[Selecione uma opÃ§Ã£o]</option>
 	                                    <c:forEach var="categoria" items="${dao.categoria}">
 		                                    <c:if test="${categoria.idCategoria == despesa.idCategDespesa}">
 		                                    	<option value="${categoria.idCategoria}" selected="selected">${categoria.tipoCategoria}</option>
@@ -100,7 +95,7 @@
 								<label>Pagamento</label>
 								
 								<select class="form-class" id="pagamento" name="pagamento">
-									<option selected="selected">[Selecione uma opção]</option>
+									<option selected="selected">[Selecione uma opÃ§Ã£o]</option>
 	                                    <c:forEach var="pagamento" items="${dao.pagamento}">
 		                                    <c:if test="${pagamento.idPagamento == despesa.idPagtoDespesa}">
 		                                    	<option value="${pagamento.idPagamento}" selected="selected">${pagamento.tipoPagamento}</option>
@@ -135,7 +130,7 @@
 								</input>
 								<br />
 								<input type="radio" name="despesa" id="despesa-parcelada" value="parcelada"
-									onclick="getRadioValor();"> Lançamento Parcelado </input>
+									onclick="getRadioValor();"> LanÃ§amento Parcelado </input>
 							</div>
 						</div>
 						<div class="col-md-6" id="box-desp-fixa" hidden>
@@ -171,7 +166,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group obs-box">
-								<label>Observação</label>
+								<label>ObservaÃ§Ã£o</label>
 								<textarea class="form-class" name="observacao" id="observacao"	rows="4">${despesa.obsDespesa}
 								</textarea>
 							</div>
@@ -198,7 +193,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
-		
+
+         <script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+
 	</body>
 </html>

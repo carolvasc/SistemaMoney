@@ -6,10 +6,14 @@ body {
 
 /* Classe */
 
+.error{
+	color:red;
+}
+
 .container{
 	background-color: white;
     width: 600px;
-    height: 390px;
+    min-height: 100%;
     border: 2px #31b0d5 solid;
     box-shadow: 0px 0px 16px #333;
     margin-top:130px;
@@ -22,7 +26,7 @@ body {
 }
 	
 .form-group {
-    margin-bottom: 43px;
+   
 }
 
 .titulinhos {
@@ -43,6 +47,12 @@ body {
 	display: inline;
 	width: 500px;
 }
+#cadastro{
+	padding-left: 189px;
+	font-family:Trebuchet MS;
+	font-size: 13px;
+	padding-top:10px;
+}
 
 #esqueci{
 	font-size: 13px;
@@ -53,6 +63,21 @@ body {
 
 #botaologar{
 	width: 127px;
-	margin: 40px 0px 0px 236px;
+	margin: 20px 0px 0px 236px;
 	font-family:Trebuchet MS;
+}
+
+.error {
+	color: red;
+}
+label#lnome-error.error{
+	margin-left: 60px;
+}
+
+label#lemail-error.error{
+	margin-left: 60px;
+}
+
+label#lsenha-error.error{
+	margin-left: 60px;
 }
