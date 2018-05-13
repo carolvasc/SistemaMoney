@@ -35,7 +35,6 @@
 				<%
 					List<Despesa> lista = (List<Despesa>) request.getAttribute("lista");
 					LancamentoController c = new LancamentoController();
-					DespesaBean db = new DespesaBean();
 	
 					int mesVisualizado = 0;
 					if (request.getAttribute("mesVisualizado") != null) {
@@ -46,7 +45,6 @@
 					}
 				%>
 				<h3 id="titulo-despesa">Despesas</h3>
-				<button class="btn btn-info" id="btn-imprimir" onClick="imprimir()">Imprimir</button>
 				<hr />
 				<div id="mes-atual">
 					<input type="submit" value="" id="btn-anterior" title="Mês anterior"
@@ -152,12 +150,5 @@
 		</div>
 		<!-- fim-box-consulta -->
 		
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
-		
-		<!-- Javascript -->
-		<script type="text/javascript" src="resources/javascript/tela-consulta.js"></script>
 	</body>
 </html>

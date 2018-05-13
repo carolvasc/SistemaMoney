@@ -11,29 +11,20 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Despesas</title>
 		
-		<!-- Bootstrap -->
-		<link href="resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-		
-		<!--  jQuery -->
-		<script src="resources/jquery/jquery-3.3.1.min.js"></script> 
-		
-		<!--  Importação do Menu antes da chamada do css da página -->
 		<%@ include file = "menu.jsp" %> 
 		
 		<!--  Estilo CSS da página-->
 		<link href="resources/css/despesa.css" rel="stylesheet">
-				
-		<!-- Javascript -->
-		<script type="text/javascript" src="resources/javascript/despesa.js"></script>
 		
+		<script type="text/javascript" src="resources/javascript/despesa.js"></script>
+			
 	</head>
 	<body>
 				
 		<div class="col-md-3"></div>
 		
 		<div class="col-md-6">
-			<form action="despcontroller" method="post">
-			
+			<form action="despcontroller" method="post" id="despesa">
 				<jsp:useBean id="dao" class="br.uninove.financeiro.dao.DespesaDAO" />
 				
 				<div id="conteudo">
@@ -81,7 +72,7 @@
 								<label>Categoria</label>								
 								
 								<select class="form-class" id="categoria" name="categoria">
-									<option selected="selected">[Selecione uma opção]</option>
+									<option selected="selected" value="">[Selecione uma opção]</option>
 	                                    <c:forEach var="categoria" items="${dao.categoria}">
 		                                    <c:if test="${categoria.idCategoria == despesa.idCategDespesa}">
 		                                    	<option value="${categoria.idCategoria}" selected="selected">${categoria.tipoCategoria}</option>
@@ -100,7 +91,7 @@
 								<label>Pagamento</label>
 								
 								<select class="form-class" id="pagamento" name="pagamento">
-									<option selected="selected">[Selecione uma opção]</option>
+									<option selected="selected" value="">[Selecione uma opção]</option>
 	                                    <c:forEach var="pagamento" items="${dao.pagamento}">
 		                                    <c:if test="${pagamento.idPagamento == despesa.idPagtoDespesa}">
 		                                    	<option value="${pagamento.idPagamento}" selected="selected">${pagamento.tipoPagamento}</option>
@@ -118,61 +109,9 @@
 					
 					<div class="row">
 						<div class="col-md-12">
-							<button type="button" class="btn btn-danger" name="repetir"
-								id="btn-repetir">Repetir</button>
-						</div>
-					</div>
-					<!-- /row -->
-					
-					<div class="row" id="box-repetir" hidden>
-					
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Repetir</label>
-								<br />
-								<input type="radio" name="despesa" id="despesa-fixa" value="fixa" onclick="getRadioValor();">
-									Despesa	Fixa
-								</input>
-								<br />
-								<input type="radio" name="despesa" id="despesa-parcelada" value="parcelada"
-									onclick="getRadioValor();"> Lançamento Parcelado </input>
-							</div>
-						</div>
-						<div class="col-md-6" id="box-desp-fixa" hidden>
-							<div class="form-group">
-								<select class="form-class">
-									<option>Mensal</option>
-									<option>Semestral</option>
-									<option>Anual</option>
-								</select>
-							</div>
-						</div>
-						
-						<div class="col-md-6" id="box-desp-parc" hidden>
-							<div class="col-md-4">
-								<div class="form-group">
-									<input class="form-class" type="text" name="parcelas"
-										id="parcelas" />
-								</div>
-							</div>
-							<div class="col-md-8">
-								<div class="form-group">
-									<select class="form-class">
-										<option>Mensal</option>
-										<option>Semestral</option>
-										<option>Anual</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /row -->
-					
-					<div class="row">
-						<div class="col-md-12">
 							<div class="form-group obs-box">
 								<label>Observação</label>
-								<textarea class="form-class" name="observacao" id="observacao"	rows="4">${despesa.obsDespesa}
+								<textarea class="form-class" name="observacao" id="observacao" rows="4">${despesa.obsDespesa}
 								</textarea>
 							</div>
 						</div>
@@ -193,12 +132,6 @@
 		<!-- col-md-6 -->
 		
 		<div class="col-md-3"></div>
-		
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
-		
+
 	</body>
 </html>

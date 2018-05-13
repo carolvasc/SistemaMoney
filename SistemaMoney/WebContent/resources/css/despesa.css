@@ -72,3 +72,8 @@ textarea.form-class {
     width: 150px;
     margin: 15px 131px 0px;
 }
+
+.error {
+	color: red;
+	font-size: 14px;
+}

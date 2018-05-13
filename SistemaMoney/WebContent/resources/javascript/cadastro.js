@@ -1,9 +1,10 @@
+
 $(document).ready(function(){
 			$('#cadastro').validate({
 				rules:{
 					nome:  {
 						required: true,
-						minlength: 1
+						minlength: 2
 					},
 					email: {
 						required: true,
@@ -17,18 +18,19 @@ $(document).ready(function(){
 				},
 				messages:{
 					nome: {
-						required:'Por favor coloque um nome',
-						minlength: 'Digite uma nome maior (min 1 caracteres)',
+						required:'Por favor insira um nome',
+						minlength: 'Digite uma nome maior (min 2 caracteres)',
 					},
 					email:{
-						required:'Por favor coloque um e-mail',
-						email: 'Digite um e-mail válido por favor'
+						required:'Por favor insira um e-mail',
+						email: 'Digite um e-mail v&aacute;lido por favor'
 						},
 					senha:{
-						required:'Por favor coloque uma senha',
+						required:'Por favor insira uma senha',
 						minlength: 'Digite uma senha maior (min 7 caracteres)',
 						maxlength: 'Digite uma senha menor (max 15 caracteres)'
 						}
 					}	
 			});
 });
+
