@@ -150,12 +150,5 @@
 		</div>
 		<!-- fim-box-consulta -->
 		
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
-		
-		<!-- Javascript -->
-		<script type="text/javascript" src="resources/javascript/tela-consulta.js"></script>
 	</body>
 </html>
