@@ -68,11 +68,16 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>Categoria</label> <select class="form-class"
-								id="categoria" name="categoria">
-								<option selected="selected" value="">[Selecione uma	opção]</option>
+							<label>Categoria</label>
+							<select class="form-class" id="categoria" name="categoria">
+								<option selected="selected" value="">[Selecione uma opção]</option>
 								<c:forEach var="categoria" items="${dao.categoria}">
-									<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option>
+									<c:if test="${categoria.idCategoria == receita.idCategReceita}">
+										<option value="${categoria.idCategoria}" selected="selected">${categoria.tipoCategoria}</option>
+									</c:if>
+									<c:if test="${categoria.idCategoria != receita.idCategReceita}">
+										<option value="${categoria.idCategoria}">${categoria.tipoCategoria}</option>
+									</c:if>
 								</c:forEach>
 							</select>
 						</div>
