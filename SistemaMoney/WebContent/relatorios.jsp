@@ -25,32 +25,17 @@
 	<div class="col-md-2"></div>
 
 	<div class="col-md-8 box-detalhe">
-		<div>
-			<%
-				LancamentoController c = new LancamentoController();
-				DespesaBean db = new DespesaBean();
-
-				int mesVisualizado = 0;
-				if (request.getAttribute("mesVisualizado") != null) {
-					String mesTipoString = String.valueOf(request.getAttribute("mesVisualizado"));
-					mesVisualizado = Integer.parseInt(mesTipoString);
-				} else {
-					mesVisualizado = c.getMesDataAtual();
-				}
-			%>
-			<h3>Relatórios</h3>
-			<hr />
-			<div>
-				<input type="submit" value="" id="btn-anterior" title="Mês anterior"
-					onClick="" />
-				<h3 style="display: inline; margin: 0 auto"><%=c.getMesExtenso(mesVisualizado)%></h3>
-				<input type="submit" value="" id="btn-proximo" title="Próximo mês"
-					onClick="" />
-			</div>
-			<hr />
-			<div class="action-button">
-				<button class="btn btn-info" id="btn-imprimir" onClick="">Imprimir</button>
-			</div>
+	<div>
+		<h3>Relatórios</h3>
+		<hr />
+		<div class="action-button">
+			<!-- 				<a href="relatorios">Imprimir</a> -->
+			<button class="btn btn-primary" id="btn-imprimir"
+				onClick="javascript:window.location='relatorios'">
+				Gerar Relatório <i class="glyphicon glyphicon-print"></i>
+			</button>
+		</div>
+		
 		</div>
 	</div>
 

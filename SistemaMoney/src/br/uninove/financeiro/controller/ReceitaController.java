@@ -19,6 +19,7 @@ import java.util.List;
 
 @WebServlet("/reccontroller")
 public class ReceitaController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +30,7 @@ public class ReceitaController extends HttpServlet {
 		ReceitaDAO receitaDAO = new ReceitaDAO();
 		LancamentoDAO lancamentoDAO = new LancamentoDAO();
 		LancamentoController l = new LancamentoController();
-		
+
 		String id = "";
 		RequestDispatcher dispatcher;
 
@@ -55,13 +56,13 @@ public class ReceitaController extends HttpServlet {
 			break;
 		case "listar":
 			int mesTela;
-			
-			if(req.getParameter("mesTela") == ""){
+
+			if (req.getParameter("mesTela") == "") {
 				mesTela = l.getMesDataAtual();
 			} else {
 				mesTela = Integer.parseInt(req.getParameter("mesTela"));
 			}
-			
+
 			List<Receita> lista = lancamentoDAO.listarReceitas(mesTela, l.getAnoDataAtual());
 
 			req.setAttribute("mesVisualizado", mesTela);
@@ -73,7 +74,7 @@ public class ReceitaController extends HttpServlet {
 		case "consultar":
 			id = req.getParameter("id");
 			receita = receitaDAO.buscarPorId(Integer.parseInt(id));
-			
+
 			req.setAttribute("receita", receita);
 			dispatcher = req.getRequestDispatcher("consultar-receita.jsp");
 			dispatcher.forward(req, resp);

@@ -12,5 +12,17 @@
 	<classpathentry kind="lib" path="C:/Users/JARs/standard-1.1.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/JARs/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/commons-digester-2.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/commons-beanutils-1.9.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/commons-beanutils-1.9.3-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/commons-beanutils-1.9.3-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/commons-beanutils-1.9.3-test-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/groovy-all-2.4.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/groovy-all-2.4.3-indy.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/groovy-all-2.4.3-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/com.lowagie.text-2.1.7.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

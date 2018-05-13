@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="teste" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e6c83b77-6f6b-4474-8b75-61f0f578541b">
-	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[c2lzdGVtYWZpbmFuY2Vpcm8uY2F0ZWdvcmlhcyAsMjQyLDE2Niw0M2IzYjEzMy00OWFjLTRjODkt
-OTdkMS1iNjQxOGNiOTA2NzY7c2lzdGVtYWZpbmFuY2Vpcm8ucGFnYW1lbnRvICwyNDIsNTAsODQ0
-MzEzOTUtZjUzOC00MmQ4LTk2NWMtMTQ0ODBkNTJmNGIzO3Npc3RlbWFmaW5hbmNlaXJvLmRlc3Bl
-c2FzICwxNSwxNSwzYTBhMmU4OC1mM2YwLTRjZjQtYmM2ZS04NzViNzFlNDZmNmI7
-]]>
-	</property>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="192"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="797"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Financeiro Data Adapter "/>
@@ -35,10 +29,6 @@ ORDER BY sistemafinanceiro.despesas.data_despesa ASC]]>
 	<field name="forma_pagamento" class="java.lang.String"/>
 	<title>
 		<band height="100" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="90" height="99" uuid="9ebf22e4-9457-4442-9808-42043fd6f7b9"/>
-				<imageExpression><![CDATA["WebContent/resources/imagens/dimdim.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="150" y="29" width="260" height="40" uuid="0aadce9f-ba5c-4a3c-a6c3-fa4616d1caff"/>
 				<textElement textAlignment="Center">
@@ -46,10 +36,6 @@ ORDER BY sistemafinanceiro.despesas.data_despesa ASC]]>
 				</textElement>
 				<text><![CDATA[Sistema Money]]></text>
 			</staticText>
-			<image>
-				<reportElement x="460" y="0" width="94" height="99" uuid="7ec9f9c1-2289-4766-a000-3ee2f8c18347"/>
-				<imageExpression><![CDATA["WebContent/resources/imagens/dimdim.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
