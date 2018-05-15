@@ -40,7 +40,7 @@ public class UsuarioController extends HttpServlet{
 			usuario.setNome("");
 					
 			req.setAttribute("usuario", usuario);
-			RequestDispatcher dispatcher = req.getRequestDispatcher("formusuario.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("cadastro.jsp");
 			dispatcher.forward(req, resp);
 			resp.getWriter().println("Cadastrado com sucesso");
 			
@@ -86,18 +86,10 @@ public class UsuarioController extends HttpServlet{
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 		usuario.setNome(nome);
-	
-		if(usuarioDAO.verificarlogin(usuario)){
-			resp.getWriter().print("<script> window.alert('Esse Email ja existe em nosso site!'); location.href = 'formusuario.jsp';</script>");	
-		}else{
-			usuarioDAO.salvar(usuario);
-			resp.getWriter().print("<script> window.alert('Sua conta foi cadastrada com sucesso!'); location.href = 'login.jsp';</script>");
-		}
 		
+	   usuarioDAO.verificarlogin(usuario);
 		
-		//usuarioDAO.verificarlogin(usuario);
-		
-		resp.sendRedirect("login.jsp");
+	   resp.sendRedirect("login.jsp");
 	}
 	
 }

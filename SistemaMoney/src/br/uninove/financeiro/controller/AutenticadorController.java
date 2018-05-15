@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import br.uninove.financeiro.dao.UsuarioDAO;
 import br.uninove.financeiro.objetos.entidade.Usuario;
-
+/*/
 @WebServlet("/autenticador")
 public class AutenticadorController extends HttpServlet{
 		
@@ -53,7 +53,7 @@ public class AutenticadorController extends HttpServlet{
 			
 			sessao.setMaxInactiveInterval(60*5); //especifica o tempo em segundos o request do usuario
 			
-			req.getRequestDispatcher("menu.jsp").forward(req, resp);//redirecionando para tela principal
+			req.getRequestDispatcher("home.jsp").forward(req, resp);//redirecionando para tela principal
 	
 		}else {
 			resp.getWriter().print("<script> window.alert('Não encontrado!'); location.href = 'login.jsp';</script>");
@@ -63,3 +63,4 @@ public class AutenticadorController extends HttpServlet{
 	
 }
 
+/*/

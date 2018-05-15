@@ -114,8 +114,7 @@ public class UsuarioDAO {
 				usu.setId(resultado.getInt("id_usuario"));
 				usu.setLogin(resultado.getString("login"));
 				usu.setSenha(resultado.getString("senha"));
-				usu.setNome(resultado.getString("nome_usuario"));
-				
+								
 				return usuario;
 				}
 			}catch(SQLException e){
@@ -124,23 +123,22 @@ public class UsuarioDAO {
 			return null;
 	}
 	
-		public boolean verificarlogin(Usuario usuario){
+	public boolean verificarlogin(Usuario usuario){
 					
 			String sql = "SELECT login FROM usuarios WHERE login = ?";
-			
+			boolean repetido = false;
 			try(PreparedStatement ver = conexao.prepareStatement(sql)){
 				ver.setString(1, usuario.getLogin());
+				
 				ResultSet result = ver.executeQuery();
-				usuario.setLogin(result.getString("login"));
-				ver.execute();
-				if(result.next()){
-					return false;
-				}				
+				repetido = result.next();
+				if(repetido = true){					
+				}			
 				}catch(SQLException e){
 					e.printStackTrace();
 				}
-			return true;	
-			
+			cadastrar(usuario);
+			return repetido;
 			}
 	
 	public void excluir(Usuario usuario){
