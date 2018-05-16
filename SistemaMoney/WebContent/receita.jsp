@@ -17,6 +17,12 @@
 		<!--  jQuery -->
 		<script src="resources/jquery/jquery-3.3.1.min.js"></script> 
 		
+		<!-- Mask -->
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+		
 		<!--  Importação do Menu antes da chamada do css da página -->
 		<%@ include file = "menu.jsp" %> 
 		
@@ -25,6 +31,7 @@
 				
 		<!-- Javascript -->
 		<script type="text/javascript" src="resources/javascript/receita.js"></script>
+		<script type="text/javascript" src="resources/javascript/mask.js"></script>
 		
 	</head>
 	<body>

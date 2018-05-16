@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import br.uninove.financeiro.dao.UsuarioDAO;
 import br.uninove.financeiro.objetos.entidade.Usuario;
-/*/
+
 @WebServlet("/autenticador")
 public class AutenticadorController extends HttpServlet{
 		
@@ -63,4 +63,3 @@ public class AutenticadorController extends HttpServlet{
 	
 }
 
-/*/

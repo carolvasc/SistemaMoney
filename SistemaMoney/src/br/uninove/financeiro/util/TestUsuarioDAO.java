@@ -10,16 +10,17 @@ public class TestUsuarioDAO {
 	
 	
 	public static void main(String[] args){
-			
+		
+		TestExcluir();
 		//TestSalvar();
 		//TestBuscarPorId();
 		//TestBuscarTodos();
 		//TestAutenticar();
 		//TestCadastrar();
-		Verificar();
+		//Verificar();
 		}
 	
-		private static void Verificar() {
+	/*/	private static void Verificar() {
 				UsuarioDAO usuDAO = new UsuarioDAO();
 				
 				Usuario usu = new Usuario();
@@ -29,7 +30,7 @@ public class TestUsuarioDAO {
 				
 				usuDAO.verificarlogin(usu);
 		}
-	
+	/*/
 	
 		private static void TestAutenticar() {
 		
@@ -61,7 +62,7 @@ public class TestUsuarioDAO {
 		public static void TestExcluir(){
 			
 			Usuario usu = new Usuario();
-			usu.setId(4);
+			usu.setId(5);
 			
 			UsuarioDAO usuDAO = new UsuarioDAO();
 			usuDAO.excluir(usu);

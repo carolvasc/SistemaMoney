@@ -1,6 +1,6 @@
 package br.uninove.financeiro.objetos.entidade;
 
-public class Categoria {
+public class Categoria extends ParseJson{
 	
 	private Integer idCategoria;
 	private String tipoCategoria;

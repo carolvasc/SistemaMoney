@@ -2,6 +2,8 @@
 <%@page import="br.uninove.financeiro.controller.LancamentoController"%>
 <%@page import="br.uninove.financeiro.controller.DespesaController"%>
 <%@page import="java.util.List"%>
+<%@page import="java.io.*" %>
+<%@page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,6 +18,11 @@
 		
 		<!--  jQuery -->
 		<script src="resources/jquery/jquery-3.3.1.min.js"></script>
+		
+		<!-- HIGHCHART -->
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
 		
 		<!--  Estilo CSS -->
 		<link href="resources/css/lancamentos.css" rel="stylesheet">
@@ -68,10 +75,10 @@
 			</div>
 		</div>
 		<div class="col-md-1"></div>
-		<div class="col-md-3 box-grafico">
+		<div id="container" class="col-md-3 box-grafico">
 			<h3>Gráfico</h3>
-			<hr />
-			<img	src="GeracaoGraficoServlet" alt="Progress chart" />
+				
+		
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -1,3 +1,4 @@
+<%@page import="br.uninove.financeiro.objetos.entidade.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -21,12 +22,16 @@
 		
 	</head>
 	<body>
+	<%
+		Usuario u = (Usuario)request.getAttribute("usuario");
+	%>
+	
 		<div class="container">
   <div class="titulotab"><label>LOGIN</label></div>
-  <form id="login">
+  <form id="login" action="autenticador" method="post">
     <div class="form-group">
 							<label for="email" class="titulinhos">E-mail:</label>
-							<input type="email" name="lemail" class="form-control" id="lemail"
+							<input type="email" name="login" class="form-control" id="lemail"
 
 								   placeholder="Digite seu e-mail">
 							
@@ -34,7 +39,7 @@
 	
 						<div class="form-group">
 							<label for="senha" class="titulinhos">Senha:</label>
-							<input type="password" name="lsenha" class="form-control"
+							<input type="password" name="senha" class="form-control"
 							       id="lsenha" placeholder="Digite sua senha">
 							
 						</div>
@@ -43,7 +48,7 @@
 	
     <div class="form-group">        
       
-       <button type="submit" onclick="return validate()" class="btn btn-primary" id="botaologar">Logar</button>
+       <button type="submit" onclick="return validate()" class="btn btn-primary" id="botaologar" value="autenticar">Logar</button>
        
       </div>
     </div>

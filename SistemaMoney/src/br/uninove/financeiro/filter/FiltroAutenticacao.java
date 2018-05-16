@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-/*/
+
 @WebFilter(dispatcherTypes={DispatcherType.REQUEST}, urlPatterns=("/*"))
 public class FiltroAutenticacao implements Filter{
 		
@@ -55,4 +55,3 @@ public class FiltroAutenticacao implements Filter{
 	
 
 }
-/*/

@@ -39,7 +39,7 @@
 				<div class="col-md-1"></div>
 			</div>
 		</div>
-		<div class="container">
+		<div ng-app="app" class="container">
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-5 ">
@@ -57,9 +57,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-5">
+				<div ng-controller="dashboardCtrl" class="col-md-5">
 					<div class="tabelaGrafico">
 						<h5 class="tituloGrafico">Gráfico</h5>
+						<div class="panel panel-default dash-panel-mini">
+			                    <div class="panel-body">
+			                        <canvas id="minilineChart"></canvas>
+			                    </div>
+			                </div>
 					</div>
 				</div>
 				<div class="col-md-1"></div>
@@ -74,10 +79,12 @@
 			<br>
 			<div class="rodape">© Copyright 2018</div>
 		</div>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+		<script src="resources/javascript/dashboard.js"></script>
 	
 	</body>
 </html>
