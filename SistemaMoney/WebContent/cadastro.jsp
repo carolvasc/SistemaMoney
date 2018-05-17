@@ -1,3 +1,4 @@
+<%@page import="br.uninove.financeiro.objetos.entidade.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -27,35 +28,41 @@
 <body>
 
 <body>
+
+	<%
+		Usuario u = (Usuario)request.getAttribute("usuario");
+	%>
+	
+
 		<div class="container">
   <div class="titulotab"><label>CADASTRE-SE</label></div>
-  <form id="cadastro" method="POST">
+  <form id="cadastro" action="usucontroller" method="POST">
     <div class="form-group">
-					<input type="hidden" name="id" class="form-control" id="idcadastro">
+					<input type="hidden" name="id" class="form-control" id="idcadastro" value="<%=u.getId()%>">
 				</div>
 				<div class="form-group">
 					<label for="nome" class="titulinhos">Nome: </label> <input type="text"
 						name="nome" placeholder="Digite seu nome" class="form-control"
-						id="nome">
+						id="nome" value="<%=u.getNome()%>">
 		
 				</div>
 	
 				<div class="form-group">
 					<label for="email" class="titulinhos">E-mail: </label> <input
-						type="email" name="email" placeholder="Digite seu e-mail"
-						class="form-control" id="email">
+						type="email" name="login" placeholder="Digite seu e-mail"
+						class="form-control" id="email"  value="<%=u.getLogin()%>">
 				</div>
 	
 				<div class="form-group">
 					<label for="senha" class="titulinhos">Senha:</label> <input
 						type="password" name="senha" placeholder="Digite sua senha"
-						class="form-control" id="senha">
+						class="form-control" id="senha"  value="<%=u.getSenha()%>">
 				</div>
 					
 	
     <div class="form-group">        
       
-       <button type="submit" class="btn btn-primary" id="botaocadastrar">Cadastrar</button>
+       <button type="submit" class="btn btn-primary" id="botaocadastrar" value="salvar">Cadastrar</button>
       
      </div>
      </form>

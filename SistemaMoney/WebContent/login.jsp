@@ -1,3 +1,4 @@
+<%@page import="br.uninove.financeiro.objetos.entidade.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -27,22 +28,26 @@
 
 </head>
 <body>
-
+	
+	<%
+		Usuario u = (Usuario)request.getAttribute("usuario");
+	%>
+	
 	<div class="container">
 		<div class="titulotab">
 			<label>LOGIN</label>
 		</div>
-		<form id="login">
+		<form id="login" action="autenticador" method="post">
 			<div class="form-group">
 				<label for="email" class="titulinhos">E-mail:</label> <input
-					type="email" name="lemail" class="form-control" id="lemail"
+					type="email" name="login" class="form-control" id="lemail"
 					placeholder="Digite seu e-mail">
 
 			</div>
 
 			<div class="form-group">
 				<label for="senha" class="titulinhos">Senha:</label> <input
-					type="password" name="lsenha" class="form-control" id="lsenha"
+					type="password" name="senha" class="form-control" id="lsenha"
 					placeholder="Digite sua senha">
 
 			</div>
@@ -50,13 +55,13 @@
 				<a id="esqueci" href="#">Esqueci minha senha</a>
 			</div>
 			<div id="cadastro">
-				Não tem cadastro ainda?<a href="cadastro.jsp"> clique aqui!</a>
+				Não tem cadastro ainda?<a href="usucontroller?acao=cadastrar"> clique aqui!</a>
 			</div>
 
 
 			<div class="form-group">
 
-				<button type="submit" class="btn btn-primary" id="botaologar">Logar</button>
+				<button type="submit" class="btn btn-primary" id="botaologar" value="autenticar">Logar</button>
 
 			</div>
 		</form>
