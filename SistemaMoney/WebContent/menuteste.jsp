@@ -14,7 +14,7 @@
 	href="resources/imagens/CCs.png" />
 
 <!-- Estilo css -->
-<link href="resources/css/menu.css" rel="stylesheet">
+<link href="resources/css/menuteste.css" rel="stylesheet">
 
 <!-- Bootstrap -->
 <link href="resources/bootstrap/dist/css/bootstrap.min.css"
@@ -26,10 +26,12 @@
 <!-- Inclusão do Plugin jQuery Validation-->
 <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
 
+
+
 </head>
 <body>
-	
-	<%
+
+<%
 		
 		int mes = 0;
 	
@@ -40,59 +42,39 @@
 	
 	%>
 	
-	<!-- Barra navegação -->
-
 	<nav class="navbar navbar-light" class="navbar navbar-inverse">
-
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#barra-navegacao">
-					<span class="sr-only">Alternar Menu</span> <span class="icon-bar"></span>
-					<span class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
-			</div>
-		</div>
-
-		<div class="collapse navbar-collapse" id="barra-navegacao">
-			<!-- imagem  -->
-
-			 <img 
-				src="resources/imagens/Logo.png" class="centro">
-			<ul class="nav navbar-nav">
-					
-				<!-- HOME  -->
-				<li class="active"><a href="home.jsp" id="home">HOME</a></li>
-
-				<!-- Receitas   -->
-
-				<li><a href="reccontroller?acao=cadastrar">RECEITA</a></li>
-
-				<!-- Despesas  -->
-
-				<li><a href="despcontroller?acao=cadastrar">DESPESA</a></li>
-
-				<!-- Lançamentos  -->
-
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> LANÇAMENTOS <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="reccontroller?acao=listar&mesTela="<%= mes %>>Receitas</a>
-						</li>
-						<li><a href="despcontroller?acao=listar&mesTela="<%= mes %>>Despesas</a>
-						</li>
-					</ul>
-				</li>
-
-				<!-- Relatório -->
-				<li><a href="relatorios.jsp">RELATÓRIO</a></li>
-			</ul>
-			<!-- Icone foto -->
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bar1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#" ></a> 
+    <img src="resources/imagens/Logo.png" class="centro" ><p style="color: black">.................................................................................</a>
+</p>></div>
+<div class="collapse navbar-collapse" id="bar1">
+<ul class="nav navbar-nav" >
+          <li><a href="home.jsp">HOME</a></li>
+          <li><a href="reccontroller?acao=cadastrar">RECEITA</a></li>
+          <li><a href="despcontroller?acao=cadastrar">DESPESA</a></li>
+          <li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"> LANÇAMENTOS <span class="caret"></span>
+			</a>
+				<ul class="dropdown-menu">
+					<li><a href="reccontroller?acao=listar&mesTela" <%= mes %>>RECEITAS</a>
+					</li>
+					<li><a href="despcontroller?acao=listar&mesTela=" <%= mes %>>DESPESAS</a>
+					</li>
+				</ul>
+		  </li>
+          <li><a href="relatorios.jsp">RELATÓRIO</a></li>
+			</ul>	
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown" id="iconeConfig">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<li class="dropdown" id="iconeConfig" >
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="
+    padding-bottom:  35px;
+    padding-left: 37px;">
 						<img src="resources/imagens/engra.png" alt="sua-foto" id="iconeFoto"
 							 class="centroo">	
 					</a>
@@ -100,11 +82,6 @@
 						<li><a href="alterarSenha.jsp">Alterar Senha</a></li>
 						<li><a href="login.jsp">Logout</a></li></li>
 					</ul>
-		
-		</div>
-
-		</div>
-	</nav>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
