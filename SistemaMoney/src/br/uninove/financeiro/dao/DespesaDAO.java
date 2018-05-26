@@ -206,7 +206,10 @@ public class DespesaDAO {
 				despesa.setDataDespesa(dataFormatada);
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
 				despesa.setIdCategDespesa(rs.getInt("categoria_id_categoria"));
+				despesa.setNomeCategDespesa(buscarTipoCategoria(despesa.getIdCategDespesa()));
+				
 				despesa.setIdPagtoDespesa(rs.getInt("pagamento_id_pagamento"));
+				despesa.setNomePagtoDespesa(buscarTipoPagamento(despesa.getIdPagtoDespesa()));
 
 				return despesa;
 

@@ -16,41 +16,41 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-
 @WebServlet("/lanccontroller")
 public class LancamentoController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	public Date dataDia = new Date();
 	public Calendar cal = Calendar.getInstance();
 	int dia, mes, ano;
-	
+
 	// Mês atual por extenso
 	public String getMesExtenso(int mesVisualizado) {
-		switch(mesVisualizado){
-		   case 1:
-			   	return "Janeiro";
-		   case 2:
-			   	return "Fevereiro";
-		   case 3:
-			   	return "Março";
-		   case 4:
-			   	return "Abril";
-		   case 5:
-			   	return "Maio";
-		   case 6: 
-			   	return "Junho";
-		   case 7: 
-			   	return "Julho";
-		   case 8: 
-			   	return "Agosto";
-		   case 9: 
-			   	return "Setembro";
-		   case 10: 
-			   	return "Outubro";
-		   case 11: 
-			   	return "Novembro";
-		   case 12: 
-			   	return "Dezembro";
+		switch (mesVisualizado) {
+		case 1:
+			return "Janeiro";
+		case 2:
+			return "Fevereiro";
+		case 3:
+			return "Março";
+		case 4:
+			return "Abril";
+		case 5:
+			return "Maio";
+		case 6:
+			return "Junho";
+		case 7:
+			return "Julho";
+		case 8:
+			return "Agosto";
+		case 9:
+			return "Setembro";
+		case 10:
+			return "Outubro";
+		case 11:
+			return "Novembro";
+		case 12:
+			return "Dezembro";
 
 		}
 		return null;
@@ -81,10 +81,10 @@ public class LancamentoController extends HttpServlet {
 		switch (acao) {
 		case "lancamentos":
 			List<Despesa> listaLanc = lancamentoDAO.listarDespesas(mesTela, getAnoDataAtual());
-			
+
 			req.setAttribute("mesVisualizado", mesTela);
 			req.setAttribute("listaLanc", listaLanc);
-			
+
 			dispatcher = req.getRequestDispatcher("lancamentos.jsp");
 			dispatcher.forward(req, resp);
 			break;

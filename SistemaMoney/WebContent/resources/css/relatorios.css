@@ -1,0 +1,11 @@
+body {
+	background-color: lightgray;
+}
+
+.box-detalhe {
+	background-color: white;
+	border: 1px solid gray;
+	min-height: 100%;
+	padding: 15px;
+	padding-top: 0px;
+}

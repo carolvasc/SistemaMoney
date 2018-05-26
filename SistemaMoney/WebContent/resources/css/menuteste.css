@@ -1,0 +1,67 @@
+/* Seletores */
+
+body {
+	background-color: Gray;
+}
+
+#fonte{
+	color: black;
+}
+
+nav {
+	background-color:#000000;
+	font-family:Trebuchet MS;
+}
+.dropdown-menu>li>a{
+	color:white
+}
+.navbar-toggle{
+	background-color: white;
+}
+a {
+	color: white;
+}
+
+ul {
+	color: #000000;
+}
+
+/* Classe */
+
+.centro{
+	margin-top: 5px;
+	height: 40px;
+	width: 200px;
+	position: absolute;
+}
+.centroo{
+	margin-top: -5px;
+	margin-left: -40px;
+	position: absolute;
+}
+
+.navbar-brand, .navbar-nav>li>a {
+	color:white;
+}
+
+
+/* ID */
+
+#home{
+	margin: 0px 0px 0px 426px;
+}
+
+#margem{
+
+	margin: auto 0;
+}
+
+#iconeConfig{
+ height: 55px;
+}
+
+#iconeFoto{
+
+width:55px;
+height:35px;
+}
