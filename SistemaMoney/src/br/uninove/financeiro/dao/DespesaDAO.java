@@ -94,6 +94,21 @@ public class DespesaDAO {
 		}
 	}
 
+	
+	// Busca por todas as despesas e as coloca em uma lista
+	public ResultSet getResultSet() {
+		sql = "SELECT * FROM despesas where usuario_id_usuario = 1";
+		ResultSet rs = null; 
+		try {
+			PreparedStatement selecionar = conexao.prepareStatement(sql);
+			rs = selecionar.executeQuery();
+		}catch(Exception e){
+			
+		}
+		return rs;
+	}	
+	
+
 	// Busca por todas as despesas e as coloca em uma lista
 	public List<Despesa> buscar() {
 		sql = "SELECT * FROM despesas";
