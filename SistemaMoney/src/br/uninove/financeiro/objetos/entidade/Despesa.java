@@ -16,8 +16,8 @@ public class Despesa {
     private String repetirDespesa;
     private String obsDespesa;
     private String valorFormatado;
+    private Double valorTotal;
 
-    
 
     public Integer getIdDespesa() {
         return idDespesa;
@@ -106,6 +106,14 @@ public class Despesa {
 
 	public void setNomePagtoDespesa(String nomePagtoDespesa) {
 		this.nomePagtoDespesa = nomePagtoDespesa;
+	}
+
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
     
 }

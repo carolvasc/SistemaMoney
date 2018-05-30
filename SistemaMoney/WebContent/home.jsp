@@ -1,3 +1,5 @@
+<%@page import="br.uninove.financeiro.objetos.entidade.Usuario"%>
+<%@page import="br.uninove.financeiro.objetos.entidade.Despesa"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,6 +14,14 @@
 	</head>
 	<body>
 	
+		<%
+		
+			Usuario usuario = (Usuario) request.getSession().getAttribute("usuAutenticador");
+		
+			Double valor = (Double) request.getAttribute("valorTotal");
+			
+		%>
+	
 		<!-- box de informações -->
 		<div class="container">
 			<div class="row">
@@ -19,8 +29,8 @@
 				<div class="col-md-10">
 					<div class="tabelaSaldo" style="height: 300px">
 						<div>
-							<span style="display: block">Olá, Carol!</span> <span>Seu
-								saldo é de R$ 800,00</span>
+							<span style="display: block">Olá, <%= usuario.getNome() %> </span>
+							<span>Seu saldo é de R$ <%= valor %></span>
 						</div>
 					</div>
 				</div>
