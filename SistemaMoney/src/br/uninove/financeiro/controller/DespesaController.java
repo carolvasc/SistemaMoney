@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.List;
 
-//localhost:8080/SistemaMoney/despcontroller?acao=nomeDaAcao&mesTela=numeroDeUmADoze
-
 @WebServlet("/despcontroller")
 public class DespesaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

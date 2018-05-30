@@ -15,15 +15,16 @@ import br.uninove.financeiro.objetos.entidade.Usuario;
 
 @WebServlet("/autenticador")
 public class AutenticadorController extends HttpServlet{
-		
+		static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		//acessa a sessão, caso não exista ele não ira criar outra sessão
+		// Acessa a sessão, caso não exista ele não ira criar outra sessão
 		HttpSession sessao = req.getSession(false);
 		
 		if(sessao!= null) {
-			sessao.invalidate(); //invalida caso não exista uma sessão
+			sessao.invalidate(); // Invalida a sessão caso ela não exista
 		}
 		
 		resp.sendRedirect("login.jsp");
@@ -33,30 +34,33 @@ public class AutenticadorController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		//buscar os dados no banco 
 		String login = req.getParameter("login");
 		String senha = req.getParameter("senha");
 		
-		//colocando dados em objetos Usuario
 		Usuario usuario = new Usuario();
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 		
-		//isntanciar o usuarioDAO
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Usuario usuAutenticador = usuarioDAO.autenticar(usuario);//variavel que carrega o usuario ja registrado
+		Usuario usuAutenticador = usuarioDAO.autenticar(usuario); // Variável que carrega o usuário já registrado
 		
-		//verificando se o usuario foi encontrado
-		if(usuAutenticador!= null) {
+		// Verifica se o usuário foi encontrado
+		if(usuAutenticador != null) {
 			//se o usuario for altenticado, criara uma sessão
-			HttpSession sessao = req.getSession(true); //se não tiver um sessão ele cria
-			sessao.setAttribute("usuAutenticador",usuAutenticador); //pegar o objeto dentro da sessao
+			HttpSession sessao = req.getSession(true);
+			sessao.setAttribute("usuAutenticador", usuAutenticador);
 			
-			sessao.setMaxInactiveInterval(60*5); //especifica o tempo em segundos o request do usuario
+			sessao.setMaxInactiveInterval(80 * 5); // Especifica o tempo, em segundos, o request do usuario
 			
-			req.getRequestDispatcher("home.jsp").forward(req, resp);//redirecionando para tela principal
+			req.getRequestDispatcher("home.jsp").forward(req, resp);
+			
+			// Recupera o id do usuario logado para realizar consultas ao banco
+			sessao.setAttribute("idUsuario", usuAutenticador.getId());
+			
+			// Recupera o nome do usuário para mostra-lo na home
+			sessao.setAttribute("nomeUsuario", usuAutenticador.getNome());
 	
-		}else {
+		} else {
 			resp.getWriter().print("<script> window.alert('Não encontrado!'); location.href = 'login.jsp';</script>");
 		}
 	}

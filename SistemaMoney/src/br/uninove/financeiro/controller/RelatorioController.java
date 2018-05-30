@@ -24,7 +24,7 @@ public class RelatorioController extends HttpServlet {
 		Relatorio relatorio = new Relatorio();
 		Map<String, Object> param = new HashMap<String, Object>();
 		String jrxmlPath = request.getServletContext().getRealPath("/reports/teste.jrxml");
-		relatorio.gerarRelatorio(response, param, jrxmlPath);
+		relatorio.gerarRelatorio(request, response, param, jrxmlPath);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
