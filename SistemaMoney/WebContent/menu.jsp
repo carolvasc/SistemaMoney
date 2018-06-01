@@ -98,7 +98,7 @@
 							</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="alterarSenha.jsp">Alterar Senha</a></li>
+						<li><a href="usucontroller?acao=alterar">Alterar Senha</a></li>
 						<li><a href="login.jsp">Logout</a></li></li>
 					</ul>
 		

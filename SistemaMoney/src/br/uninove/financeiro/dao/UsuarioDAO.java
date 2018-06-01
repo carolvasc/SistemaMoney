@@ -44,19 +44,18 @@ public class UsuarioDAO {
 	}
 	
 	public void alterar(Usuario usuario){
-	sql = "UPDATE usuarios SET login=?, senha=?, nome_usuario=? WHERE id_usuario=? ";
-		
-		try(PreparedStatement alterar = conexao.prepareStatement(sql)){
-			alterar.setString(1, usuario.getLogin());
-			alterar.setString(2, usuario.getSenha());
-			alterar.setString(3, usuario.getNome());
-			alterar.setInt(4, usuario.getId());
-			alterar.execute();
-		} 
-		catch (SQLException ex){
-			System.out.println(ex.toString());
+		sql = "UPDATE usuarios SET login=?, senha=?, nome_usuario=? WHERE id_usuario=? ";
+			
+			try(PreparedStatement alterar = conexao.prepareStatement(sql)){
+				alterar.setString(1, usuario.getLogin());
+				alterar.setString(2, usuario.getSenha());
+				alterar.setString(3, usuario.getNome());
+				alterar.execute();
+			} 
+			catch (SQLException ex){
+				System.out.println(ex.toString());
+			}
 		}
-	}
 	
 	public Usuario buscarPorId(Integer id){
 		String sql = "SELECT * FROM usuarios WHERE id_usuario=?";
@@ -79,6 +78,9 @@ public class UsuarioDAO {
 		}
 		return null;
 	}
+	
+	
+
 	
 	public List<Usuario> buscarTodos(){
 		String sql = "SELECT * FROM usuarios";
@@ -138,6 +140,7 @@ public class UsuarioDAO {
 				}catch(SQLException e){
 					e.printStackTrace();
 				}
+			
 			cadastrar(usuario);
 			return repetido;
 			}

@@ -8,29 +8,31 @@
 </head>
 <body>
 
+	
 	<div class="container">
 		<div class="titulotab">
 			<label>Alterar a Senha</label>
 		</div>
 
-		<form id="alterarSenha">
-
+		<form id="alterarSenha" >
+			
 			<div class="form-group">
-				<label for="senhaantiga" class="titulinhos">Senha antiga: </label> <input
-					type="password" name="senhaantiga"
-					placeholder="Digite a senha antiga" class="form-control"
+				<label for="senhaantiga" class="titulinhos">Senha: </label> <input
+					type="text" name="login"
+					placeholder="Digite seu email" class="form-control"
+					id="senhaantiga">
+			</div>		
+			
+			<div class="form-group">
+				<label for="senhaantiga" class="titulinhos">Senha: </label> <input
+					type="text" name="senhanova"
+					placeholder="Digite seu email" class="form-control"
 					id="senhaantiga">
 			</div>
 
 			<div class="form-group">
-				<label for="senhanova" class="titulinhos">Nova senha : </label> <input
-					type="password" name="senhanova" placeholder="Digite a nova senha"
-					class="form-control" id="senhanova">
-			</div>
-
-			<div class="form-group">
 				<label for="repetir" class="titulinhos">Nova senha:</label> <input
-					type="password" name="repetir"
+					type="password" name="senha2"
 					placeholder="Digite a nova senha novamente" class="form-control"
 					id="repetir">
 			</div>
@@ -38,11 +40,10 @@
 
 			<div class="form-group">
 
-				<button type="submit" class="btn btn-primary" id="botaoalterarsenha">Alterar</button>
+				<button type="submit" class="btn btn-primary" id="botaoalterarsenha" >Alterar</button>
 
 			</div>
 		</form>
 	</div>	
-
 </body>
 </html>

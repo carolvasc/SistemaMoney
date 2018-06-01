@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.uninove.financeiro.dao.UsuarioDAO;
 import br.uninove.financeiro.objetos.entidade.Usuario;
@@ -27,8 +28,9 @@ public class UsuarioController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
 		
+		
 		String acao = req.getParameter("acao");
-		String id = req.getParameter("id");
+		String id = req.getParameter("id");			
 		Usuario usuario = new Usuario();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		
@@ -60,16 +62,17 @@ public class UsuarioController extends HttpServlet{
 			dispatcher.forward(req, resp);
 			
 		}else if(acao.equals("alterar")){
-			
+			id = req.getParameter("id");
 			usuario = usuarioDAO .buscarPorId(Integer.parseInt(id));
 			req.setAttribute("usuario", usuario);
 			RequestDispatcher dispatcher = req.getRequestDispatcher("alterarSenha.jsp");
 			dispatcher.forward(req, resp);
 			
+			
 		}
-		
+		 
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 		throws ServletException, IOException {
@@ -87,7 +90,7 @@ public class UsuarioController extends HttpServlet{
 		usuario.setSenha(senha);
 		usuario.setNome(nome);
 		
-	   usuarioDAO.verificarlogin(usuario);
+	   usuarioDAO.salvar(usuario);
 	   resp.sendRedirect("login.jsp");
 	}
 	

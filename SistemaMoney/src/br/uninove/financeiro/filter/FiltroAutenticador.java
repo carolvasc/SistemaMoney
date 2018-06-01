@@ -34,8 +34,7 @@ public class FiltroAutenticador implements Filter{
 		//se vc estiver em login ou autenticador, a funcao ira deixar passar caso contrario ele bloqueia
 		if((sessao.getAttribute("usuAutenticador") != null) 
 				|| url.lastIndexOf("login.jsp")!=-1
-				//|| url.lastIndexOf("usucontroller?acao=cadastrar")!=-1
-				//|| url.lastIndexOf("cadastro.jsp")!=-1
+				|| url.lastIndexOf("usucontroller")!=-1
 				|| url.lastIndexOf("autenticador")!=-1) 
 		{
 			chain.doFilter(request, response);

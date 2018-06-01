@@ -24,5 +24,7 @@
 	<classpathentry kind="lib" path="C:/Users/JARs/groovy-all-2.4.3-indy.jar"/>
 	<classpathentry kind="lib" path="C:/Users/JARs/groovy-all-2.4.3-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/JARs/com.lowagie.text-2.1.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/com.fasterxml.jackson.databind.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JARs/jackson-core-2.9.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
