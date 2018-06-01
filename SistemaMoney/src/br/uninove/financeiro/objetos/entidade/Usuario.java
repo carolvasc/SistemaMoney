@@ -5,8 +5,7 @@ public class Usuario {
 	private Integer id;
 	private String login;
 	private String senha;
-	private String nome;
-	
+	private String nome;	
 		
 	public Integer getId() {
 		return id;
@@ -32,6 +31,6 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	
 }

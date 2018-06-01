@@ -18,6 +18,7 @@
 <link href="resources/css/receita.css" rel="stylesheet">
 
 <script type="text/javascript" src="resources/javascript/receita.js"></script>
+<script type="text/javascript" src="resources/javascript/mask.js" charset="utf-8""></script>
 
 </head>
 <body>
@@ -111,6 +112,9 @@
 	<!-- col-md-6 -->
 
 	<div class="col-md-3"></div>
-
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 </body>
 </html>

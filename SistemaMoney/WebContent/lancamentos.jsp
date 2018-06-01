@@ -19,6 +19,11 @@
 		
 		<!--  Estilo CSS -->
 		<link href="resources/css/lancamentos.css" rel="stylesheet">
+		
+		   <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="resources/jquery/jquery-3.3.1.min.js"></script>
+
 	</head>
 	<body>
 		<div class="col-md-1"></div>
@@ -69,9 +74,7 @@
 		</div>
 		<div class="col-md-1"></div>
 		<div class="col-md-3 box-grafico">
-			<h3>Gráfico</h3>
-			<hr />
-			<img src="resources/imagens/grafico2.png" height="346" width="376" />
+		<div id="chart_div"></div>	
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
