@@ -176,6 +176,20 @@ public class ReceitaDAO {
 		return null;
 		
 	}
+	
+	// Busca por todas as receitas e as coloca em uma lista
+		public ResultSet getResultSet(Integer idLogado) {
+			sql = "SELECT * FROM receitas where usuario_id_usuario = ?";
+			ResultSet rs = null;
+			try {
+				PreparedStatement selecionar = conexao.prepareStatement(sql);
+				selecionar.setInt(1, idLogado);
+				rs = selecionar.executeQuery();
+			} catch (Exception ex) {
+				System.out.println(ex.toString());
+			}
+			return rs;
+		}
 
 	// Busca por uma receita específica. Será bastante utilizado para alterar a receita.
 	public Receita buscarPorId(Integer idReceita) {
