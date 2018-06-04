@@ -30,7 +30,7 @@
 		src="resources/imagens/Cash.png">
 											
 	</div>
-<span id="fonte">Houve um problema ao conectar ao banco de dados</span>
+<span id="fonte">Ops! Ocorreu algum problema no servidor</span>
 
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -1,5 +1,7 @@
 body {
-	background-color: lightgray;
+    min-height: 100%;
+    background-color: #EBEBEB;
+    font-family: "Trebuchet MS";
 }
 
 .box-detalhe {

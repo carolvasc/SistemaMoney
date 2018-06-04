@@ -5,6 +5,7 @@ import java.text.NumberFormat;
 
 public class Receita {
 
+	private Integer idUsuario;
 	private Integer idReceita;
 	private String nomeReceita;
 	private Float valorReceita;
@@ -85,6 +86,14 @@ public class Receita {
 
 	public void setNomeCategReceita(String nomeCategReceita) {
 		this.nomeCategReceita = nomeCategReceita;
+	}
+
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 }
