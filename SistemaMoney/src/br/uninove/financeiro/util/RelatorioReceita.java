@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.uninove.financeiro.controller.RelatorioController;
-import br.uninove.financeiro.dao.DespesaDAO;
+import br.uninove.financeiro.dao.ReceitaDAO;
 import br.uninove.financeiro.objetos.entidade.Usuario;
 import br.uninove.financeiro.util.ConnectionFactory;
 
@@ -25,13 +25,13 @@ import net.sf.jasperreports.engine.*;
 
 import java.util.Map;
 
-public class Relatorio {
+public class RelatorioReceita {
 
 	private Connection conexao;
 	
 	public HttpSession ses;
 
-	public Relatorio() {
+	public RelatorioReceita() {
 		this.conexao = new ConnectionFactory().getConexao();
 	}
 
@@ -39,7 +39,7 @@ public class Relatorio {
 		try {
 			InputStream input = new FileInputStream(new File(jrxmlPath));
 			
-			DespesaDAO despesa = new DespesaDAO();
+			ReceitaDAO receita = new ReceitaDAO();
 			Usuario usuario = new Usuario();
 			ses = request.getSession();
 			
@@ -48,7 +48,7 @@ public class Relatorio {
 			
 			JasperReport jasper = JasperCompileManager.compileReport(input);
 
-			JRResultSetDataSource jrRs = new JRResultSetDataSource(despesa.getResultSet(id));
+			JRResultSetDataSource jrRs = new JRResultSetDataSource(receita.getResultSet(id));
 
 			JasperPrint print = JasperFillManager.fillReport(jasper, param, jrRs);
 			JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());

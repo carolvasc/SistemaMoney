@@ -18,7 +18,7 @@
 <link href="resources/css/receita.css" rel="stylesheet">
 
 <script type="text/javascript" src="resources/javascript/receita.js"></script>
-<script type="text/javascript" src="resources/javascript/mask.js" charset="utf-8""></script>
+<script type="text/javascript" src="resources/javascript/mask.js" charset="utf-8"></script>
 
 </head>
 <body>
@@ -39,7 +39,7 @@
 						<div class="form-group">
 							<label>Descrição</label> <input class="form-class"
 								name="descricao" id="descricao" type="text" autofocus
-								value="${receita.nomeReceita}" />
+								value="${receita.nomeReceita}" autocomplete="off" />
 						</div>
 
 					</div>
@@ -52,14 +52,14 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Valor</label> <input class="form-class" name="valor"
-								id="valor" type="text" value="${receita.valorReceita}" />
+								id="valor" type="text" value="${receita.valorReceita}" autocomplete="off" />
 						</div>
 					</div>
 
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Data</label> <input class="form-class" name="data"
-								id="data" type="text" value="${receita.dataReceita}" />
+								id="data" type="text" value="${receita.dataReceita}" autocomplete="off" />
 						</div>
 					</div>
 
@@ -91,9 +91,7 @@
 					<div class="col-md-12">
 						<div class="form-group obs-box">
 							<label>Observação</label>
-							<textarea class="form-class" name="observacao" id="observacao"
-								rows="4">${receita.obsReceita}
-								</textarea>
+							<textarea class="form-class" name="observacao" id="observacao" rows="4">${receita.obsReceita}</textarea>
 						</div>
 					</div>
 				</div>

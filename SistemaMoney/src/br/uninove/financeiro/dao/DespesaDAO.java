@@ -31,9 +31,9 @@ public class DespesaDAO {
 			cadastrar(despesa);
 		}
 	}
-	
-	public Integer getId(Despesa despesa){
-		if(despesa.getIdDespesa() != null && despesa.getIdDespesa() != 0){
+
+	public Integer getId(Despesa despesa) {
+		if (despesa.getIdDespesa() != null && despesa.getIdDespesa() != 0) {
 			return despesa.getIdDespesa();
 		} else {
 			return 0;
@@ -43,7 +43,7 @@ public class DespesaDAO {
 	// Cadastra uma nova despesa
 	public void cadastrar(Despesa despesa) {
 		sql = "INSERT INTO despesas (`nome_despesa`, `valor_despesa`, `data_despesa`, `obs_despesa`, "
-				+ "`categoria_id_categoria`, `pagamento_id_pagamento`) VALUES (?,?,?,?,?,?)";
+				+ "`categoria_id_categoria`, `pagamento_id_pagamento`, `usuario_id_usuario`) VALUES (?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement cadastrar = conexao.prepareStatement(sql);
 
@@ -60,8 +60,11 @@ public class DespesaDAO {
 			cadastrar.setString(4, despesa.getObsDespesa());
 			cadastrar.setInt(5, despesa.getIdCategDespesa());
 			cadastrar.setInt(6, despesa.getIdPagtoDespesa());
+			cadastrar.setInt(7, despesa.getIdUsuario());
 
 			cadastrar.execute();
+			
+			cadastrar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -88,10 +91,71 @@ public class DespesaDAO {
 			atualizar.setInt(6, despesa.getIdPagtoDespesa());
 
 			atualizar.executeUpdate();
+			
+			atualizar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
+	}
+
+	public Double valorTotalDespesa(Integer idLogado) {
+		sql = "SELECT SUM(valor_despesa) FROM despesas WHERE usuario_id_usuario = ?";
+		try {
+			PreparedStatement selecionar = conexao.prepareStatement(sql);
+			selecionar.setInt(1, idLogado);
+			ResultSet rs = selecionar.executeQuery();
+
+			rs.next();
+			Double valorTotalDespesa = Double.parseDouble(rs.getString(1));
+			return valorTotalDespesa;
+
+		} catch (Exception ex) {
+			System.out.println(ex.toString());
+		}
+		return 0.00;
+	}
+
+	public Double valorTotalReceita(Integer idLogado) {
+		sql = "SELECT SUM(valor_receita) FROM receitas WHERE usuario_id_usuario = ?";
+		try {
+			PreparedStatement selecionar = conexao.prepareStatement(sql);
+			selecionar.setInt(1, idLogado);
+			ResultSet rs = selecionar.executeQuery();
+
+			// while (rs.next()) {
+			// Double valorTotalReceita = (Double)
+			// rs.getDouble("valor_receita");
+			// return valorTotalReceita;
+			// }
+			//
+			// rs.close();
+
+			rs.next();
+			Double valorTotalReceita = Double.parseDouble(rs.getString(1));
+			System.out.println(valorTotalReceita);
+			return valorTotalReceita;
+
+		} catch (Exception ex) {
+			System.out.println(ex.toString());
+		}
+		return 0.00;
+	}
+
+	// Busca por todas as despesas e as coloca em uma lista
+	public ResultSet getResultSet(Integer idLogado) {
+		sql = "SELECT * FROM despesas where usuario_id_usuario = ?";
+		ResultSet rs = null;
+		try {
+			PreparedStatement selecionar = conexao.prepareStatement(sql);
+			selecionar.setInt(1, idLogado);
+			rs = selecionar.executeQuery();
+			
+			selecionar.close();
+		} catch (Exception ex) {
+			System.out.println(ex.toString());
+		}
+		return rs;
 	}
 
 	// Busca por todas as despesas e as coloca em uma lista
@@ -108,19 +172,19 @@ public class DespesaDAO {
 				despesa.setIdDespesa(rs.getInt("id_despesa"));
 				despesa.setNomeDespesa(rs.getString("nome_despesa"));
 				despesa.setValorDespesa(rs.getFloat("valor_despesa"));
-				
+
 				// Data formatada pra consulta (dd/MM/yyyy)
 				SimpleDateFormat formatoConsulta = new SimpleDateFormat("dd/MM/yyyy");
 				Date dataBanco = rs.getDate("data_despesa");
 				String dataFormatada = formatoConsulta.format(dataBanco);
 				despesa.setDataDespesa(dataFormatada);
 				//
-				
+
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
-				
+
 				despesa.setIdCategDespesa(rs.getInt("categoria_id_categoria"));
 				despesa.setNomeCategDespesa(buscarTipoCategoria(despesa.getIdCategDespesa()));
-				
+
 				despesa.setIdPagtoDespesa(rs.getInt("pagamento_id_pagamento"));
 				despesa.setNomePagtoDespesa(buscarTipoPagamento(despesa.getIdPagtoDespesa()));
 
@@ -129,16 +193,18 @@ public class DespesaDAO {
 
 			rs.close();
 
+			selecionar.close();
+			
 			return despesas;
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
-		
+
 		return null;
-		
+
 	}
-	
+
 	public String buscarTipoCategoria(Integer idCategoria) {
 		sql = "SELECT * FROM categorias WHERE id_categoria = ?";
 		try {
@@ -152,17 +218,19 @@ public class DespesaDAO {
 				categoria.setTipoCategoria(rs.getString("tipo_categoria"));
 				return nomeCategoria;
 			}
-			
+
 			rs.close();
 			
+			selecionar.close();
+
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
-		
+
 		return null;
-		
+
 	}
-	
+
 	public String buscarTipoPagamento(Integer idPagamento) {
 		sql = "SELECT * FROM pagamento WHERE id_pagamento = ?";
 		try {
@@ -176,18 +244,21 @@ public class DespesaDAO {
 				pagamento.setTipoPagamento(rs.getString("forma_pagamento"));
 				return nomePagamento;
 			}
-			
+
 			rs.close();
 			
+			selecionar.close();
+
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
-		
+
 		return null;
-		
+
 	}
 
-	// Busca por uma despesa específica. Será bastante utilizado para alterar a despesa.
+	// Busca por uma despesa específica. Será bastante utilizado para alterar a
+	// despesa.
 	public Despesa buscarPorId(Integer idDespesa) {
 		sql = "SELECT * FROM despesas WHERE id_despesa = ?";
 		try {
@@ -207,13 +278,15 @@ public class DespesaDAO {
 				despesa.setObsDespesa(rs.getString("obs_despesa"));
 				despesa.setIdCategDespesa(rs.getInt("categoria_id_categoria"));
 				despesa.setNomeCategDespesa(buscarTipoCategoria(despesa.getIdCategDespesa()));
-				
+
 				despesa.setIdPagtoDespesa(rs.getInt("pagamento_id_pagamento"));
 				despesa.setNomePagtoDespesa(buscarTipoPagamento(despesa.getIdPagtoDespesa()));
 
 				return despesa;
 
 			}
+			
+			selecionar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -222,7 +295,8 @@ public class DespesaDAO {
 		return null;
 	}
 
-	// Busca por todas as categorias e as coloca e uma lista, para ser carregada no combo
+	// Busca por todas as categorias e as coloca e uma lista, para ser carregada
+	// no combo
 	public List<Categoria> getCategoria() {
 		sql = "SELECT * FROM categorias";
 		try {
@@ -236,19 +310,21 @@ public class DespesaDAO {
 				categoria.setTipoCategoria(rs.getString("tipo_categoria"));
 				categorias.add(categoria);
 			}
-			
+
 			rs.close();
 			
+			selecionar.close();
+
 			return categorias;
-			
+
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
-		
+
 		return null;
-		
+
 	}
-	
+
 	public List<Pagamento> getPagamento() {
 		sql = "SELECT * FROM pagamento";
 		try {
@@ -262,17 +338,19 @@ public class DespesaDAO {
 				pagamento.setTipoPagamento(rs.getString("forma_pagamento"));
 				pagamentos.add(pagamento);
 			}
-			
+
 			rs.close();
 			
+			selecionar.close();
+
 			return pagamentos;
-			
+
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
-		
+
 		return null;
-		
+
 	}
 
 	// Exclui a despesa selecionada
@@ -284,6 +362,8 @@ public class DespesaDAO {
 			deletar.setInt(1, idDespesa);
 
 			deletar.execute();
+			
+			deletar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());

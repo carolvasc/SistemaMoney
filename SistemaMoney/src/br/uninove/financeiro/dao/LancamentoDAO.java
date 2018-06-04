@@ -26,15 +26,16 @@ public class LancamentoDAO {
 	}
 
 	// Busca todas os lancamentos referentes ao mes e ano atual
-	public List<Despesa> listarDespesas(Integer mes, Integer ano) {
-		sql = "SELECT * FROM despesas WHERE MONTH(data_despesa) = ? AND YEAR(data_despesa) = ?"
+	public List<Despesa> listarDespesas(Integer mes, Integer ano, Integer idUsuario) {
+		sql = "SELECT * FROM despesas WHERE MONTH(data_despesa) = ? AND YEAR(data_despesa) = ? AND usuario_id_usuario = ?"
 				+ " ORDER BY data_despesa";
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
 
-			selecionar.setInt(1, mes); // Irá mandar como parâmetro o mês
-										// atual/anterior/posterior
-			selecionar.setInt(2, ano); // Irá mandar como parâmetro o ano atual
+			selecionar.setInt(1, mes); 
+			selecionar.setInt(2, ano);
+			selecionar.setInt(3, idUsuario);
+			
 
 			ResultSet rs = selecionar.executeQuery();
 			List<Despesa> despesas = new ArrayList<>();
@@ -66,6 +67,8 @@ public class LancamentoDAO {
 			}
 
 			rs.close();
+			
+			selecionar.close();
 
 			return despesas;
 
@@ -78,14 +81,15 @@ public class LancamentoDAO {
 	}
 
 	// Busca todas os lancamentos referentes ao mes e ano atual
-	public List<Receita> listarReceitas(Integer mes, Integer ano) {
-		sql = "SELECT * FROM receitas WHERE MONTH(data_receita) = ? AND YEAR(data_receita) = ?"
+	public List<Receita> listarReceitas(Integer mes, Integer ano, Integer idUsuario) {
+		sql = "SELECT * FROM receitas WHERE MONTH(data_receita) = ? AND YEAR(data_receita) = ? AND usuario_id_usuario = ?"
 				+ " ORDER BY data_receita";
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
 
 			selecionar.setInt(1, mes);
 			selecionar.setInt(2, ano);
+			selecionar.setInt(3, idUsuario);
 
 			ResultSet rs = selecionar.executeQuery();
 			List<Receita> receitas = new ArrayList<>();
@@ -113,6 +117,8 @@ public class LancamentoDAO {
 			}
 
 			rs.close();
+			
+			selecionar.close();
 
 			return receitas;
 
@@ -139,6 +145,8 @@ public class LancamentoDAO {
 			}
 
 			rs.close();
+			
+			selecionar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -163,6 +171,8 @@ public class LancamentoDAO {
 			}
 
 			rs.close();
+			
+			selecionar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());

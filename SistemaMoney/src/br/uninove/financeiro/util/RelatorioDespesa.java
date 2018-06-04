@@ -25,13 +25,13 @@ import net.sf.jasperreports.engine.*;
 
 import java.util.Map;
 
-public class Relatorio {
+public class RelatorioDespesa {
 
 	private Connection conexao;
 	
 	public HttpSession ses;
 
-	public Relatorio() {
+	public RelatorioDespesa() {
 		this.conexao = new ConnectionFactory().getConexao();
 	}
 

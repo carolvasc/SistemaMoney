@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.util.List;
 
@@ -25,6 +26,9 @@ public class ReceitaController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String acao = req.getParameter("acao");
+		
+		HttpSession sessao = req.getSession();
+		Integer idUsuario = (Integer) sessao.getAttribute("idUsuario");
 
 		Receita receita = new Receita();
 		ReceitaDAO receitaDAO = new ReceitaDAO();
@@ -63,7 +67,7 @@ public class ReceitaController extends HttpServlet {
 				mesTela = Integer.parseInt(req.getParameter("mesTela"));
 			}
 
-			List<Receita> lista = lancamentoDAO.listarReceitas(mesTela, l.getAnoDataAtual());
+			List<Receita> lista = lancamentoDAO.listarReceitas(mesTela, l.getAnoDataAtual(), idUsuario);
 
 			req.setAttribute("mesVisualizado", mesTela);
 			req.setAttribute("lista", lista);
@@ -94,8 +98,12 @@ public class ReceitaController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		HttpSession ses = req.getSession();
+		
 		Receita receita = new Receita();
 		ReceitaDAO receitaDAO = new ReceitaDAO();
+		
+		Integer idUsuario = (Integer) ses.getAttribute("idUsuario");
 
 		Integer idReceita = Integer.parseInt(req.getParameter("id"));
 		String nomeReceita = req.getParameter("descricao");
@@ -110,6 +118,7 @@ public class ReceitaController extends HttpServlet {
 		receita.setDataReceita(dataReceita);
 		receita.setIdCategReceita(catReceita);
 		receita.setObsReceita(obsReceita);
+		receita.setIdUsuario(idUsuario);
 
 		receitaDAO.salvar(receita);
 

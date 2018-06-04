@@ -7,11 +7,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Seu DimDim</title>
+<title>Clever Cash</title>
 
 <!-- icone de dinheiro no title -->
-<link rel="icon" type="imagem/dimdim.png"
-	href="resources/imagem/dimdim.png" />
+<link rel="icon" type="resources/imagens/CCs.png"
+	href="resources/imagens/CCs.png" />
 
 <!-- Estilo css -->
 <link href="resources/css/menu.css" rel="stylesheet">
@@ -93,9 +93,8 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown" id="iconeConfig">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<img src="resources/imagens/usuario.png" alt="sua-foto" id="iconeFoto"
-							class="img-circle" class="centro">
-							</span>
+						<img src="resources/imagens/engra.png" alt="sua-foto" id="iconeFoto"
+							 class="centroo">	
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="usucontroller?acao=alterar">Alterar Senha</a></li>

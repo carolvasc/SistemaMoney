@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.uninove.financeiro.util.Relatorio;
+import br.uninove.financeiro.util.RelatorioDespesa;
 
-@WebServlet("/relatorios")
-public class RelatorioController extends HttpServlet {
+@WebServlet("/RelatorioDespesaController")
+public class RelatorioDespesaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public RelatorioController() {
+    public RelatorioDespesaController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Relatorio relatorio = new Relatorio();
+		RelatorioDespesa relatorioDesp = new RelatorioDespesa();
 		Map<String, Object> param = new HashMap<String, Object>();
 		String jrxmlPath = request.getServletContext().getRealPath("/reports/despesas.jrxml");
-		relatorio.gerarRelatorio(request, response, param, jrxmlPath);
+		relatorioDesp.gerarRelatorio(request, response, param, jrxmlPath);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

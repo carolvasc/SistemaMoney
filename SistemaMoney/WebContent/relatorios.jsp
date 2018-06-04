@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Consultar Lançamento</title>
+<title>Relatórios</title>
 
 <!-- Bootstrap -->
 <link href="resources/bootstrap/dist/css/bootstrap.min.css"
@@ -28,12 +28,25 @@
 	<div>
 		<h3>Relatórios</h3>
 		<hr />
+		
+		<div>
+		
+			<%@ include file="graficoRelatorio.jsp"%>
+			
+		</div>
+		
 		<div class="action-button">
-			<!-- 				<a href="relatorios">Imprimir</a> -->
-			<button class="btn btn-primary" id="btn-imprimir"
-				onClick="javascript:window.location='relatorios'">
-				Gerar Relatório <i class="glyphicon glyphicon-print"></i>
+
+			<button class="btn btn-danger" id="btn-despesas" title="Gerar relatório de despesas"
+				onClick="javascript:window.location='RelatorioDespesaController'">
+				Despesas <i class="glyphicon glyphicon-print"></i>
 			</button>
+			
+			<button class="btn btn-success" id="btn-receitas" title="Gerar relatório de receitas"
+				onClick="javascript:window.location='RelatorioReceitaController'">
+				Receitas <i class="glyphicon glyphicon-print"></i>
+			</button>
+			
 		</div>
 		
 		</div>

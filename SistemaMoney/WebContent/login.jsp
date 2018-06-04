@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<title>Seu DimDim</title>
+<title>Clever Cash</title>
 
 <!-- icone de dinheiro no title -->
 <link rel="icon" type="resources/imagens/dimdim.png"
@@ -122,14 +122,14 @@ label#lsenha-error.error{
 			<div class="form-group">
 				<label for="email" class="titulinhos">E-mail:</label> <input
 					type="email" name="login" class="form-control" id="lemail"
-					placeholder="Digite seu e-mail">
+					placeholder="Digite seu e-mail" value="cvsouza@gmail.com" >
 
 			</div>
 
 			<div class="form-group">
 				<label for="senha" class="titulinhos">Senha:</label> <input
 					type="password" name="senha" class="form-control" id="lsenha"
-					placeholder="Digite sua senha">
+					placeholder="Digite sua senha" value="123456">
 
 			</div>
 

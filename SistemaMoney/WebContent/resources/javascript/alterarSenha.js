@@ -13,8 +13,7 @@ $(document).ready(function(){
 					},
 					repetir: {
 						required:true,
-						minlength: 7,
-						maxlength: 15
+						equalTo:"#senhanova"
 					}
 				},
 				messages:{
@@ -30,8 +29,8 @@ $(document).ready(function(){
 						},
 					repetir:{
 						required:'Por favor insira uma senha',
-						minlength: 'Digite uma senha maior (min 7 caracteres)',
-						maxlength: 'Digite uma senha menor (max 15 caracteres)'
+						equalTo:'Senhas n&atilde;o compat&iacute;veis'
+						
 						}
 					}	
 			});

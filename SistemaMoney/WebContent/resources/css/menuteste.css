@@ -1,14 +1,23 @@
 /* Seletores */
 
 body {
-	background-color: #ccc;
+	background-color: Gray;
+}
+
+#fonte{
+	color: black;
 }
 
 nav {
 	background-color:#000000;
 	font-family:Trebuchet MS;
 }
-
+.dropdown-menu>li>a{
+	color:white
+}
+.navbar-toggle{
+	background-color: white;
+}
 a {
 	color: white;
 }
@@ -16,9 +25,7 @@ a {
 ul {
 	color: #000000;
 }
-button.navbar-toggle{
-	color: white;
-}
+
 /* Classe */
 
 .centro{
@@ -37,10 +44,6 @@ button.navbar-toggle{
 	color:white;
 }
 
-a.dropdown-toggle {
-  padding-left: 31px;
-  padding-bottom: 34px;
-}
 
 /* ID */
 

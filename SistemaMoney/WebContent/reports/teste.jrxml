@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="teste" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e6c83b77-6f6b-4474-8b75-61f0f578541b">
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="192"/>
-	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="797"/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[c2lzdGVtYWZpbmFuY2Vpcm8uZGVzcGVzYXMgQVMgLDU4LDMzLDExNGNjYmExLWNmZTYtNDI0NS1i
+MmRhLWE4OTMzNDUwNjllNzs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="135"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="860"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Financeiro Data Adapter "/>
 	<queryString language="SQL">
 		<![CDATA[SELECT sistemafinanceiro.despesas.nome_despesa,
 	sistemafinanceiro.despesas.valor_despesa,
-	sistemafinanceiro.categorias.tipo_categoria,
-	sistemafinanceiro.pagamento.forma_pagamento
+	sistemafinanceiro.despesas.categoria_id_categoria,
+	sistemafinanceiro.despesas.pagamento_id_pagamento
 FROM sistemafinanceiro.despesas
-	INNER JOIN sistemafinanceiro.pagamento ON 
-	 sistemafinanceiro.despesas.pagamento_id_pagamento = sistemafinanceiro.pagamento.id_pagamento 
-	INNER JOIN sistemafinanceiro.categorias ON 
-	 sistemafinanceiro.despesas.categoria_id_categoria = sistemafinanceiro.categorias.id_categoria 
 ORDER BY sistemafinanceiro.despesas.data_despesa ASC]]>
 	</queryString>
 	<field name="nome_despesa" class="java.lang.String">
@@ -25,99 +24,36 @@ ORDER BY sistemafinanceiro.despesas.data_despesa ASC]]>
 		<property name="com.jaspersoft.studio.field.label" value="valor_despesa"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="despesas"/>
 	</field>
-	<field name="tipo_categoria" class="java.lang.String"/>
-	<field name="forma_pagamento" class="java.lang.String"/>
+	<field name="categoria_id_categoria" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="categoria_id_categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="despesas"/>
+	</field>
+	<field name="pagamento_id_pagamento" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="pagamento_id_pagamento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="despesas"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
 	<title>
-		<band height="100" splitType="Stretch">
-			<staticText>
-				<reportElement x="150" y="29" width="260" height="40" uuid="0aadce9f-ba5c-4a3c-a6c3-fa4616d1caff"/>
-				<textElement textAlignment="Center">
-					<font fontName="Trebuchet MS" size="26" isBold="true" isItalic="false"/>
-				</textElement>
-				<text><![CDATA[Sistema Money]]></text>
-			</staticText>
-		</band>
+		<band height="79" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="47" splitType="Stretch">
-			<staticText>
-				<reportElement x="177" y="17" width="200" height="30" uuid="d0c0cab9-2a62-4d56-9069-47e7036ad1b5"/>
-				<textElement textAlignment="Center">
-					<font fontName="Trebuchet MS" size="18"/>
-				</textElement>
-				<text><![CDATA[Relatório de Despesas]]></text>
-			</staticText>
-		</band>
+		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
-			<staticText>
-				<reportElement x="10" y="30" width="100" height="30" uuid="892f13a2-348f-478d-901f-05091758d8f6">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="544cf416-e67a-4d4f-bfa2-c206e9f239cc"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Trebuchet MS" size="13" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Descrição]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="150" y="30" width="100" height="30" uuid="3f65b177-886e-41e1-803b-20a83747b8cd">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ace9c890-1db4-43bc-9690-0b451ef21101"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Trebuchet MS" size="13" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Valor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="290" y="30" width="100" height="30" uuid="d3f44271-717f-4d4b-a462-ff4771be58ee">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="216a83a4-fcf2-4c66-a6f4-2b8bf6221d36"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Trebuchet MS" size="13" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Categoria]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="420" y="30" width="134" height="30" uuid="6e5e79ac-a2ab-4122-84ca-ef8e878dd4c7">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4daa7fd1-1bf7-4fb0-b669-c03acb7fa600"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Trebuchet MS" size="13" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Forma de Pagamento]]></text>
-			</staticText>
-		</band>
+		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="46" splitType="Stretch">
-			<textField>
-				<reportElement x="12" y="21" width="98" height="24" uuid="7e263b3a-96b9-45a8-ad45-5c515b0ad2bc">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="544cf416-e67a-4d4f-bfa2-c206e9f239cc"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{nome_despesa}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="152" y="21" width="100" height="24" uuid="44840c5d-e791-4609-86f5-4cafdbf159a1">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ace9c890-1db4-43bc-9690-0b451ef21101"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{valor_despesa}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="292" y="21" width="98" height="24" uuid="ddd69464-91f7-4c88-a1f1-a12ebd278ff0">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b48c0a19-9863-49c2-847c-969da2b03cd5"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{tipo_categoria}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="422" y="21" width="132" height="24" uuid="2a5ed95d-358a-4518-b712-715d257698da">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="576fd15b-f6de-4b8d-ae38-cd2348df6b0a"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{forma_pagamento}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="125" splitType="Stretch"/>
 	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
 	<pageFooter>
-		<band height="50"/>
+		<band height="54" splitType="Stretch"/>
 	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
 </jasperReport>
