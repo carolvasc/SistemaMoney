@@ -8,7 +8,6 @@ $(function() {
         monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
     });
     $("#valor").maskMoney({
-        prefix: "R$:",
         decimal: ",",
         thousands: "."
     });

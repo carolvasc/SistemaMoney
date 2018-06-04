@@ -132,9 +132,7 @@ label#lsenha-error.error{
 					placeholder="Digite sua senha">
 
 			</div>
-			<div>
-				<a id="esqueci" href="usucontroller?acao=buscar">Esqueci minha senha</a>
-			</div>
+
 			<div id="cadastro">
 				Não tem cadastro ainda?<a href="usucontroller?acao=cadastrar"> clique aqui!</a>
 			</div>

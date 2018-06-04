@@ -109,16 +109,11 @@ public class CategoriaDAO {
 	
 	
 	public String buscarRelatorio() {
-		/*
-		sql = "select YEAR(b.data_despesa), sum(b.valor_despesa), sum(r.valor_receita) from usuarios u"
-		+ " left join receitas r on u.id_usuario=r.usuario_id_usuario"
-		+ " left join despesas b on u.id_usuario=b.usuario_id_usuario"
-		+ " where b.valor_despesa and r.valor_receita;";
-		*/
-		sql="select YEAR(b.data_despesa), sum(b.valor_despesa), sum(r.valor_receita) from categorias a"
-				+ " left join receitas r on a.id_categoria=r.categoria_id_categoria"
-				+ " left join despesas b on a.id_categoria=b.categoria_id_categoria "
-				+ " where b.valor_despesa and r.valor_receita is not null group by a.id_categoria,a.tipo_categoria;";
+	
+		sql="select YEAR(b.data_despesa), sum(b.valor_despesa), sum(r.valor_receita) from usuarios a"
+				+ " left join receitas r on a.id_usuario=r.usuario_id_usuario"
+				+ " left join despesas b on a.id_usuario=b.usuario_id_usuario"
+				+ " where b.valor_despesa and r.valor_receita  group by YEAR(b.data_despesa);";
 		
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
