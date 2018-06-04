@@ -25,8 +25,8 @@
 	</head>
 	<body>
 	
-		<div class="col-md-1"></div>
-		<div class="col-md-6">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
 			<div id="box-tabela">
 				<%
 					List<Receita> lista = (List<Receita>) request.getAttribute("lista");
@@ -72,17 +72,6 @@
 				</table>
 			</div>
 		</div>
-		<div class="col-md-1"></div>
-		<div class="col-md-3 box-grafico">
-			<h3>Gráfico</h3>
-			<hr />
-			<img src="resources/imagens/grafico1.png" height="345" width="370" />
-		</div>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<div class="col-md-2"></div>
 	</body>
 </html>

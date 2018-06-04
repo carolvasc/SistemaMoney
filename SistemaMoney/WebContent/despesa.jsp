@@ -19,7 +19,6 @@
 		<script type="text/javascript" src="resources/javascript/despesa.js"></script>
 		<script type="text/javascript" src="resources/javascript/mask.js" charset="utf-8"></script>	
 		
-		
 	</head>
 	<body>
 				
@@ -39,7 +38,7 @@
 							<div class="form-group">
 								<label>Descrição</label> 
 								<input class="form-class" name="descricao" id="descricao" type="text" autofocus
-									value="${despesa.nomeDespesa}" />
+									value="${despesa.nomeDespesa}" autocomplete="off" />
 							</div>
 							
 						</div>
@@ -53,7 +52,7 @@
 							<div class="form-group">
 								<label>Valor</label>
 								<input class="form-class" name="valor" id="valor" type="text"
-									value="${despesa.valorDespesa}" />
+									value="${despesa.valorDespesa}" autocomplete="off" />
 							</div>
 						</div>
 						
@@ -61,7 +60,7 @@
 							<div class="form-group">
 								<label>Data</label>
 								<input class="form-class" name="data" id="data" type="text"
-									value="${despesa.dataDespesa}" />
+									value="${despesa.dataDespesa}" autocomplete="off" />
 							</div>
 						</div>
 						
@@ -113,8 +112,7 @@
 						<div class="col-md-12">
 							<div class="form-group obs-box">
 								<label>Observação</label>
-								<textarea class="form-class" name="observacao" id="observacao" rows="4">${despesa.obsDespesa}
-								</textarea>
+								<textarea class="form-class" name="observacao" id="observacao" rows="4">${despesa.obsDespesa}</textarea>
 							</div>
 						</div>
 					</div>

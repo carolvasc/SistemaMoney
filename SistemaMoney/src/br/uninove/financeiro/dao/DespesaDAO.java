@@ -43,7 +43,7 @@ public class DespesaDAO {
 	// Cadastra uma nova despesa
 	public void cadastrar(Despesa despesa) {
 		sql = "INSERT INTO despesas (`nome_despesa`, `valor_despesa`, `data_despesa`, `obs_despesa`, "
-				+ "`categoria_id_categoria`, `pagamento_id_pagamento`) VALUES (?,?,?,?,?,?)";
+				+ "`categoria_id_categoria`, `pagamento_id_pagamento`, `usuario_id_usuario`) VALUES (?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement cadastrar = conexao.prepareStatement(sql);
 
@@ -60,8 +60,11 @@ public class DespesaDAO {
 			cadastrar.setString(4, despesa.getObsDespesa());
 			cadastrar.setInt(5, despesa.getIdCategDespesa());
 			cadastrar.setInt(6, despesa.getIdPagtoDespesa());
+			cadastrar.setInt(7, despesa.getIdUsuario());
 
 			cadastrar.execute();
+			
+			cadastrar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -88,6 +91,8 @@ public class DespesaDAO {
 			atualizar.setInt(6, despesa.getIdPagtoDespesa());
 
 			atualizar.executeUpdate();
+			
+			atualizar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -145,6 +150,8 @@ public class DespesaDAO {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
 			selecionar.setInt(1, idLogado);
 			rs = selecionar.executeQuery();
+			
+			selecionar.close();
 		} catch (Exception ex) {
 			System.out.println(ex.toString());
 		}
@@ -186,6 +193,8 @@ public class DespesaDAO {
 
 			rs.close();
 
+			selecionar.close();
+			
 			return despesas;
 
 		} catch (SQLException ex) {
@@ -211,6 +220,8 @@ public class DespesaDAO {
 			}
 
 			rs.close();
+			
+			selecionar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -235,6 +246,8 @@ public class DespesaDAO {
 			}
 
 			rs.close();
+			
+			selecionar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -272,6 +285,8 @@ public class DespesaDAO {
 				return despesa;
 
 			}
+			
+			selecionar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -297,6 +312,8 @@ public class DespesaDAO {
 			}
 
 			rs.close();
+			
+			selecionar.close();
 
 			return categorias;
 
@@ -323,6 +340,8 @@ public class DespesaDAO {
 			}
 
 			rs.close();
+			
+			selecionar.close();
 
 			return pagamentos;
 
@@ -343,6 +362,8 @@ public class DespesaDAO {
 			deletar.setInt(1, idDespesa);
 
 			deletar.execute();
+			
+			deletar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());

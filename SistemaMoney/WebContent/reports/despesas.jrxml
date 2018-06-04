@@ -3,6 +3,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Despesas" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Financeiro Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="308"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="681"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -14,8 +16,14 @@
 		</conditionalStyle>
 	</style>
 	<queryString language="SQL">
-		<![CDATA[select * from sistemafinanceiro.despesas]]>
+		<![CDATA[SELECT *
+FROM sistemafinanceiro.despesas
+	INNER JOIN sistemafinanceiro.categorias ON 
+	 sistemafinanceiro.despesas.categoria_id_categoria = sistemafinanceiro.categorias.id_categoria 
+	INNER JOIN sistemafinanceiro.pagamento ON 
+	 sistemafinanceiro.despesas.pagamento_id_pagamento = sistemafinanceiro.pagamento.id_pagamento]]>
 	</queryString>
+	<field name="data_despesa" class="java.sql.Date"/>
 	<field name="nome_despesa" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nome_despesa"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="despesas"/>
@@ -30,7 +38,7 @@
 	<title>
 		<band height="132" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
+				<reportElement mode="Opaque" x="0" y="0" width="553" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
 				<staticText>
 					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
 					<textElement>
@@ -47,9 +55,9 @@
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
+				<reportElement mode="Opaque" x="0" y="100" width="553" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
+					<reportElement x="393" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
 					<textElement textAlignment="Right">
 						<font fontName="SansSerif" size="12"/>
 					</textElement>
@@ -62,24 +70,31 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="26" splitType="Stretch">
+		<band height="42" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="0" y="7" width="277" height="18" forecolor="#000000" uuid="3a56472e-d353-4f78-945a-44c99a964568">
+				<reportElement style="Column header" x="174" y="7" width="121" height="18" forecolor="#000000" uuid="3a56472e-d353-4f78-945a-44c99a964568">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="413f0ffe-9c07-4cc5-ba14-63c39906b198"/>
 				</reportElement>
 				<textElement>
-					<font fontName="SansSerif" size="13" isBold="true"/>
+					<font fontName="SansSerif" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="277" y="7" width="277" height="18" forecolor="#000000" uuid="cc0e6b4b-bf37-4306-99c9-2379b152ac08">
+				<reportElement style="Column header" x="381" y="7" width="96" height="18" forecolor="#000000" uuid="cc0e6b4b-bf37-4306-99c9-2379b152ac08">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e82b2703-598e-45c5-804a-c47f276ef27e"/>
 				</reportElement>
 				<textElement>
-					<font fontName="SansSerif" size="13" isBold="true"/>
+					<font fontName="SansSerif" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="7" width="100" height="20" uuid="192181cb-dcfa-43b3-ba51-e9d458774859"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -88,7 +103,7 @@
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="277" height="18" uuid="165c800a-4dbc-4907-8063-e096444aae2a">
+					<reportElement style="Detail" positionType="Float" x="173" y="0" width="140" height="18" uuid="165c800a-4dbc-4907-8063-e096444aae2a">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="413f0ffe-9c07-4cc5-ba14-63c39906b198"/>
 					</reportElement>
 					<textElement>
@@ -97,7 +112,7 @@
 					<textFieldExpression><![CDATA[$F{nome_despesa}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="277" y="0" width="277" height="18" uuid="92a96129-68fd-456c-8079-a709284efe59">
+					<reportElement style="Detail" positionType="Float" x="403" y="0" width="68" height="18" uuid="92a96129-68fd-456c-8079-a709284efe59">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e82b2703-598e-45c5-804a-c47f276ef27e"/>
 					</reportElement>
 					<textElement>
@@ -105,6 +120,20 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{valor_despesa}]]></textFieldExpression>
 				</textField>
+				<textField>
+					<reportElement x="14" y="0" width="60" height="22" uuid="b57f1edc-f26f-42f2-b33c-1eac7f97813e"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{data_despesa}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="382" y="0" width="20" height="18" uuid="d8637225-4398-4825-a8ff-84b3129a73df"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[R$ ]]></text>
+				</staticText>
 			</frame>
 		</band>
 	</detail>

@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Consultar Lançamento</title>
+<title>Relatórios</title>
 
 <!-- Bootstrap -->
 <link href="resources/bootstrap/dist/css/bootstrap.min.css"

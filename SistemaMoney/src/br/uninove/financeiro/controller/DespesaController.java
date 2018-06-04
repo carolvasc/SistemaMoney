@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.util.List;
 
@@ -23,6 +24,9 @@ public class DespesaController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String acao = req.getParameter("acao");
+		
+		HttpSession sessao = req.getSession();
+		Integer idUsuario = (Integer) sessao.getAttribute("idUsuario");
 
 		Despesa despesa = new Despesa();
 		DespesaDAO despesaDAO = new DespesaDAO();
@@ -63,7 +67,7 @@ public class DespesaController extends HttpServlet {
 				mesTela = Integer.parseInt(req.getParameter("mesTela"));
 			}
 
-			List<Despesa> lista = lancamentoDAO.listarDespesas(mesTela, l.getAnoDataAtual());
+			List<Despesa> lista = lancamentoDAO.listarDespesas(mesTela, l.getAnoDataAtual(), idUsuario);
 
 			req.setAttribute("mesVisualizado", mesTela);
 			req.setAttribute("lista", lista);
@@ -94,8 +98,12 @@ public class DespesaController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		HttpSession ses = req.getSession();
+		
 		Despesa despesa = new Despesa();
 		DespesaDAO despesaDAO = new DespesaDAO();
+		
+		Integer idUsuario = (Integer) ses.getAttribute("idUsuario");
 
 		Integer idDespesa = Integer.parseInt(req.getParameter("id"));
 		String nomeDespesa = req.getParameter("descricao");
@@ -112,6 +120,7 @@ public class DespesaController extends HttpServlet {
 		despesa.setIdCategDespesa(catDespesa);
 		despesa.setIdPagtoDespesa(pagDespesa);
 		despesa.setObsDespesa(obsDespesa);
+		despesa.setIdUsuario(idUsuario);
 
 		despesaDAO.salvar(despesa);
 

@@ -5,7 +5,8 @@ import java.text.NumberFormat;
 
 public class Despesa {
     
-    private Integer idDespesa;
+    private Integer idUsuario;
+	private Integer idDespesa;
     private String nomeDespesa;
     private Float valorDespesa;
     private String dataDespesa;
@@ -114,6 +115,14 @@ public class Despesa {
 
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
+	}
+
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
 	}
     
 }

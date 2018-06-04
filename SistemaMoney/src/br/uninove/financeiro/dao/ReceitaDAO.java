@@ -34,7 +34,7 @@ public class ReceitaDAO {
 	// Cadastra uma nova receita
 	public void cadastrar(Receita receita) {
 		sql = "INSERT INTO receitas (`nome_receita`, `valor_receita`, `data_receita`, `obs_receita`, "
-				+ "`categoria_id_categoria`) VALUES (?,?,?,?,?)";
+				+ "`categoria_id_categoria`, `usuario_id_usuario`) VALUES (?,?,?,?,?,?)";
 		try {
 			PreparedStatement cadastrar = conexao.prepareStatement(sql);
 
@@ -50,8 +50,11 @@ public class ReceitaDAO {
 			//
 			cadastrar.setString(4, receita.getObsReceita());
 			cadastrar.setInt(5, receita.getIdCategReceita());
+			cadastrar.setInt(6, receita.getIdUsuario());
 
 			cadastrar.execute();
+			
+			cadastrar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -77,6 +80,8 @@ public class ReceitaDAO {
 			atualizar.setInt(5, receita.getIdCategReceita());
 
 			atualizar.executeUpdate();
+			
+			atualizar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -84,11 +89,12 @@ public class ReceitaDAO {
 	}
 
 	// Busca por todas as receitas e as coloca em uma lista
-	public List<Receita> buscar() {
+	public List<Receita> buscar(Integer id) {
 		sql = "SELECT * FROM receitas";
 		try {
 			PreparedStatement selecionar = conexao.prepareStatement(sql);
 			ResultSet rs = selecionar.executeQuery();
+			selecionar.setInt(1, id);
 			List<Receita> receitas = new ArrayList<>();
 
 			while (rs.next()) {
@@ -114,6 +120,8 @@ public class ReceitaDAO {
 			}
 
 			rs.close();
+			
+			selecionar.close();
 
 			return receitas;
 
@@ -142,6 +150,8 @@ public class ReceitaDAO {
 			
 			rs.close();
 			
+			selecionar.close();
+			
 			return categorias;
 			
 		} catch (SQLException ex) {
@@ -169,6 +179,8 @@ public class ReceitaDAO {
 			
 			rs.close();
 			
+			selecionar.close();
+			
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
 		}
@@ -185,10 +197,12 @@ public class ReceitaDAO {
 				PreparedStatement selecionar = conexao.prepareStatement(sql);
 				selecionar.setInt(1, idLogado);
 				rs = selecionar.executeQuery();
+				selecionar.close();
 			} catch (Exception ex) {
 				System.out.println(ex.toString());
 			}
 			return rs;
+			
 		}
 
 	// Busca por uma receita específica. Será bastante utilizado para alterar a receita.
@@ -213,8 +227,10 @@ public class ReceitaDAO {
 				receita.setNomeCategReceita(buscarTipoCategoria(receita.getIdCategReceita()));
 
 				return receita;
-
+				
 			}
+			
+			selecionar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());
@@ -232,6 +248,8 @@ public class ReceitaDAO {
 			deletar.setInt(1, idReceita);
 
 			deletar.execute();
+			
+			deletar.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.toString());

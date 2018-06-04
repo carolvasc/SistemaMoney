@@ -29,8 +29,8 @@
 	</head>
 	<body>
 	
-		<div class="col-md-1"></div>
-		<div class="col-md-6">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
 			<div id="box-tabela">
 				<%
 					List<Despesa> lista = (List<Despesa>) request.getAttribute("lista");
@@ -73,82 +73,6 @@
 					</table>
 				</div>
 			</div>
-			<div class="col-md-1"></div>
-			<div class="col-md-3 box-grafico">
-				<h3>Gráfico</h3>
-				<hr />
-				<img src="resources/imagens/grafico2.png" height="346" width="376" />
-			</div>
-		</div>
-		
-		
-		<!-- Tela de Consulta -->
-		<div class="row box-consulta modal fade rodape" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-		
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 12px;">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-		
-			<div class="row">
-			
-				<div class="container">
-			
-					<div class="col-md-2"></div>
-					
-					<div class="col-md-3">
-					
-						<h2 id="consulta-nome"></h2>
-						<h4 id="consulta-valor"></h4>
-						
-					</div>
-					
-					<div class="col-md-3">
-					
-						<h4>Data</h4>
-						<p id="consulta-data"></p>
-						
-						<h4>Categoria</h4>
-						<p id="consulta-categoria"></p>
-						
-					</div>
-					
-					<div class="col-md-3">
-					
-						<h4>Forma de Pagamento</h4>
-						<p id="consulta-pagamento"></p>
-						
-						<h4>Observação</h4>
-						<p>-----</p>
-						
-					</div>
-					
-					<div class="col-md-1"></div>
-				
-				</div>
-				<!-- fim-container -->
-				
-			</div>
-			<!-- fim-row -->
-				
-			<div class="row">
-			
-				<div class="container">
-						
-					<div class="box-acoes" style="float: right;">
-						<button class="btn btn-success" >Editar</button>
-						<button class="btn btn-warning" >Copiar</button>
-						<button class="btn btn-danger" >Excluir</button>
-					</div>
-					<!-- fim-box-acoes -->
-					
-				</div>
-				<!-- fim-container -->
-		
-			</div>
-			<!-- fim-row -->
-			
-		</div>
-		<!-- fim-box-consulta -->
-		
+			<div class="col-md-2"></div>
 	</body>
 </html>
